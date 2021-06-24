@@ -1,0 +1,11 @@
+ext {
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.3",
+            applicationId    : "cn.artstudent.app",
+            minSdkVersion    : 19,
+            targetSdkVersion : 30,
+            versionCode      : 1000,
+            versionName      : "1.0.00"
+    ]
+}

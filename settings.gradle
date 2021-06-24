@@ -1,0 +1,4 @@
+rootProject.name = "RxjavaArchitectureApplication"
+include ':app'
+include ':baselibrary'
+include ':userlibrary'
