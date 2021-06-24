@@ -38,6 +38,10 @@ class CommonListActivity : BaseActivity<ActivityCommonListBinding>() {
         })
     }
 
+    override fun initListener() {
+
+    }
+
     override fun getLayoutViewBinding(): ActivityCommonListBinding {
         return ActivityCommonListBinding.inflate(layoutInflater)
     }

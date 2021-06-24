@@ -22,6 +22,8 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         AppManager.setContext(this)
         _viewBinding = getLayoutViewBinding()
         setContentView(_viewBinding.root)
+        initListener()
+        initData()
     }
 
 
@@ -45,6 +47,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected abstract fun getLayoutViewBinding(): VB
 
+    protected abstract fun initListener()
 
     protected abstract fun initData()
 }
