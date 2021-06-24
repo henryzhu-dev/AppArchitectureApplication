@@ -24,6 +24,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         setContentView(_viewBinding.root)
         initListener()
         initData()
+        loadData()
     }
 
 
@@ -50,4 +51,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected abstract fun initListener()
 
     protected abstract fun initData()
+
+    protected abstract fun loadData()
 }

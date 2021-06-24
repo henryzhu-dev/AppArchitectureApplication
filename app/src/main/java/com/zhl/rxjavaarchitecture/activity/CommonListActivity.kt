@@ -1,13 +1,20 @@
 package com.zhl.rxjavaarchitecture.activity
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.zhl.baselibrary.activity.BaseActivity
 import com.zhl.baselibrary.databinding.ActivityCommonListBinding
+import com.zhl.baselibrary.service.ServiceGenerator
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
 import com.zhl.rxjavaarchitecture.adapter.CommonListAdapter
+import com.zhl.rxjavaarchitecture.api.BookService
 import com.zhl.rxjavaarchitecture.model.CategoriesListItem
+import com.zhl.rxjavaarchitecture.model.CategoriesListResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  *    author : zhuhl
@@ -40,6 +47,23 @@ class CommonListActivity : BaseActivity<ActivityCommonListBinding>() {
 
     override fun initListener() {
 
+    }
+
+    override fun loadData() {
+        var bookService = ServiceGenerator.createService(BookService::class.java)
+        var bookListCall = bookService.getBookList(1, 10, 1)
+        bookListCall.enqueue(object : Callback<CategoriesListResponse> {
+            override fun onResponse(
+                call: Call<CategoriesListResponse>,
+                response: Response<CategoriesListResponse>
+            ) {
+                Log.d("http返回：", response.body().toString() + "")
+            }
+
+            override fun onFailure(call: Call<CategoriesListResponse>, t: Throwable) {
+                Log.d("http返回：",  "请求失败：" + t.message)
+            }
+        })
     }
 
     override fun getLayoutViewBinding(): ActivityCommonListBinding {

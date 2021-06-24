@@ -22,6 +22,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
+    override fun loadData() {
+
+    }
+
     override fun getLayoutViewBinding(): ActivityMainBinding {
         return ActivityMainBinding.inflate(layoutInflater)
     }
