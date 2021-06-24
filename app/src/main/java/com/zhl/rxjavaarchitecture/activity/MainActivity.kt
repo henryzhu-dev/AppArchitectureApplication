@@ -1,14 +1,17 @@
-package com.zhl.rxjavaarchitecture
+package com.zhl.rxjavaarchitecture.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.zhl.baselibrary.activity.BaseActivity
 import com.zhl.rxjavaarchitecture.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         binding.tvTest.text = "hello binding"
+    }
+
+    override fun getLayoutViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
     }
 }
