@@ -44,4 +44,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
 
     protected abstract fun getLayoutViewBinding(): VB
+
+
+    protected abstract fun initData()
 }

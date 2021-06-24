@@ -1,12 +1,12 @@
 package com.zhl.rxjavaarchitecture.adapter
 
-import android.widget.Toast
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.chad.library.adapter.base.listener.OnItemLongClickListener
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.zhl.baselibrary.utils.CommonImageLoadUtil
+import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
 import com.zhl.rxjavaarchitecture.model.CategoriesListItem
-import com.zhl.rxjavaarchitecture.model.CategoriesListResponse
 
 /**
  *    author : zhuhl
@@ -25,9 +25,17 @@ class CommonListAdapter(list: MutableList<CategoriesListItem>) :
         holder.setText(R.id.tvBciAuthor, item.author)
         holder.setText(R.id.tvBciDesc, item.desc)
         holder.setTextColorRes(R.id.tvBciDesc, R.color.gray3)
-
-        setOnItemClickListener(OnItemClickListener { adapter, view, position ->
-            Toast.makeText(context, "点击item成功，position:" + position, Toast.LENGTH_SHORT).show()
+        CommonImageLoadUtil.loadImageWithContext(
+            context,
+            holder.getView(R.id.rivBciCoverImg),
+            item.coverImg
+        )
+        setOnItemClickListener { adapter, view, position ->
+            ToastUtil.show("点击item成功，position:$position")
+        }
+        setOnItemLongClickListener(OnItemLongClickListener { adapter, view, position ->
+            ToastUtil.show("长按item成功，position:$position")
+            return@OnItemLongClickListener true
         })
     }
 

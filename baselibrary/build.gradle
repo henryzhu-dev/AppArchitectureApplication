@@ -42,6 +42,7 @@ dependencies {
     api 'androidx.appcompat:appcompat:1.3.0'
     api 'com.google.android.material:material:1.3.0'
     api 'androidx.constraintlayout:constraintlayout:2.0.4'
+    api 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     testApi 'junit:junit:4.+'
     androidTestApi 'androidx.test.ext:junit:1.1.2'
     androidTestApi 'androidx.test.espresso:espresso-core:3.3.0'
@@ -65,6 +66,9 @@ dependencies {
 
     //BRVAH,https://github.com/CymChad/BaseRecyclerViewAdapterHelper
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6'
+
+    //glide
+    api 'com.github.bumptech.glide:glide:4.11.0'
 
 
 }
