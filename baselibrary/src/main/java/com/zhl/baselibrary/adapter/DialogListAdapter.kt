@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.TextView
+import com.zhl.baselibrary.R
 
 /**
  *    author : zhuhl
@@ -13,7 +14,8 @@ import android.widget.TextView
  *    desc   :
  *    refer  :
  */
-class DialogListAdapter<T>(private val context: Context, private val list: MutableList<T>) : android.widget.ListAdapter {
+class DialogListAdapter<T>(private val context: Context, private val list: MutableList<T>) :
+    android.widget.ListAdapter {
 
     override fun registerDataSetObserver(observer: DataSetObserver?) {
 
@@ -35,13 +37,21 @@ class DialogListAdapter<T>(private val context: Context, private val list: Mutab
     }
 
     override fun hasStableIds(): Boolean {
-        return false
+        return true
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val textView = TextView(context)
-//        textView.text = list.get(position).toString()
-        return textView
+        var view: View? = null
+        var textView: TextView? = null
+        if (convertView == null) {
+            view = View.inflate(context, R.layout.dialog_common_list_item, null)
+        } else {
+            view = convertView
+        }
+        textView = view?.findViewById<TextView>(R.id.tvDialogContent)
+        textView?.text = list[position].toString()
+
+        return view ?: throw IllegalStateException("getView cannot null")
     }
 
     override fun getItemViewType(position: Int): Int {

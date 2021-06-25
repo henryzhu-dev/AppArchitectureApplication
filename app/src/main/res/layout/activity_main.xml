@@ -27,9 +27,22 @@
         android:text="单选弹窗" />
 
     <Button
-        android:id="@+id/yjSingleDialog"
+        android:id="@+id/yjSingleStringDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="永久单选弹窗" />
+        android:text="永久单选String弹窗" />
+
+    <Button
+        android:id="@+id/yjSingleModelDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="永久单选Model弹窗" />
+
+    <Button
+        android:id="@+id/yjMultiModeDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="永久多选弹窗" />
+
 
 </LinearLayout>

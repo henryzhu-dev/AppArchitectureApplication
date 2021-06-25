@@ -44,14 +44,30 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 })
             dialog.show(supportFragmentManager, "")
         }
-        binding.yjSingleDialog.doubleClickCheck {
-            val dialog = SingleChoiceDialogFragment<String>(
-                mutableListOf("红", "黄", "蓝"), "选择颜色",
-                object : DialogSingleChoiceListener<CharSequence> {
-                    override fun onClick(which: Int, selItem: CharSequence) {
+        binding.yjSingleStringDialog.doubleClickCheck {
+            val dialog = StringSingleChoiceDialogFragment(
+                "选择颜色",
+                arrayOf("红", "黄", "蓝"), 0,
+                object : DialogSingleChoiceListener<String> {
+                    override fun onClick(which: Int, selItem: String) {
                         ToastUtil.show(selItem.toString())
                     }
                 })
+            dialog.show(supportFragmentManager, "")
+        }
+        binding.yjMultiModeDialog.doubleClickCheck {
+            val dialog = MultiChoiceDialogFragment(
+                arrayOf("红色", "黄色", "绿色"),
+                object : DialogMultiClickListener{
+                    override fun onDialogMultiConfirmClick(list: MutableList<Int>) {
+
+                    }
+
+                    override fun onDialogMultiCancelClick() {
+
+                    }
+                }
+                )
             dialog.show(supportFragmentManager, "")
         }
     }

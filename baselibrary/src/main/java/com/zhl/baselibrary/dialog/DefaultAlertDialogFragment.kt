@@ -3,9 +3,11 @@ package com.zhl.baselibrary.dialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.zhl.baselibrary.R
+import com.zhl.baselibrary.utils.AppManager
 
 /**
  *    author : zhuhl
@@ -14,34 +16,45 @@ import com.zhl.baselibrary.R
  *    refer  : https://developer.android.com/guide/topics/ui/dialogs
  */
 class DefaultAlertDialogFragment(
-    val content: String,
+    private var title: String,
+    private val content: String,
+    private var confirmBtnText: String?,
+    private var cancelBtnText: String?,
     private val dialogClickListener: DialogClickListener
 ) : DialogFragment() {
 
-    private var titleText: String =
-        context?.resources?.getString(R.string.dialog_btn_title) ?: "title"
-
-    private var confirmBtnText: String =
-        context?.resources?.getString(R.string.dialog_btn_confirm) ?: "confirm"
-
-    private var cancelBtnText: String =
-        context?.resources?.getString(R.string.dialog_btn_cancel) ?: "cancel"
-
-    constructor(
-        content: String,
-        confirmBtnText: String,
-        cancelBtnText: String,
-        dialogClickListener: DialogClickListener
-    ) : this(content, dialogClickListener) {
-        this.confirmBtnText = confirmBtnText
-        this.cancelBtnText = cancelBtnText
+    init {
+        //初始化默认的字符串
+        if (TextUtils.isEmpty(title)) {
+            title = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_title)
+            } ?: "title"
+        }
+        if (TextUtils.isEmpty(confirmBtnText)) {
+            confirmBtnText = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_confirm)
+            } ?: "confirm"
+        }
+        if (TextUtils.isEmpty(cancelBtnText)) {
+            cancelBtnText = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_cancel)
+            } ?: "cancel"
+        }
     }
+
+    constructor(title: String, content: String, dialogClickListener: DialogClickListener) : this(
+        title,
+        content,
+        null,
+        null,
+        dialogClickListener
+    )
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
             builder.setMessage(content)
-                .setTitle(titleText)
+                .setTitle(title)
                 .setPositiveButton(
                     confirmBtnText,
                     DialogInterface.OnClickListener { dialog, which ->

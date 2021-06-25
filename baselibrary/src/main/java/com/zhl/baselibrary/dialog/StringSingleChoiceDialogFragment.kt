@@ -3,20 +3,19 @@ package com.zhl.baselibrary.dialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.zhl.baselibrary.R
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/24
- *    desc   : 永久性单选列表,支持ListAdapter传入List<T>
+ *    desc   : 永久性单选列表,只支持字符串
  */
-class SingleChoiceDialogFragment<T>(
-    private val list: MutableList<T>,
+class StringSingleChoiceDialogFragment(
     private val title: String,
-    private val singleChoiceListener: DialogSingleChoiceListener<T>
+    private val array: Array<String>,
+    private val checkedItem: Int = 0,
+    private val singleChoiceListener: DialogSingleChoiceListener<String>
 ) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -24,16 +23,10 @@ class SingleChoiceDialogFragment<T>(
             val builder = AlertDialog.Builder(it)
             builder.setTitle(title)
                 .setSingleChoiceItems(
-                    ArrayAdapter<T>(
-                        requireContext(),
-                        R.layout.dialog_common_list_item,
-                        R.id.tvDialogContent,
-                        list
-                    ),
-                    0
+                    array,
+                    checkedItem
                 ) { _, which ->
-                    singleChoiceListener.onClick(which, list[which])
-                    dismiss()
+                    singleChoiceListener.onClick(which, array[which])
                 }
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
