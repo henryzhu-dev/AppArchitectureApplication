@@ -3,6 +3,7 @@ package com.zhl.baselibrary.dialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.zhl.baselibrary.R
@@ -14,28 +15,40 @@ import com.zhl.baselibrary.utils.AppManager
  *    desc   : 永久性多选列表,支持Array<String>
  */
 class MultiChoiceDialogFragment(
+    private var title: String?,
     private val array: Array<String>,
-    private val title: String,
-    private val confirmBtnText: String,
-    private val cancelBtnText: String,
+    private var confirmBtnText: String?,
+    private var cancelBtnText: String?,
     private val multiClickListener: DialogMultiClickListener
 ) : DialogFragment() {
 
+    init {
+        //初始化默认的字符串
+        if (TextUtils.isEmpty(title)) {
+            title = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_title)
+            } ?: "title"
+        }
+        if (TextUtils.isEmpty(confirmBtnText)) {
+            confirmBtnText = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_confirm)
+            } ?: "confirm"
+        }
+        if (TextUtils.isEmpty(cancelBtnText)) {
+            cancelBtnText = AppManager.getActivity()?.let {
+                it.resources.getString(R.string.dialog_btn_cancel)
+            } ?: "cancel"
+        }
+    }
 
     constructor(
         array: Array<String>,
         multiClickListener: DialogMultiClickListener
     ) : this(
+        null,
         array,
-        AppManager.getActivity()?.let {
-            it.resources.getString(R.string.dialog_btn_title)
-        } ?: "title",
-        AppManager.getActivity()?.let {
-            it.resources.getString(R.string.dialog_btn_confirm)
-        } ?: "confirm",
-        AppManager.getActivity()?.let {
-            it.resources.getString(R.string.dialog_btn_cancel)
-        } ?: "cancel",
+        null,
+        null,
         multiClickListener
     )
 

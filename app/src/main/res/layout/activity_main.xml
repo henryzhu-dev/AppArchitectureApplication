@@ -44,5 +44,16 @@
         android:layout_height="wrap_content"
         android:text="永久多选弹窗" />
 
+    <Button
+        android:id="@+id/customViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom弹窗" />
+
+    <Button
+        android:id="@+id/appUseViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="App通用弹窗" />
 
 </LinearLayout>

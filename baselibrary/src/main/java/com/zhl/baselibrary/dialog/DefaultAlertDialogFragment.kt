@@ -16,7 +16,7 @@ import com.zhl.baselibrary.utils.AppManager
  *    refer  : https://developer.android.com/guide/topics/ui/dialogs
  */
 class DefaultAlertDialogFragment(
-    private var title: String,
+    private var title: String?,
     private val content: String,
     private var confirmBtnText: String?,
     private var cancelBtnText: String?,
@@ -42,8 +42,8 @@ class DefaultAlertDialogFragment(
         }
     }
 
-    constructor(title: String, content: String, dialogClickListener: DialogClickListener) : this(
-        title,
+    constructor(content: String, dialogClickListener: DialogClickListener) : this(
+        null,
         content,
         null,
         null,

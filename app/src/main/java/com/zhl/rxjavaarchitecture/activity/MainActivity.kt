@@ -6,6 +6,7 @@ import com.zhl.baselibrary.activity.BaseActivity
 import com.zhl.baselibrary.dialog.*
 import com.zhl.baselibrary.doubleClickCheck
 import com.zhl.baselibrary.utils.ToastUtil
+import com.zhl.rxjavaarchitecture.R
 import com.zhl.rxjavaarchitecture.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -24,7 +25,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.btnDialog.doubleClickCheck {
             val dialog =
-                DefaultAlertDialogFragment("这个是自定义内容", "确定", "取消", object : DialogClickListener {
+                DefaultAlertDialogFragment("这个是自定义内容", object : DialogClickListener {
                     override fun onDialogCancelClick() {
                         ToastUtil.show("cancel")
                     }
@@ -58,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.yjMultiModeDialog.doubleClickCheck {
             val dialog = MultiChoiceDialogFragment(
                 arrayOf("红色", "黄色", "绿色"),
-                object : DialogMultiClickListener{
+                object : DialogMultiClickListener {
                     override fun onDialogMultiConfirmClick(list: MutableList<Int>) {
 
                     }
@@ -67,7 +68,25 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
                     }
                 }
-                )
+            )
+            dialog.show(supportFragmentManager, "")
+        }
+        binding.customViewDialog.doubleClickCheck {
+            val dialog = CustomViewDialogFragment(
+                R.layout.dialog_common_layout
+            )
+            dialog.show(supportFragmentManager, "")
+        }
+        binding.appUseViewDialog.doubleClickCheck {
+            val dialog = CommonDialogFragment("传进去的内容", object : DialogClickListener {
+                override fun onDialogConfirmClick() {
+                    ToastUtil.show("点击了确定")
+                }
+
+                override fun onDialogCancelClick() {
+                    ToastUtil.show("点击了取消")
+                }
+            })
             dialog.show(supportFragmentManager, "")
         }
     }

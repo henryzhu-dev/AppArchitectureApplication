@@ -103,6 +103,16 @@
     <dimen name="common_dp_99">99dp</dimen>
     <dimen name="common_dp_100">100dp</dimen>
 
+
+
+    <dimen name="common_dp_150">150dp</dimen>
+
+
+    <dimen name="common_dp_200">200dp</dimen>
+
+
+
+
     <dimen name="common_sp_0">0sp</dimen>
     <dimen name="common_sp_1">1sp</dimen>
     <dimen name="common_sp_2">2sp</dimen>

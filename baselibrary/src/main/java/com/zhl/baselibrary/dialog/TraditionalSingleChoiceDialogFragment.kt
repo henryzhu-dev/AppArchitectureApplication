@@ -11,7 +11,11 @@ import androidx.fragment.app.DialogFragment
  *    date   : 2021/6/24
  *    desc   : 传统的单选列表,只支持字符串
  */
-class TraditionalSingleChoiceDialogFragment(val title: String, val array: Array<CharSequence>, val singleChoiceListener : DialogSingleChoiceListener<CharSequence>) : DialogFragment() {
+class TraditionalSingleChoiceDialogFragment(
+    private val title: String,
+    private val array: Array<CharSequence>,
+    private val singleChoiceListener: DialogSingleChoiceListener<CharSequence>
+) : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
