@@ -42,4 +42,6 @@ android {
 dependencies {
     implementation project(path: ':baselibrary')
     implementation project(path: ':userlibrary')
+    implementation project(path: ':dialoglibrary')
+
 }

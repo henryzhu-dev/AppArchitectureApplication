@@ -1,4 +1,4 @@
-package com.zhl.baselibrary.dialog
+package com.zhl.dialoglibrary.dialog
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.zhl.baselibrary.R
+import com.zhl.dialoglibrary.listener.DialogSingleChoiceListener
 
 /**
  *    author : zhuhl

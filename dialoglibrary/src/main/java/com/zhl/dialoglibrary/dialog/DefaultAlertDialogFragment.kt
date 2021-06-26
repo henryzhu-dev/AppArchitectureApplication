@@ -1,4 +1,4 @@
-package com.zhl.baselibrary.dialog
+package com.zhl.dialoglibrary.dialog
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -8,18 +8,20 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.zhl.baselibrary.R
 import com.zhl.baselibrary.utils.AppManager
+import com.zhl.dialoglibrary.listener.DialogClickListener
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/24
- *    desc   : 永久性多选列表,支持Array<String>
+ *    desc   : 默认的AlertDialog弹窗，一个取消按钮，一个确认按钮
+ *    refer  : https://developer.android.com/guide/topics/ui/dialogs
  */
-class MultiChoiceDialogFragment(
+class DefaultAlertDialogFragment(
     private var title: String?,
-    private val array: Array<String>,
+    private val content: String,
     private var confirmBtnText: String?,
     private var cancelBtnText: String?,
-    private val multiClickListener: DialogMultiClickListener
+    private val dialogClickListener: DialogClickListener
 ) : DialogFragment() {
 
     init {
@@ -41,54 +43,36 @@ class MultiChoiceDialogFragment(
         }
     }
 
-    constructor(
-        array: Array<String>,
-        multiClickListener: DialogMultiClickListener
-    ) : this(
+    constructor(content: String, dialogClickListener: DialogClickListener) : this(
         null,
-        array,
+        content,
         null,
         null,
-        multiClickListener
+        dialogClickListener
     )
-
-    private val selectedItems by lazy {
-        mutableListOf<Int>()
-    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            builder.setTitle(title)
-                .setMultiChoiceItems(
-                    array,
-                    null
-                ) { dialog, which, isChecked ->
-                    if (isChecked) {
-                        // If the user checked the item, add it to the selected items
-                        selectedItems.add(which)
-                    } else if (selectedItems.contains(which)) {
-                        // Else, if the item is already in the array, remove it
-                        selectedItems.remove(Integer.valueOf(which))
-                    }
-                }
+            builder.setMessage(content)
+                .setTitle(title)
                 .setPositiveButton(
                     confirmBtnText,
                     DialogInterface.OnClickListener { dialog, which ->
-                        //confirm
-                        multiClickListener.onDialogMultiConfirmClick(selectedItems)
+                        // FIRE ZE MISSILES!
+                        dialogClickListener.onDialogConfirmClick()
                     })
                 .setNegativeButton(cancelBtnText, DialogInterface.OnClickListener { dialog, which ->
                     // User cancelled the dialog
-                    multiClickListener.onDialogMultiCancelClick()
+//                    ToastUtil.show("concel")
+                    dialogClickListener.onDialogCancelClick()
                 })
-            val alertDialog = builder.create()
-            alertDialog.setCanceledOnTouchOutside(false)
-            return@let alertDialog
+            builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
     }
+
 }

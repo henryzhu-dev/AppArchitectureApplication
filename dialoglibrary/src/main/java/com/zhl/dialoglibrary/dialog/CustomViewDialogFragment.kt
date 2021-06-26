@@ -1,4 +1,4 @@
-package com.zhl.baselibrary.dialog
+package com.zhl.dialoglibrary.dialog
 
 import android.app.Dialog
 import android.os.Bundle
