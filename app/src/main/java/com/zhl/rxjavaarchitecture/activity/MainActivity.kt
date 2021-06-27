@@ -97,6 +97,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 })
             dialog.show(supportFragmentManager, "")
         }
+        binding.btnUserIndex.doubleClickCheck {
+
+        }
     }
 
     override fun loadData() {
