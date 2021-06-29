@@ -6,21 +6,21 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.zhl.baselibrary.utils.CommonImageLoadUtil
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
-import com.zhl.rxjavaarchitecture.model.CategoriesListItem
+import com.zhl.rxjavaarchitecture.model.BookBean
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/24
  *    desc   :
  */
-class CommonListAdapter(list: MutableList<CategoriesListItem>) :
-    BaseQuickAdapter<CategoriesListItem, BaseViewHolder>(
+class CommonListAdapter(list: MutableList<BookBean>) :
+    BaseQuickAdapter<BookBean, BaseViewHolder>(
         R.layout.view_adapter_item_category_list,
         list
     ) {
 
 
-    override fun convert(holder: BaseViewHolder, item: CategoriesListItem) {
+    override fun convert(holder: BaseViewHolder, item: BookBean) {
         holder.setText(R.id.tvBciTitle, item.title)
         holder.setText(R.id.tvBciAuthor, item.author)
         holder.setText(R.id.tvBciDesc, item.desc)

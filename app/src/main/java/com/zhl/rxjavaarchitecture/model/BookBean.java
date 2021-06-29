@@ -7,7 +7,7 @@ import java.io.Serializable;
  * date   : 2021/6/24
  * desc   :
  */
-public class CategoriesListItem implements Serializable {
+public class BookBean implements Serializable {
 
     public String categoryName;
 

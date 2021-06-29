@@ -1,6 +1,8 @@
 package com.zhl.rxjavaarchitecture.api
 
-import com.zhl.rxjavaarchitecture.model.CategoriesListResponse
+import com.zhl.baselibrary.model.BookBaseBean
+import com.zhl.rxjavaarchitecture.model.BookListBean
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -18,8 +20,14 @@ interface BookService {
         @Query("categoryId") categoryId: Int,
         @Query("pageSize") pageSize: Int,
         @Query("pageNum") pageNum: Int
-    ): Call<CategoriesListResponse>
+    ): Call<BookBaseBean<BookListBean>>
 
 
+    @GET("app/open/api/book/getCategoryId")
+    fun getBookListObservable(
+        @Query("categoryId") categoryId: Int,
+        @Query("pageSize") pageSize: Int,
+        @Query("pageNum") pageNum: Int
+    ): Observable<BookBaseBean<BookListBean>>
 
 }

@@ -24,3 +24,13 @@
 # Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
 # okio混淆规则
 -dontwarn org.codehaus.mojo.animal_sniffer.*
+
+
+#ARouter混淆规则
+-keep public class com.alibaba.android.arouter.routes.**{*;}
+-keep public class com.alibaba.android.arouter.facade.**{*;}
+-keep class * implements com.alibaba.android.arouter.facade.template.ISyringe{*;}
+# 如果使用了 byType 的方式获取 Service，需添加下面规则，保护接口
+-keep interface * implements com.alibaba.android.arouter.facade.template.IProvider
+# 如果使用了 单类注入，即不定义接口实现 IProvider，需添加下面规则，保护实现
+# -keep class * implements com.alibaba.android.arouter.facade.template.IProvider

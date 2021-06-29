@@ -2,7 +2,9 @@ package com.zhl.rxjavaarchitecture.activity
 
 import android.content.Intent
 import android.os.Bundle
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.baselibrary.activity.BaseActivity
+import com.zhl.baselibrary.constant.ARouterConstant
 import com.zhl.baselibrary.doubleClickCheck
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.dialoglibrary.dialog.*
@@ -12,6 +14,7 @@ import com.zhl.dialoglibrary.listener.DialogSingleChoiceListener
 import com.zhl.rxjavaarchitecture.R
 import com.zhl.rxjavaarchitecture.databinding.ActivityMainBinding
 
+@Route(path = ARouterConstant.MAIN.INDEX)
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

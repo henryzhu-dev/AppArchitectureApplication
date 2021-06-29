@@ -1,6 +1,7 @@
 package com.zhl.rxjavaarchitecture
 
 import android.app.Application
+import com.zhl.baselibrary.utils.ARouterUtil
 import com.zhl.baselibrary.utils.AppManager
 
 /**
@@ -15,5 +16,7 @@ class MyApplication : Application() {
 
         AppManager.init(this)
         AppManager.setApplicationContext(this)
+
+        ARouterUtil.init(this)
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -17,6 +18,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         multiDexEnabled true
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     buildTypes {
@@ -43,5 +50,7 @@ dependencies {
     implementation project(path: ':baselibrary')
     implementation project(path: ':userlibrary')
     implementation project(path: ':dialoglibrary')
+
+    kapt 'com.alibaba:arouter-compiler:1.5.2'
 
 }
