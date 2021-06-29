@@ -12,8 +12,8 @@ public class BookListBean {
     public int pageNum;
     private int pageSize;
     private int total;
+    private List<BookBean> list;
 
-    public List<BookBean> list;
 
     public int getPageNum() {
         return pageNum;
