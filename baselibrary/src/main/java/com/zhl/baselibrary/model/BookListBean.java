@@ -1,4 +1,4 @@
-package com.zhl.rxjavaarchitecture.model;
+package com.zhl.baselibrary.model;
 
 import java.util.List;
 
@@ -7,12 +7,12 @@ import java.util.List;
  * date   : 2021/6/24
  * desc   :
  */
-public class BookListBean {
+public class BookListBean<T> {
 
     public int pageNum;
     private int pageSize;
     private int total;
-    private List<BookBean> list;
+    private List<T> list;
 
 
     public int getPageNum() {
@@ -39,11 +39,11 @@ public class BookListBean {
         this.total = total;
     }
 
-    public List<BookBean> getList() {
+    public List<T> getList() {
         return list;
     }
 
-    public void setList(List<BookBean> list) {
+    public void setList(List<T> list) {
         this.list = list;
     }
 }

@@ -2,7 +2,9 @@ package com.zhl.rxjavaarchitecture.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemLongClickListener
+import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.zhl.baselibrary.service.ServiceGenerator
 import com.zhl.baselibrary.utils.CommonImageLoadUtil
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
@@ -17,7 +19,7 @@ class CommonListAdapter(list: MutableList<BookBean>) :
     BaseQuickAdapter<BookBean, BaseViewHolder>(
         R.layout.view_adapter_item_category_list,
         list
-    ) {
+    ), LoadMoreModule {
 
 
     override fun convert(holder: BaseViewHolder, item: BookBean) {
@@ -28,7 +30,7 @@ class CommonListAdapter(list: MutableList<BookBean>) :
         CommonImageLoadUtil.loadImageWithContext(
             context,
             holder.getView(R.id.rivBciCoverImg),
-            item.coverImg
+            ServiceGenerator.BASE_URL + item.coverImg
         )
         setOnItemClickListener { adapter, view, position ->
             ToastUtil.show("点击item成功，position:$position")
