@@ -1,5 +1,6 @@
 package com.zhl.dialoglibrary.dialog
 
+import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import android.text.TextUtils
@@ -7,8 +8,7 @@ import android.view.*
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.zhl.baselibrary.R
-import com.zhl.baselibrary.utils.AppManager
+import com.zhl.dialoglibrary.R
 
 
 /**
@@ -18,6 +18,7 @@ import com.zhl.baselibrary.utils.AppManager
  *    refer  :
  */
 class CustomViewDialogFragment(
+    activity: Activity,
     @LayoutRes private val layoutRes: Int,
     private var confirmBtnText: String?,
     private var cancelBtnText: String?
@@ -26,20 +27,18 @@ class CustomViewDialogFragment(
     init {
         //初始化默认的字符串
         if (TextUtils.isEmpty(confirmBtnText)) {
-            confirmBtnText = AppManager.getActivity()?.let {
-                it.resources.getString(R.string.dialog_btn_confirm)
-            } ?: "confirm"
+            confirmBtnText = activity.resources.getString(R.string.dialog_btn_confirm)
         }
         if (TextUtils.isEmpty(cancelBtnText)) {
-            cancelBtnText = AppManager.getActivity()?.let {
-                it.resources.getString(R.string.dialog_btn_cancel)
-            } ?: "cancel"
+            cancelBtnText = activity.resources.getString(R.string.dialog_btn_cancel)
         }
     }
 
     constructor(
+        activity: Activity,
         @LayoutRes layoutRes: Int,
     ) : this(
+        activity,
         layoutRes,
         null,
         null

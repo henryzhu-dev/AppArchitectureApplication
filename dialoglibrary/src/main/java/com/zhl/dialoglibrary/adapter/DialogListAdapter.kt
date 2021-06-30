@@ -1,4 +1,4 @@
-package com.zhl.baselibrary.adapter
+package com.zhl.dialoglibrary.adapter
 
 import android.content.Context
 import android.database.DataSetObserver
@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
 import android.widget.TextView
-import com.zhl.baselibrary.R
+import com.zhl.dialoglibrary.R
 
 /**
  *    author : zhuhl

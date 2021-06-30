@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import com.zhl.baselibrary.R
+import com.zhl.dialoglibrary.R
 import com.zhl.dialoglibrary.listener.DialogSingleChoiceListener
 
 /**
