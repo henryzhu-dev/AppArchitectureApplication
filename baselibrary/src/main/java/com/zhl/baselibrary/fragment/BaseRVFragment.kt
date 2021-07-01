@@ -1,4 +1,4 @@
-package com.zhl.baselibrary.activity
+package com.zhl.baselibrary.fragment
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,12 +11,11 @@ import com.zhl.baselibrary.model.BookListBean
 
 /**
  *    author : zhuhl
- *    date   : 2021/6/30
+ *    date   : 2021/7/1
  *    desc   :
  *    refer  :
  */
-abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
-    SwipeRefreshLayout.OnRefreshListener,
+abstract class BaseRVFragment<VB : ViewBinding, T> : BaseFragment<VB>(), SwipeRefreshLayout.OnRefreshListener,
     OnLoadMoreListener {
 
     abstract val swipeRefreshLayout: SwipeRefreshLayout?
@@ -29,14 +28,13 @@ abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
      */
     private var currentPage = 1
 
-
     override fun initData() {
         //设置是否可下拉刷新
         swipeRefreshLayout?.isEnabled = enableRefresh()
         //设置下拉刷新监听
         swipeRefreshLayout?.setOnRefreshListener(this)
         //绑定adapter
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = this.adapter
         //设置加载中的状态
         adapter.setEmptyView(getLoadingLayout())
@@ -45,17 +43,13 @@ abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         //设置上拉加载监听
         adapter.loadMoreModule.setOnLoadMoreListener(this)
         initOtherData()
-
+        onRefresh()
     }
 
     abstract fun initOtherData()
 
     override fun loadData() {
         onRefresh()
-    }
-
-    override fun initListener() {
-
     }
 
     override fun onRefresh() {
@@ -128,4 +122,5 @@ abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
     protected fun getErrorLayout(): Int {
         return R.layout.layout_common_error_view
     }
+
 }

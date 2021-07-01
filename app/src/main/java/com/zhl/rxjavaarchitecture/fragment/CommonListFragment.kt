@@ -1,10 +1,12 @@
-package com.zhl.rxjavaarchitecture.activity
+package com.zhl.rxjavaarchitecture.fragment
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
-import com.zhl.baselibrary.activity.BaseRVActivity
-import com.zhl.baselibrary.databinding.ActivityCommonListBinding
+import com.zhl.baselibrary.databinding.FragmentCommonListBinding
+import com.zhl.baselibrary.fragment.BaseRVFragment
 import com.zhl.baselibrary.service.ServiceGenerator
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
@@ -16,12 +18,11 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
  *    author : zhuhl
- *    date   : 2021/6/24
+ *    date   : 2021/7/1
  *    desc   :
+ *    refer  : 通用的列表Fragment
  */
-class CommonListActivity : BaseRVActivity<ActivityCommonListBinding, BookBean>() {
-
-    private val TAG = CommonListActivity::class.java.simpleName
+class CommonListFragment : BaseRVFragment<FragmentCommonListBinding, BookBean>() {
 
     override val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         binding.swipeRefreshLayout
@@ -34,8 +35,8 @@ class CommonListActivity : BaseRVActivity<ActivityCommonListBinding, BookBean>()
         CommonListAdapter(mutableListOf<BookBean>())
     }
 
-    override val loadDataList: (page: Int) -> Unit = { page ->
-        loadDataList(page)
+    override val loadDataList: (page: Int) -> Unit = {
+        loadDataList(it)
     }
 
     override fun initOtherData() {
@@ -52,6 +53,7 @@ class CommonListActivity : BaseRVActivity<ActivityCommonListBinding, BookBean>()
         })
     }
 
+
     private fun loadDataList(page: Int) {
         var bookService = ServiceGenerator.createService(BookService::class.java)
         val bookListObservable = bookService.getBookListObservable(1, pageNum = page)
@@ -65,17 +67,11 @@ class CommonListActivity : BaseRVActivity<ActivityCommonListBinding, BookBean>()
             )
     }
 
-    override fun enableRefresh(): Boolean {
-        return true
+    override fun getViewBinding(
+        inflater: LayoutInflater,
+        viewGroup: ViewGroup?
+    ): FragmentCommonListBinding {
+        return FragmentCommonListBinding.inflate(inflater)
     }
 
-    override fun enableLoadMore(): Boolean {
-        return false
-    }
-
-
-
-    override fun getLayoutViewBinding(): ActivityCommonListBinding {
-        return ActivityCommonListBinding.inflate(layoutInflater)
-    }
 }

@@ -1,5 +1,7 @@
-package com.zhl.baselibrary.activity
+package com.zhl.baselibrary.fragment
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,13 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
     private var _binding: VB? = null
     protected val binding get() = _binding!!
 
+    var activity: Activity? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        activity = context as Activity
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +36,17 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
         return binding.root
     }
 
-    protected abstract fun getViewBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): VB
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initData()
+        loadData()
+    }
+
+    abstract fun initData()
+
+    abstract fun loadData()
+
+    abstract fun getViewBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): VB
 
 
     override fun onDestroyView() {

@@ -44,13 +44,11 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         AppManager.setContext(this)
     }
 
-
-
-    protected abstract fun getLayoutViewBinding(): VB
-
-    protected abstract fun initListener()
-
     protected abstract fun initData()
 
     protected abstract fun loadData()
+
+    protected abstract fun initListener()
+
+    protected abstract fun getLayoutViewBinding(): VB
 }
