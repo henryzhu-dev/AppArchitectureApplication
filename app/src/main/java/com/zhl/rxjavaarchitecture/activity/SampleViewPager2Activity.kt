@@ -1,7 +1,7 @@
 package com.zhl.rxjavaarchitecture.activity
 
 import com.zhl.baselibrary.activity.BaseActivity
-import com.zhl.baselibrary.adapter.SampleAdapter
+import com.zhl.baselibrary.adapter.BaseViewPager2Adapter
 import com.zhl.baselibrary.fragment.BaseFragment
 import com.zhl.rxjavaarchitecture.databinding.ActivitySampleViewpager2Binding
 import com.zhl.rxjavaarchitecture.fragment.ViewPager2SampleFragment
@@ -21,7 +21,7 @@ class SampleViewPager2Activity : BaseActivity<ActivitySampleViewpager2Binding>()
             ViewPager2SampleFragment.newInstance(2),
             ViewPager2SampleFragment.newInstance(3),
             ViewPager2SampleFragment.newInstance(4))
-        binding.pager.adapter = SampleAdapter(this, fragmentList)
+        binding.pager.adapter = BaseViewPager2Adapter(this, fragmentList)
     }
 
     override fun loadData() {

@@ -15,11 +15,29 @@ import com.zhl.rxjavaarchitecture.model.BookBean
  *    date   : 2021/6/24
  *    desc   :
  */
-class CommonListAdapter(list: MutableList<BookBean>) :
+class CommonListAdapter() :
     BaseQuickAdapter<BookBean, BaseViewHolder>(
-        R.layout.view_adapter_item_category_list,
-        list
+        R.layout.view_adapter_item_category_list
     ), LoadMoreModule {
+
+    init {
+        setOnItemClickListener { adapter, view, position ->
+            // TODO: 2021/7/12 item点击事件
+
+        }
+        addChildClickViewIds(R.id.tvBciTitle)
+        setOnItemChildClickListener{adapter, view, position ->
+            // TODO: 2021/7/12 item中的元素点击事件
+            when (view.id) {
+                R.id.tvBciTitle -> {
+
+                }
+                else -> {
+
+                }
+            }
+        }
+    }
 
 
     override fun convert(holder: BaseViewHolder, item: BookBean) {
@@ -32,13 +50,6 @@ class CommonListAdapter(list: MutableList<BookBean>) :
             holder.getView(R.id.rivBciCoverImg),
             ServiceGenerator.BASE_URL + item.coverImg
         )
-        setOnItemClickListener { adapter, view, position ->
-            ToastUtil.show("点击item成功，position:$position")
-        }
-        setOnItemLongClickListener(OnItemLongClickListener { adapter, view, position ->
-            ToastUtil.show("长按item成功，position:$position")
-            return@OnItemLongClickListener true
-        })
     }
 
 

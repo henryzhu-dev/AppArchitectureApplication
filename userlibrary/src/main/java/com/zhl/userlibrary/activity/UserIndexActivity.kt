@@ -14,6 +14,7 @@ import com.zhl.userlibrary.databinding.ActivityUserIndexBinding
 
 @Route(path = ARouterConstant.USER.INDEX)
 class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
+
     override fun getLayoutViewBinding(): ActivityUserIndexBinding {
         return ActivityUserIndexBinding.inflate(layoutInflater)
     }

@@ -15,7 +15,7 @@ import com.zhl.baselibrary.model.BookListBean
  *    desc   :
  *    refer  :
  */
-abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
+abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
     SwipeRefreshLayout.OnRefreshListener,
     OnLoadMoreListener {
 
@@ -45,7 +45,6 @@ abstract class BaseRVActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         //设置上拉加载监听
         adapter.loadMoreModule.setOnLoadMoreListener(this)
         initOtherData()
-
     }
 
     abstract fun initOtherData()
