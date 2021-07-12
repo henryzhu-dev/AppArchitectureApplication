@@ -32,7 +32,7 @@ class CommonListFragment : BaseRVFragment<FragmentCommonListBinding, BookBean>()
         get() = binding.rvCommonList
 
     override val adapter: CommonListAdapter by lazy {
-        CommonListAdapter(mutableListOf<BookBean>())
+        CommonListAdapter()
     }
 
     override val loadDataList: (page: Int) -> Unit = {
