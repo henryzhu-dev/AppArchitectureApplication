@@ -1,7 +1,10 @@
 package com.zhl.rxjavaarchitecture.activity
 
 import com.zhl.baselibrary.activity.BaseActivity
+import com.zhl.baselibrary.adapter.SampleAdapter
+import com.zhl.baselibrary.fragment.BaseFragment
 import com.zhl.rxjavaarchitecture.databinding.ActivitySampleViewpager2Binding
+import com.zhl.rxjavaarchitecture.fragment.ViewPager2SampleFragment
 
 /**
  *    author : zhuhl
@@ -13,15 +16,18 @@ class SampleViewPager2Activity : BaseActivity<ActivitySampleViewpager2Binding>()
 
 
     override fun initData() {
-        TODO("Not yet implemented")
+        var fragmentList : MutableList<BaseFragment<*>> = mutableListOf(ViewPager2SampleFragment.newInstance(0),
+            ViewPager2SampleFragment.newInstance(1),
+            ViewPager2SampleFragment.newInstance(2),
+            ViewPager2SampleFragment.newInstance(3),
+            ViewPager2SampleFragment.newInstance(4))
+        binding.pager.adapter = SampleAdapter(this, fragmentList)
     }
 
     override fun loadData() {
-        TODO("Not yet implemented")
     }
 
     override fun initListener() {
-        TODO("Not yet implemented")
     }
 
 

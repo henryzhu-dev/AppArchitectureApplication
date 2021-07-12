@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <Button
+        android:id="@+id/btnDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹窗" />
+
+    <Button
+        android:id="@+id/btnSingleDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="单选弹窗" />
+
+    <Button
+        android:id="@+id/yjSingleStringDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="永久单选String弹窗" />
+
+    <Button
+        android:id="@+id/yjSingleModelDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="永久单选Model弹窗" />
+
+    <Button
+        android:id="@+id/yjMultiModeDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="永久多选弹窗" />
+
+    <Button
+        android:id="@+id/customViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="custom弹窗" />
+
+    <Button
+        android:id="@+id/appUseViewDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="App通用弹窗" />
+
+</LinearLayout>
