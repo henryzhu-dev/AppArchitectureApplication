@@ -11,6 +11,7 @@ import com.zhl.baselibrary.doubleClickCheck
 import com.zhl.baselibrary.dp2px
 import com.zhl.baselibrary.px2dp
 import com.zhl.rxjavaarchitecture.databinding.ActivityMainBinding
+import com.zhl.webviewlibrary.ui.WebActivity
 
 @Route(path = ARouterConstant.MAIN.INDEX)
 class MainActivity : BaseActivity<ActivityMainBinding>() {
@@ -46,8 +47,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             Log.d("结果值", "${h1} + ; ${h2}")
 
         }
-        binding.jumpProgressBar.doubleClickCheck {
-            startActivity(Intent(this, ProgressBarTestActivity::class.java))
+        binding.jumpWebView.doubleClickCheck {
+            startActivity(Intent(this, WebActivity::class.java))
         }
     }
 

@@ -48,4 +48,7 @@
     <color name="common_theme_color_variant">@color/blue</color><!--次主色，多是StatusBar的背景色-->
 
 
+    <color name="colorFFC600">#ffc600</color>
+
+
 </resources>

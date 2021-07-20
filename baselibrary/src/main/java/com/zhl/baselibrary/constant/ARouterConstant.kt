@@ -19,4 +19,10 @@ object ARouterConstant {
         const val INDEX = "${MAIN}/userIndex"
     }
 
+    object WEB {
+        const val WEB_PAGE = "/web/common"
+
+        const val KEY_WEB_URL = "key_web_url"
+    }
+
 }
