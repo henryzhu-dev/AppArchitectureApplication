@@ -33,4 +33,10 @@
         android:layout_height="wrap_content"
         android:text="跳转个人中心" />
 
+    <Button
+        android:id="@+id/jumpProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转个人中心" />
+
 </LinearLayout>

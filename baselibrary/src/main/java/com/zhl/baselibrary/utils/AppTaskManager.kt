@@ -12,7 +12,7 @@ import java.util.*
  *    date   : 2021/6/24
  *    desc   :
  */
-object AppManager {
+object AppTaskManager {
 
 
     /**
@@ -38,7 +38,7 @@ object AppManager {
 
     fun init(application: Application) {
         application.registerActivityLifecycleCallbacks(InnerActivityLifecycle())
-
+        setApplicationContext(application)
     }
 
 

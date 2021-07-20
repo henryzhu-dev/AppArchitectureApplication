@@ -1,22 +1,18 @@
 package com.zhl.rxjavaarchitecture
 
-import android.app.Application
-import com.zhl.baselibrary.utils.ARouterUtil
-import com.zhl.baselibrary.utils.AppManager
+import com.zhl.baselibrary.BaseApplication
+import com.zhl.baselibrary.utils.AppBackgroundDetectManager
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/24
  *    desc   :
  */
-class MyApplication : Application() {
+class MyApplication : BaseApplication(), AppBackgroundDetectManager.AppBackgroundSwitchListener {
 
     override fun onCreate() {
         super.onCreate()
 
-        AppManager.init(this)
-        AppManager.setApplicationContext(this)
-
-        ARouterUtil.init(this)
     }
+
 }

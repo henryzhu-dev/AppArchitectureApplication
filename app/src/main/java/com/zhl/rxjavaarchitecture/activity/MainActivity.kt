@@ -46,6 +46,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             Log.d("结果值", "${h1} + ; ${h2}")
 
         }
+        binding.jumpProgressBar.doubleClickCheck {
+            startActivity(Intent(this, ProgressBarTestActivity::class.java))
+        }
     }
 
     override fun loadData() {

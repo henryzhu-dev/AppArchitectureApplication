@@ -11,12 +11,12 @@ import androidx.annotation.StringRes
 object ToastUtil {
 
     fun show(msg: String) {
-        val context = AppManager.getContext()
+        val context = AppTaskManager.getContext()
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
     fun  showRes(@StringRes msgRes: Int) {
-        val context = AppManager.getContext()
+        val context = AppTaskManager.getContext()
         Toast.makeText(context, msgRes, Toast.LENGTH_SHORT).show()
     }
 
