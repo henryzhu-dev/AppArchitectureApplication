@@ -15,4 +15,9 @@ class MyApplication : BaseApplication(), AppBackgroundDetectManager.AppBackgroun
 
     }
 
+    override fun initSDKOnMainProcess() {
+
+    }
+
+
 }

@@ -26,7 +26,10 @@ abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBa
         AppBackgroundDetectManager.detectAppInBackground(true, this, this)
 
 
+
     }
+
+    abstract fun initSDKOnMainProcess()
 
     /**
      * app回到前台
