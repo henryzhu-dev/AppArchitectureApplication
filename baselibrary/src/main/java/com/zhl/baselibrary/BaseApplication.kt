@@ -21,6 +21,7 @@ abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBa
         AppCrashUtil.init()
         AppEnvironmentManager.init(this)
         ARouterUtil.init(this)
+        MMKVUtil.init(this)
 
         AppBackgroundDetectManager.detectAppInBackground(true, this, this)
 
