@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/baselibrary" />
             <option value="$PROJECT_DIR$/dialoglibrary" />
+            <option value="$PROJECT_DIR$/fileproviderlibrary" />
             <option value="$PROJECT_DIR$/userlibrary" />
             <option value="$PROJECT_DIR$/webviewlibrary" />
           </set>

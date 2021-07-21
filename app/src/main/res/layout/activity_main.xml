@@ -37,6 +37,13 @@
         android:id="@+id/jumpWebView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="跳转webview" />
+        android:text="跳转webView" />
+
+
+    <Button
+        android:id="@+id/jumpCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拍照" />
 
 </LinearLayout>

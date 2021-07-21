@@ -51,10 +51,13 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
     implementation project(path: ':baselibrary')
     implementation project(path: ':userlibrary')
     implementation project(path: ':dialoglibrary')
     implementation project(path: ':webviewlibrary')
+    implementation project(path: ':fileproviderlibrary')
 
 
     kapt 'com.alibaba:arouter-compiler:1.5.2'

@@ -129,14 +129,15 @@ object AppTaskManager {
     }
 
     fun removeActivity(activity: Activity) {
-        for (i in activityStack.indices) {
-            var weakReference = activityStack[i]
+        var iterator = activityStack.iterator()
+        while (iterator.hasNext()) {
+            var weakReference = iterator.next()
             if (weakReference == null) {
-                continue
+                return
             }
             var act: Activity? = weakReference.get() ?: continue
             if (act == activity) {
-                activityStack.remove(weakReference)
+                iterator.remove()
             }
         }
     }
