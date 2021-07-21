@@ -71,6 +71,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 .setFileProviderAuthority("$packageName.fileProvider")
                 .start(9001)
         }
+        binding.jumpMagicIndicator.doubleClickCheck {
+            startActivity(Intent(this, MagicIndicatorSampleActivity::class.java))
+        }
     }
 
     override fun loadData() {

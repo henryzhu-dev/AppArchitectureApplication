@@ -92,4 +92,7 @@ dependencies {
     //ucrop图片裁切,轻巧版
     api 'com.github.yalantis:ucrop:2.2.6'
 
+    //magicIndicator
+    api 'com.github.hackware1993:MagicIndicator:1.7.0' // for androidx
+
 }
