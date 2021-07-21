@@ -1,5 +1,6 @@
 package com.zhl.rxjavaarchitecture.activity
 
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
@@ -76,8 +77,16 @@ class CommonListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>
         return false
     }
 
+    override fun onClick(v: View?) {
+        super.onClick(v)
+    }
+
 
     override fun getLayoutViewBinding(): ActivityCommonListBinding {
         return ActivityCommonListBinding.inflate(layoutInflater)
+    }
+
+    override fun getTopTitle(): String {
+        return "通用列表样式"
     }
 }

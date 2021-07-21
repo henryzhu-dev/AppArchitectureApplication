@@ -2,8 +2,11 @@ package com.zhl.baselibrary.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.zhl.baselibrary.R
 import com.zhl.baselibrary.utils.AppTaskManager
 
 /**
@@ -11,7 +14,7 @@ import com.zhl.baselibrary.utils.AppTaskManager
  *    date   : 2021/6/24
  *    desc   : 基类
  */
-abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var _viewBinding: VB
     protected val binding get() = _viewBinding
@@ -23,6 +26,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         _viewBinding = getLayoutViewBinding()
         setContentView(_viewBinding.root)
         initListener()
+        setTopTitle()
         initData()
         loadData()
     }
@@ -44,6 +48,14 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         AppTaskManager.setContext(this)
     }
 
+    private fun setTopTitle() {
+        val tvTitle = binding.root.findViewById<TextView>(R.id.tvTitle)
+        if (tvTitle != null) {
+            tvTitle.setOnClickListener(this)
+            tvTitle.text = getTopTitle()
+        }
+    }
+
     protected abstract fun initData()
 
     protected abstract fun loadData()
@@ -51,4 +63,16 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected abstract fun initListener()
 
     protected abstract fun getLayoutViewBinding(): VB
+
+    open fun getTopTitle(): String {
+        return ""
+    }
+
+    override fun onClick(v: View?) {
+        val vid = v?.id
+        if (vid == R.id.ivBack) {
+            finish()
+            return
+        }
+    }
 }
