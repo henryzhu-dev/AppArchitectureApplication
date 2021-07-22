@@ -98,4 +98,7 @@ dependencies {
     //运行时权限
     api 'com.permissionx.guolindev:permissionx:1.4.0'
 
+    //RxPermissions
+    api 'com.github.tbruyelle:rxpermissions:0.12'
+
 }

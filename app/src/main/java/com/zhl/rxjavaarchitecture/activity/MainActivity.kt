@@ -11,6 +11,7 @@ import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.models.album.entity.Photo
 import com.kd.murmur.lib_core.utils.DisplayUtils
 import com.permissionx.guolindev.PermissionX
+import com.tbruyelle.rxpermissions3.RxPermissions
 import com.yalantis.ucrop.UCrop
 import com.zhl.baselibrary.activity.BaseActivity
 import com.zhl.baselibrary.constant.ARouterConstant
@@ -74,7 +75,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             PermissionX.init(this).permissions(Manifest.permission.CALL_PHONE)
                 .explainReasonBeforeRequest()
                 .onExplainRequestReason { scope, deniedList, beforeRequest ->
-                    scope.showRequestReasonDialog(PermissionXDialogFragment(this, "必须给权限啊，大哥", deniedList))
+                    scope.showRequestReasonDialog(
+                        PermissionXDialogFragment(
+                            this,
+                            "必须给权限啊，大哥",
+                            deniedList
+                        )
+                    )
                 }
                 .onForwardToSettings { scope, deniedList ->
                     scope.showForwardToSettingsDialog(
@@ -92,7 +99,29 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                 }
         }
+        binding.requestRxPermission.doubleClickCheck {
+            rxPermission.requestEachCombined(
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_PHONE_STATE
+            )
+                // will emit 2 Permission objects
+                .subscribe { permission ->
+                    if (permission.granted) {
+                        // `permission.name` is granted !
+                        Log.d("rx权限", "All permissions are granted !")
+                    } else if (permission.shouldShowRequestPermissionRationale) {
+                        // At least one denied permission without ask never again
+                        Log.d("rx权限", "${permission.name}被点了拒绝")
+                    } else {
+                        // At least one denied permission with ask never again
+                        // Need to go to the settings
+                        Log.d("rx权限", "${permission.name}被点了拒绝不再询问")
+                    }
+                }
+        }
     }
+
+    private val rxPermission = RxPermissions(this)
 
     override fun loadData() {
 

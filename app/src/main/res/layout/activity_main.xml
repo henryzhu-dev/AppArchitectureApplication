@@ -58,4 +58,10 @@
         android:layout_height="wrap_content"
         android:text="权限" />
 
+    <Button
+        android:id="@+id/requestRxPermission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rx权限" />
+
 </LinearLayout>
