@@ -15,7 +15,7 @@ import com.zhl.baselibrary.model.BookListBean
  *    desc   :
  *    refer  :
  */
-abstract class BaseRVFragment<VB : ViewBinding, T> : BaseFragment<VB>(), SwipeRefreshLayout.OnRefreshListener,
+abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(), SwipeRefreshLayout.OnRefreshListener,
     OnLoadMoreListener {
 
     abstract val swipeRefreshLayout: SwipeRefreshLayout?

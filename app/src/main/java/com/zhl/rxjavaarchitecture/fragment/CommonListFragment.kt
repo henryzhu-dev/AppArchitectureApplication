@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.zhl.baselibrary.databinding.FragmentCommonListBinding
-import com.zhl.baselibrary.fragment.BaseRVFragment
+import com.zhl.baselibrary.fragment.BaseListFragment
 import com.zhl.baselibrary.service.ServiceGenerator
 import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.R
@@ -22,7 +22,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  *    desc   :
  *    refer  : 通用的列表Fragment
  */
-class CommonListFragment : BaseRVFragment<FragmentCommonListBinding, BookBean>() {
+class CommonListFragment : BaseListFragment<FragmentCommonListBinding, BookBean>() {
 
     override val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         binding.swipeRefreshLayout
