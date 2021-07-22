@@ -95,4 +95,7 @@ dependencies {
     //magicIndicator
     api 'com.github.hackware1993:MagicIndicator:1.7.0' // for androidx
 
+    //运行时权限
+    api 'com.permissionx.guolindev:permissionx:1.4.0'
+
 }

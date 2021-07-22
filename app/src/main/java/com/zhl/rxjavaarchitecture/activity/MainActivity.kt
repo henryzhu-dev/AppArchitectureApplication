@@ -1,28 +1,24 @@
 package com.zhl.rxjavaarchitecture.activity
 
-import android.content.Context
+import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.view.View
-import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.models.album.entity.Photo
 import com.kd.murmur.lib_core.utils.DisplayUtils
+import com.permissionx.guolindev.PermissionX
 import com.yalantis.ucrop.UCrop
 import com.zhl.baselibrary.activity.BaseActivity
 import com.zhl.baselibrary.constant.ARouterConstant
 import com.zhl.baselibrary.doubleClickCheck
 import com.zhl.baselibrary.dp2px
+import com.zhl.baselibrary.fragment.PermissionXDialogFragment
 import com.zhl.baselibrary.px2dp
-import com.zhl.fileproviderlibrary.FileProviderUtil
+import com.zhl.baselibrary.utils.ToastUtil
 import com.zhl.rxjavaarchitecture.databinding.ActivityMainBinding
 import com.zhl.webviewlibrary.ui.WebActivity
 import java.io.File
@@ -74,6 +70,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.jumpMagicIndicator.doubleClickCheck {
             startActivity(Intent(this, MagicIndicatorSampleActivity::class.java))
         }
+        binding.requestPermission.doubleClickCheck {
+            PermissionX.init(this).permissions(Manifest.permission.CALL_PHONE)
+                .explainReasonBeforeRequest()
+                .onExplainRequestReason { scope, deniedList, beforeRequest ->
+                    scope.showRequestReasonDialog(PermissionXDialogFragment(this, "必须给权限啊，大哥", deniedList))
+                }
+                .onForwardToSettings { scope, deniedList ->
+                    scope.showForwardToSettingsDialog(
+                        deniedList,
+                        "You need to allow necessary permissions in Settings manually",
+                        "确定",
+                        "取消"
+                    )
+                }
+                .request { allGranted, grantedList, deniedList ->
+                    if (allGranted) {
+                        ToastUtil.show("全部授权了")
+                    } else {
+                        ToastUtil.show("拒绝了")
+                    }
+                }
+        }
     }
 
     override fun loadData() {
@@ -92,7 +110,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 return
             }
             val fileName = "${System.currentTimeMillis()}.jpg"
-            var destinationUri = Uri.fromFile(File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName))
+            var destinationUri =
+                Uri.fromFile(File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName))
             if (destinationUri != null) {
                 var options = UCrop.Options()
                 options.setCircleDimmedLayer(true)

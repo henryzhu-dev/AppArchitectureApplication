@@ -25,7 +25,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorT
  */
 class MagicIndicatorSampleActivity : BaseActivity<ActivityMagicIndicatorSampleBinding>() {
 
-    private val titleList = arrayOf("热门", "精华0")
+    private val titleList = arrayOf("热门", "精华")
 
     private val commonNavigatorAdapter = object : CommonNavigatorAdapter() {
         override fun getCount(): Int {
