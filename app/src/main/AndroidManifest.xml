@@ -16,18 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CommonAppTheme">
-        <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activity.CommonListActivity" />
-        <activity android:name=".activity.SampleViewPager2Activity" />
-        <activity android:name=".activity.DialogTestActivity" />
-        <activity android:name=".activity.ProgressBarTestActivity" />
-        <activity android:name=".activity.MagicIndicatorSampleActivity" />
+
     </application>
 
 </manifest>

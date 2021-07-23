@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="默认文案" />
+
+    <Button
+        android:id="@+id/btnCommonList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="列表" />
+
+    <Button
+        android:id="@+id/btnDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="弹窗样式" />
+
+
+    <Button
+        android:id="@+id/btnViewPager2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="垂直滑动viewPager2" />
+
+    <Button
+        android:id="@+id/btnUserIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转个人中心" />
+
+    <Button
+        android:id="@+id/jumpWebView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转webView" />
+
+
+    <Button
+        android:id="@+id/jumpCapture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="拍照" />
+
+    <Button
+        android:id="@+id/jumpMagicIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="导航" />
+
+    <Button
+        android:id="@+id/requestPermission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="权限" />
+
+    <Button
+        android:id="@+id/requestRxPermission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rx权限" />
+
+</LinearLayout>

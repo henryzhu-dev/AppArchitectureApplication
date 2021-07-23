@@ -1,7 +1,7 @@
 package com.zhl.rxjavaarchitecture
 
-import com.zhl.baselibrary.BaseApplication
-import com.zhl.baselibrary.utils.AppBackgroundDetectManager
+import com.zhl.lib_core.BaseApplication
+import com.zhl.lib_core.utils.AppBackgroundDetectManager
 
 /**
  *    author : zhuhl
@@ -13,6 +13,13 @@ class MyApplication : BaseApplication(), AppBackgroundDetectManager.AppBackgroun
     override fun onCreate() {
         super.onCreate()
 
+//        var eventBus = EventBus.builder().addIndex(MyEventBusIndex()).build()
+        /*
+        EventBus.builder()
+            .addIndex(MyEventBusAppIndex())
+            .installDefaultEventBus()
+
+         */
     }
 
     override fun initSDKOnMainProcess() {

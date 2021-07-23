@@ -11,16 +11,19 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/baselibrary" />
-            <option value="$PROJECT_DIR$/dialoglibrary" />
-            <option value="$PROJECT_DIR$/fileproviderlibrary" />
-            <option value="$PROJECT_DIR$/userlibrary" />
-            <option value="$PROJECT_DIR$/webviewlibrary" />
+            <option value="$PROJECT_DIR$/lib_common" />
+            <option value="$PROJECT_DIR$/lib_core" />
+            <option value="$PROJECT_DIR$/lib_dialog" />
+            <option value="$PROJECT_DIR$/lib_fileprovider" />
+            <option value="$PROJECT_DIR$/lib_webview" />
+            <option value="$PROJECT_DIR$/module_A" />
+            <option value="$PROJECT_DIR$/module_b" />
+            <option value="$PROJECT_DIR$/module_book" />
+            <option value="$PROJECT_DIR$/module_main" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
-    <option name="offlineMode" value="true" />
   </component>
 </project>
