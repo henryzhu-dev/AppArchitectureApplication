@@ -20,6 +20,7 @@ android {
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
+                arg('eventBusIndex', 'com.zhl.module_book.BookEventBusIndex')
             }
         }
     }
@@ -48,5 +49,5 @@ dependencies {
     //ARouter注解处理器
     kapt 'com.alibaba:arouter-compiler:1.5.2'
     //EventBus注解处理器
-//    kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
+    kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
 }

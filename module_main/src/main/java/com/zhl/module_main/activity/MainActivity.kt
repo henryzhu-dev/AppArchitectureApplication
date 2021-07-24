@@ -32,7 +32,7 @@ import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 
 
-
+@Route(path = ARouterConstant.MAIN.INDEX)
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

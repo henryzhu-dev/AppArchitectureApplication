@@ -2,6 +2,9 @@ package com.zhl.rxjavaarchitecture
 
 import com.zhl.lib_core.BaseApplication
 import com.zhl.lib_core.utils.AppBackgroundDetectManager
+import com.zhl.module_a.AEventBusIndex
+import com.zhl.module_main.MainEventBusIndex
+import org.greenrobot.eventbus.EventBus
 
 /**
  *    author : zhuhl
@@ -13,13 +16,10 @@ class MyApplication : BaseApplication(), AppBackgroundDetectManager.AppBackgroun
     override fun onCreate() {
         super.onCreate()
 
-//        var eventBus = EventBus.builder().addIndex(MyEventBusIndex()).build()
-        /*
-        EventBus.builder()
-            .addIndex(MyEventBusAppIndex())
+        var eventBus = EventBus.builder()
+            .addIndex(MainEventBusIndex())
+            .addIndex(AEventBusIndex())
             .installDefaultEventBus()
-
-         */
     }
 
     override fun initSDKOnMainProcess() {
