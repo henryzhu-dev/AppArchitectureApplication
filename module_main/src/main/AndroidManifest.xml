@@ -14,6 +14,7 @@
         <activity android:name=".test.activity.SampleViewPager2Activity" />
         <activity android:name=".test.activity.DialogTestActivity" />
         <activity android:name=".test.activity.MagicIndicatorSampleActivity" />
+        <activity android:name=".activity.BasicCoroutineActivity" />
 
     </application>
 

@@ -58,17 +58,19 @@ dependencies {
 
     //jetpack
     // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    api("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    api("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
     // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
+    api("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     // Annotation processor
 //    kapt("androidx.lifecycle:lifecycle-compiler:2.3.1")
     // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.3.1")
+    api("androidx.lifecycle:lifecycle-common-java8:2.3.1")
 
-
+    //协程
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.5.0")
+    api("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0")
 
 
     //retrofit

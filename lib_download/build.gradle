@@ -1,28 +1,19 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
-    id 'kotlin-kapt'
 }
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdk 30
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 30
+        minSdk 18
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-                arg('eventBusIndex', 'com.zhl.module_main.MainEventBusIndex')
-            }
-        }
     }
 
     buildTypes {
@@ -38,16 +29,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures {
-        viewBinding true
-    }
 }
 
 dependencies {
-    implementation project(path: ':lib_common')
-    implementation project(path: ':lib_download')
-    //ARouter注解处理器
-    kapt 'com.alibaba:arouter-compiler:1.5.2'
-    //EventBus注解处理器
-    kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
