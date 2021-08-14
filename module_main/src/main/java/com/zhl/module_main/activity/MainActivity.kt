@@ -21,8 +21,6 @@ import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
 import com.zhl.lib_core.px2dp
 import com.zhl.lib_core.utils.ToastUtil
-import com.zhl.libdownload.DownloadBean
-import com.zhl.libdownload.HDownloadManager
 import com.zhl.module_main.databinding.ActivityMainBinding
 import com.zhl.module_main.test.activity.DialogTestActivity
 import com.zhl.module_main.test.activity.MagicIndicatorSampleActivity
@@ -31,7 +29,6 @@ import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import java.io.File
-import java.lang.ref.WeakReference
 
 
 @Route(path = ARouterConstant.MAIN.INDEX)
@@ -49,23 +46,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun initListener() {
         binding.btnCommonList.doubleClickCheck {
 //            ARouter.getInstance().build(ARouterConstant.BOOK.BOOK_LIST).navigation()
-            HDownloadManager.init(packageName + ".fileProvider")
-                .setDownLoadBean(
-                    DownloadBean(
-                        WeakReference(this), "Nigo",
-                        "https://imtt.dd.qq.com/16891/apk/B2F80997F09F5F8F1251C0587E59DF26.apk?fsname=com.tencent.mm_8.0.9_1940.apk&csr=1bbd"
-                    )
-                )
-                .startDownload(object : com.zhl.libdownload.DownloadListener {
-                    override fun onDownloadFailed(msg: String) {
-                    }
-
-                    override fun onDownloadProgress(progress: Double) {
-                    }
-
-                    override fun onDownloadSuccess(file: File) {
-                    }
-                })
         }
         binding.btnDialog.doubleClickCheck {
             startActivity(Intent(this, DialogTestActivity::class.java))

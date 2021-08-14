@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation project(path: ':lib_common')
-    implementation project(path: ':lib_download')
+//    implementation project(path: ':lib_download')
     //ARouter注解处理器
     kapt 'com.alibaba:arouter-compiler:1.5.2'
     //EventBus注解处理器
