@@ -4,7 +4,7 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="testRunner" value="PLATFORM" />
+        <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/lib_common" />
             <option value="$PROJECT_DIR$/lib_core" />
             <option value="$PROJECT_DIR$/lib_dialog" />
+            <option value="$PROJECT_DIR$/lib_download" />
             <option value="$PROJECT_DIR$/lib_fileprovider" />
             <option value="$PROJECT_DIR$/lib_webview" />
             <option value="$PROJECT_DIR$/module_A" />
