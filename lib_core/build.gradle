@@ -104,4 +104,11 @@ dependencies {
     //EventBus
     api 'org.greenrobot:eventbus:3.2.0'
 
+    //room
+    api "androidx.room:room-runtime:2.3.0"
+    // optional - Kotlin Extensions and Coroutines support for Room
+    api "androidx.room:room-ktx:2.3.0"
+    // optional - Test helpers
+    testApi "androidx.room:room-testing:2.3.0"
+
 }
