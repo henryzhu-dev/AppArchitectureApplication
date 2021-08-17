@@ -14,7 +14,7 @@ import java.io.File
  *    desc   :
  *    refer  :
  */
-object Utils {
+internal object Utils {
 
     fun installApk(context: Context, fileProviderAuthority: String, apkFile: File) {
         var contentUri =
@@ -36,7 +36,11 @@ object Utils {
         if (intent.resolveActivity(context.packageManager) != null) {
             context.startActivity(intent)
         } else {
-            Toast.makeText(context, "The download is complete, please install manually", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                context,
+                "The download is complete, please install manually",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
     }
