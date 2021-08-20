@@ -36,7 +36,6 @@ dependencies {
 
     api project(path: ':lib_core')
     api project(path: ':lib_fileprovider')
-    api project(path: ':lib_webview')
     api project(path: ':lib_dialog')
 
 

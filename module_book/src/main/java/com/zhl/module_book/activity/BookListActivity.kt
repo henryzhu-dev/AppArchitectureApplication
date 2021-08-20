@@ -1,13 +1,13 @@
 package com.zhl.module_book.activity
 
-import android.view.View
+import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_common.model.BookModel.BookBean
 import com.zhl.lib_common.service.BookService
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_core.databinding.ActivityCommonListBinding
 import com.zhl.lib_core.service.ServiceGenerator
 import com.zhl.lib_core.utils.ToastUtil
@@ -42,6 +42,10 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
         loadDataList(page)
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun initOtherData() {
         adapter.setOnItemClickListener { adapter, view, position ->
             ToastUtil.show("点击了${position}项")
@@ -66,7 +70,7 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
             .subscribe(
                 { t ->
                     handleData(page, t.data)
-                }, { t ->
+                }, { t1 ->
                     handleError()
                 }
             )
@@ -80,16 +84,18 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
         return false
     }
 
-    override fun onClick(v: View?) {
-        super.onClick(v)
-    }
-
 
     override fun getLayoutViewBinding(): ActivityCommonListBinding {
         return ActivityCommonListBinding.inflate(layoutInflater)
     }
 
-    override fun getTopTitle(): String {
-        return "通用列表样式"
+
+    override fun isShowToolBar(): Boolean {
+        return true
     }
+
+    override fun getToolBarTitle(): String {
+        return "通用标题样式"
+    }
+
 }

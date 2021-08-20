@@ -14,8 +14,8 @@ import com.kd.murmur.lib_core.utils.DisplayUtils
 import com.permissionx.guolindev.PermissionX
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.yalantis.ucrop.UCrop
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_core.doubleClickCheck
 import com.zhl.lib_core.dp2px
 import com.zhl.lib_core.event.CommonMessageEvent
@@ -41,7 +41,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding.tvTest.text = "hello binding"
     }
 
     override fun initData() {

@@ -5,8 +5,8 @@ import android.view.KeyEvent
 import android.webkit.WebView
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_webview.databinding.ActivityWebBinding
 import com.zhl.lib_webview.listener.WebViewListener
 

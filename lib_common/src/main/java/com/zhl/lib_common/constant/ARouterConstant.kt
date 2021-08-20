@@ -1,27 +1,27 @@
-package com.zhl.lib_core.constant
+package com.zhl.lib_common.constant
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/27
- *    desc   :
+ *    desc   : 项目所有的路由地址
  *    refer  :
  */
 object ARouterConstant {
 
     object MAIN {
         private const val MAIN = "/main"
-        const val INDEX = "${MAIN}/index"
+        const val INDEX = "$MAIN/index"
     }
 
     object BOOK {
         private const val BOOK = "/book"
-        const val BOOK_LIST = "${BOOK}/list"
+        const val BOOK_LIST = "$BOOK/list"
     }
 
 
     object USER {
         private const val MAIN = "/user"
-        const val INDEX = "${MAIN}/userIndex"
+        const val INDEX = "$MAIN/userIndex"
     }
 
     object WEB {
