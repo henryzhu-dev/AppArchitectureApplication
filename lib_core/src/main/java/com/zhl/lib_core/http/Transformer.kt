@@ -15,7 +15,6 @@ object Transformer {
     fun <T> switchSchedulers(): ObservableTransformer<T, T> {
         return ObservableTransformer<T, T> { upstream ->
             upstream
-                .unsubscribeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         }

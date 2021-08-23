@@ -1,8 +1,9 @@
 package com.zhl.lib_core.http.observer
 
 import com.zhl.lib_core.http.listener.DownloadProgressListener
+import com.zhl.lib_core.http.util.DownloadUtil
 import com.zhl.lib_core.utils.AppTaskManager
-import com.zhl.lib_core.utils.FileUtil
+import com.zhl.lib_core.utils.LogUtil
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Observer
@@ -27,13 +28,15 @@ abstract class DownloadObserver(var fileName: String) : BaseObserver<ResponseBod
     )
 
     override fun doOnNext(data: ResponseBody) {
+        LogUtil.d("下载文件", "进入doOnNext：" + Thread.currentThread().id)
         Observable
             .just(data)
             .subscribeOn(Schedulers.io())
             .subscribe(object : Observer<ResponseBody> {
                 override fun onNext(t: ResponseBody?) {
+                    LogUtil.d("下载文件", "进入ResponseBody的onNext：" + Thread.currentThread().id)
                     t?.let {
-                        FileUtil.saveFile(
+                        DownloadUtil.saveFile(
                             it,
                             fileName,
                             AppTaskManager.getContext()?.getExternalFilesDir(null)?.absolutePath,
@@ -45,12 +48,22 @@ abstract class DownloadObserver(var fileName: String) : BaseObserver<ResponseBod
                                     done: Boolean,
                                     filePath: String?
                                 ) {
+                                    LogUtil.d(
+                                        "下载文件",
+                                        "进入onResponseProgress：" + Thread.currentThread().id + ";进度：" + progress
+                                    )
                                     Observable
                                         .just(progress)
                                         .distinctUntilChanged()
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe {
-                                            onSuccess(bytesRead, contentLength, progress.toFloat(), done, filePath?:"")
+                                            onSuccess(
+                                                bytesRead,
+                                                contentLength,
+                                                progress.toFloat(),
+                                                done,
+                                                filePath ?: ""
+                                            )
                                         }
                                 }
                             })

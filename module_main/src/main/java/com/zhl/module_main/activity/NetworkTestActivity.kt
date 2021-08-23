@@ -37,10 +37,6 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
                         LogUtil.d("网络请求实例", Gson().toJson(t))
                     }
 
-                    override fun doOnError(e: Throwable?) {
-
-                    }
-
                 })
         }
 

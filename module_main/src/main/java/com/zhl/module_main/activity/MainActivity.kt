@@ -21,6 +21,7 @@ import com.zhl.lib_core.dp2px
 import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
 import com.zhl.lib_core.px2dp
+import com.zhl.lib_core.utils.LogUtil
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.lib_download.DownloadBean
 import com.zhl.lib_download.DownloadListener
@@ -45,6 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initData() {
         EventBus.getDefault().register(this)
+        LogUtil.d("下载文件", "主线程id:" + Thread.currentThread().id)
     }
 
     override fun initListener() {

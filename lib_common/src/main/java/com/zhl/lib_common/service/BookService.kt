@@ -3,7 +3,6 @@ package com.zhl.lib_common.service
 import com.zhl.lib_common.model.BookModel.BookBaseBean
 import com.zhl.lib_common.model.BookModel.BookBean
 import com.zhl.lib_common.model.BookModel.BookListBean
-import com.zhl.lib_core.model.BaseResponse
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call
 import retrofit2.http.GET
@@ -30,6 +29,6 @@ interface BookService {
         @Query("categoryId") categoryId: Int,
         @Query("pageSize") pageSize: Int = 10,
         @Query("pageNum") pageNum: Int
-    ): Observable<BaseResponse<BookListBean<BookBean>>>
+    ): Observable<BookBaseBean<BookListBean<BookBean>>>
 
 }

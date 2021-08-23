@@ -103,6 +103,10 @@ object RxHttpUtil {
 
         val parts = builder.build().parts
 
+        if (parts.isEmpty()) {
+            throw Exception("请设置上传文件参数")
+        }
+
         return retrofit.create(UploadService::class.java).uploadFiles(uploadUrl, parts)
     }
 
