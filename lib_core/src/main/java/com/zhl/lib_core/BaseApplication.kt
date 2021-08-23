@@ -16,6 +16,11 @@ abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBa
     override fun onCreate() {
         super.onCreate()
 
+        initCore()
+        initCommon()
+    }
+
+    private fun initCore() {
         AppConstant.DEBUG = AppUtil.isDebug(this)
         AppTaskManager.init(this)
         AppCrashUtil.init()
@@ -24,10 +29,13 @@ abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBa
         MMKVUtil.init(this)
 
         AppBackgroundDetectManager.detectAppInBackground(true, this, this)
-
     }
 
-    abstract fun initSDKOnMainProcess()
+    /**
+     * 公共业务层初始化
+     */
+    abstract fun initCommon()
+
 
     /**
      * app回到前台

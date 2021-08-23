@@ -1,6 +1,5 @@
 package com.zhl.module_book.activity
 
-import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -14,6 +13,7 @@ import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_book.R
 import com.zhl.module_book.adapter.CommonListAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.ObservableTransformer
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
@@ -42,9 +42,6 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
         loadDataList(page)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun initOtherData() {
         adapter.setOnItemClickListener { adapter, view, position ->
@@ -66,12 +63,17 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
     private fun loadDataList(page: Int) {
         var bookService = ServiceGenerator.createService(BookService::class.java)
         val bookListObservable = bookService.getBookListObservable(1, pageNum = page)
-        bookListObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        bookListObservable.compose(ObservableTransformer {
+            it
+        })
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { t ->
                     handleData(page, t.data)
                 }, { t1 ->
                     handleError()
+                }, {
+
                 }
             )
     }

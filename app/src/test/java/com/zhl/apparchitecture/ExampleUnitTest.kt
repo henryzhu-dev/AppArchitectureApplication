@@ -1,4 +1,4 @@
-package com.zhl.rxjavaarchitecture
+package com.zhl.apparchitecture
 
 import org.junit.Test
 

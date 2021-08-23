@@ -2,7 +2,6 @@ package com.zhl.lib_core.utils
 
 import android.app.Application
 import com.tencent.mmkv.MMKV
-import kotlin.Exception
 
 
 /**
@@ -15,15 +14,10 @@ object MMKVUtil {
 
     const val TAG = "MMKV本地存储"
 
-    const val GROUP_APP = "GROUP_APP"
 
     fun init(application: Application) {
         val rootDir: String = MMKV.initialize(application)
         LogUtil.d(TAG, "mmkv root: $rootDir")
-    }
-
-    fun encode(key: String, value: Any) {
-        encode(GROUP_APP, key, value)
     }
 
     /**
@@ -35,70 +29,70 @@ object MMKVUtil {
         mmkv.encode(key, value.toString())
     }
 
-    fun decode(key: String): String? {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun decode(mmapID: String, key: String): String? {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         return mmkv.decodeString(key)
     }
 
-    fun decodeInt(key: String):Int {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun decodeInt(mmapID: String, key: String): Int {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         val value = mmkv.decodeString(key)
         if (value == null || value.trim().isEmpty()) {
             return 0
         }
         return try {
             value.toInt()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             0
         }
     }
 
-    fun decodeDouble(key: String):Double {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun decodeDouble(mmapID: String, key: String): Double {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         val value = mmkv.decodeString(key)
         if (value == null || value.trim().isEmpty()) {
             return 0.0
         }
         return try {
             value.toDouble()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             0.0
         }
     }
 
-    fun decodeLong(key: String):Long {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun decodeLong(mmapID: String, key: String): Long {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         val value = mmkv.decodeString(key)
         if (value == null || value.trim().isEmpty()) {
             return 0
         }
         return try {
             value.toLong()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             0
         }
     }
 
-    fun decodeBoolean(key: String):Boolean {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun decodeBoolean(mmapID: String, key: String): Boolean {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         val value = mmkv.decodeString(key)
         if (value == null || value.trim().isEmpty()) {
             return false
         }
         return try {
             value.toBoolean()
-        }catch (e: Exception) {
+        } catch (e: Exception) {
             false
         }
     }
 
-    fun remove(key: String) {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun remove(mmapID: String, key: String) {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         mmkv.removeValueForKey(key)
     }
 
-    fun containsKey(key: String):Boolean {
-        val mmkv = MMKV.mmkvWithID(GROUP_APP)
+    fun containsKey(mmapID: String, key: String): Boolean {
+        val mmkv = MMKV.mmkvWithID(mmapID)
         return mmkv.containsKey(key)
     }
 }

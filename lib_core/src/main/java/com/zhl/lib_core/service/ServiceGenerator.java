@@ -1,5 +1,7 @@
 package com.zhl.lib_core.service;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -31,7 +33,12 @@ public class ServiceGenerator {
 
 
     private static OkHttpClient.Builder httpClient =
-            new OkHttpClient.Builder();
+            new OkHttpClient
+                    .Builder()
+                    .connectTimeout(10, TimeUnit.SECONDS)//连接超时时间
+                    .writeTimeout(30, TimeUnit.SECONDS)//设置写操作超时时间
+                    .readTimeout(30, TimeUnit.SECONDS)//设置读操作超时时间
+            ;
 
     public static void changeApiBaseUrl(String newApiBaseUrl) {
         BASE_URL = newApiBaseUrl;

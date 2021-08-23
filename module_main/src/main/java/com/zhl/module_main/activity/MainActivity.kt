@@ -129,7 +129,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                 }
         }
-        binding.download.doubleClickCheck {
+        binding.apkDownload.doubleClickCheck {
             HDownloadManager.init("$packageName.fileProvider")
                 .setDownLoadBean(
                     DownloadBean(
@@ -147,6 +147,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     override fun onDownloadSuccess(file: File) {
                     }
                 })
+        }
+        binding.network.doubleClickCheck {
+            startActivity(Intent(this, NetworkTestActivity::class.java))
         }
     }
 
