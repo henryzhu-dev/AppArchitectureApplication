@@ -12,11 +12,19 @@ import io.reactivex.rxjava3.schedulers.Schedulers
  */
 object Transformer {
 
-    fun <T> switchSchedulers(): ObservableTransformer<T, T> {
+    fun <T> switchIO2MainSchedulers(): ObservableTransformer<T, T> {
         return ObservableTransformer<T, T> { upstream ->
             upstream
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+        }
+    }
+
+    fun <T> switchIO2IOSchedulers(): ObservableTransformer<T, T> {
+        return ObservableTransformer<T, T> { upstream ->
+            upstream
+                .subscribeOn(Schedulers.io())
+                .observeOn(Schedulers.io())
         }
     }
 

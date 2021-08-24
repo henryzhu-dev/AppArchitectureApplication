@@ -10,7 +10,7 @@ import okhttp3.Response
  *    desc   : 交由业务层去添加Header
  *    refer  :
  */
-class CoreInterceptor : Interceptor {
+class HeaderInterceptor : Interceptor {
 
 
     companion object {

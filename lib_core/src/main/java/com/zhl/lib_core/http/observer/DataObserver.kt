@@ -27,7 +27,7 @@ abstract class DataObserver<T> : BaseObserver<BaseResponse<T>>() {
 
     abstract fun onSuccess(t: T)
 
-    fun onError() {
+    fun onFailed(e: Throwable?) {
 
     }
 
@@ -37,6 +37,6 @@ abstract class DataObserver<T> : BaseObserver<BaseResponse<T>>() {
 
     override fun doOnError(e: Throwable?) {
         ToastUtil.show("error:" + e?.message)
-        onError()
+        onFailed(e)
     }
 }

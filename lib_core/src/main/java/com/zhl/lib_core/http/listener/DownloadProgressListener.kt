@@ -22,7 +22,7 @@ interface DownloadProgressListener {
         contentLength: Long,
         progress: Int,
         done: Boolean,
-        filePath: String?
+        filePath: String
     )
 
 }

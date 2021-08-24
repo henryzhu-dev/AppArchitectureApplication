@@ -3,7 +3,7 @@ package com.zhl.lib_common.http
 import com.zhl.lib_common.constant.SPConstant
 import com.zhl.lib_core.http.CommonCodeHandler
 import com.zhl.lib_core.http.RxHttpUtil
-import com.zhl.lib_core.http.interceptor.CoreInterceptor
+import com.zhl.lib_core.http.interceptor.HeaderInterceptor
 import com.zhl.lib_core.utils.MMKVUtil
 
 /**
@@ -16,7 +16,7 @@ object HttpConfig {
 
     fun init() {
         //请求头
-        CoreInterceptor.addHeader = { it ->
+        HeaderInterceptor.addHeader = { it ->
             it.addHeader("Content-Type", "application/json")
             it.addHeader(
                 "X-Authorization",

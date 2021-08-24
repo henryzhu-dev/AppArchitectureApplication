@@ -1,6 +1,7 @@
 package com.zhl.lib_core.http
 
-import com.zhl.lib_core.http.interceptor.CoreInterceptor
+import com.zhl.lib_core.http.interceptor.HeaderInterceptor
+import com.zhl.lib_core.http.interceptor.DownloadInterceptor
 import com.zhl.lib_core.http.service.DownloadService
 import com.zhl.lib_core.http.service.UploadService
 import io.reactivex.rxjava3.core.Observable
@@ -32,23 +33,49 @@ object RxHttpUtil {
 
     private lateinit var retrofit: Retrofit
 
+    private lateinit var downloadOkHttpClient: OkHttpClient
+
+    private lateinit var downloadRetrofit: Retrofit
+
 
     fun init(tempBaseUrl: String?) {
         if (tempBaseUrl != null && tempBaseUrl.trim().isNotEmpty()) {
             this.baseUrl = tempBaseUrl
         }
+        initCommonRetrofit()
+        initDownloadRetrofit()
+    }
+
+    fun initCommonRetrofit() {
         okHttpClient = OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(30, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .addInterceptor(CoreInterceptor())
+            .addInterceptor(HeaderInterceptor())
             .build()
 
         retrofit = Retrofit.Builder()
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
+            .baseUrl(baseUrl)
+            .build()
+    }
+
+    fun initDownloadRetrofit() {
+        downloadOkHttpClient = OkHttpClient.Builder()
+            .readTimeout(10, TimeUnit.SECONDS)
+            .writeTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(30, TimeUnit.SECONDS)
+//            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .addInterceptor(DownloadInterceptor())
+            .build()
+
+        downloadRetrofit = Retrofit.Builder()
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(downloadOkHttpClient)
             .baseUrl(baseUrl)
             .build()
     }
@@ -72,10 +99,10 @@ object RxHttpUtil {
     }
 
     fun downloadFile(fileUrl: String): Observable<ResponseBody> {
-        if (!::retrofit.isInitialized) {
+        if (!::downloadRetrofit.isInitialized) {
             throw Exception("请先调用init方法初始化retrofit和okhttp")
         }
-        return retrofit.create(DownloadService::class.java).downloadFile(fileUrl)
+        return downloadRetrofit.create(DownloadService::class.java).downloadFile(fileUrl)
     }
 
     fun uploadFile(

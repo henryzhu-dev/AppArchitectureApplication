@@ -1,5 +1,6 @@
 package com.zhl.module_main.activity
 
+import android.util.Log
 import com.google.gson.Gson
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
@@ -30,7 +31,7 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
         binding.normalRequest.doubleClickCheck {
             RxHttpUtil.createService(TestApiService::class.java)
                 .getBanner()
-                .compose(Transformer.switchSchedulers())
+                .compose(Transformer.switchIO2MainSchedulers())
                 .subscribe(object : DataObserver<List<BannerBean>?>() {
 
                     override fun onSuccess(t: List<BannerBean>?) {
@@ -41,25 +42,39 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
         }
 
         binding.downloadRequest.doubleClickCheck {
+            LogUtil.d("下载文件", "点击了下载：" + Thread.currentThread().id)
             val downloadUrl =
                 "https://imtt.dd.qq.com/16891/apk/F27B7768CB178227FEDBD8F8E99BEF8D.apk?fsname=com.tencent.mm_8.0.11_1960.apk&csr=1bbd"
+
+//            val dUrl = "https://t.alipayobjects.com/L1/71/100/and/alipay_wap_main.apk"
             RxHttpUtil.downloadFile(downloadUrl)
-                .compose(Transformer.switchSchedulers())
+                .compose(Transformer.switchIO2IOSchedulers())
                 .subscribe(object : DownloadObserver("test.apk") {
 
-                    override fun onSuccess(
+                    override fun onStart() {
+                        Log.d("下载文件", "开始下载了")
+                    }
+
+                    override fun onProgress(
                         byteRead: Long,
                         contentLength: Long,
                         progress: Float,
                         done: Boolean,
                         filePath: String
                     ) {
+                        Log.d("下载文件", "下载进度：" + progress)
+                    }
+
+                    override fun onSuccess(filePath: String) {
+                        Log.d("下载文件", "下载成功：" + filePath)
 
                     }
 
-                    override fun doOnError(e: Throwable?) {
+                    override fun onFailed(e: Throwable?) {
+                        Log.d("下载文件", "下载失败：" + e?.message)
 
                     }
+
 
                 }
 
@@ -68,7 +83,9 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
 
         binding.uploadRequest.doubleClickCheck {
             var filePaths = ArrayList<String>()
-            RxHttpUtil.uploadFile(null, filePaths)
+            RxHttpUtil.uploadFile(null, filePaths).compose(
+                Transformer.switchIO2MainSchedulers()
+            )
         }
     }
 
