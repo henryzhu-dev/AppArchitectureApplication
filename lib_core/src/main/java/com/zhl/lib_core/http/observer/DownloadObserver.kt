@@ -5,6 +5,7 @@ import com.zhl.lib_core.http.util.DownloadUtil
 import com.zhl.lib_core.utils.AppTaskManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.ResponseBody
 
 /**
@@ -30,41 +31,44 @@ abstract class DownloadObserver(var fileName: String) : BaseObserver<ResponseBod
     abstract fun onFailed(e: Throwable?)
 
     override fun doOnNext(data: ResponseBody) {
-        AppTaskManager.getActivity()?.runOnUiThread {
-            onStart()
-        }
-        DownloadUtil.saveFile(
-            data,
-            fileName,
-            AppTaskManager.getContext()?.getExternalFilesDir(null)?.absolutePath,
-            object : DownloadProgressListener {
+        onStart()
+        Observable
+            .just(data)
+            .subscribeOn(Schedulers.io())
+            .subscribe{
+                DownloadUtil.saveFile(
+                    it,
+                    fileName,
+                    AppTaskManager.getContext()?.getExternalFilesDir(null)?.absolutePath,
+                    object : DownloadProgressListener {
 
-                override fun onResponseProgress(
-                    bytesRead: Long,
-                    contentLength: Long,
-                    progress: Int,
-                    done: Boolean,
-                    filePath: String
-                ) {
-                    Observable
-                        .just(progress)
+                        override fun onResponseProgress(
+                            bytesRead: Long,
+                            contentLength: Long,
+                            progress: Int,
+                            done: Boolean,
+                            filePath: String
+                        ) {
+                            Observable
+                                .just(progress)
 //                        .distinctUntilChanged()
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe {
-                            if (progress == 100 && done) {
-                                onSuccess(filePath)
-                                return@subscribe
-                            }
-                            onProgress(
-                                bytesRead,
-                                contentLength,
-                                progress.toFloat(),
-                                done,
-                                filePath ?: ""
-                            )
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribe {
+                                    if (progress == 100 && done) {
+                                        onSuccess(filePath)
+                                        return@subscribe
+                                    }
+                                    onProgress(
+                                        bytesRead,
+                                        contentLength,
+                                        progress.toFloat(),
+                                        done,
+                                        filePath ?: ""
+                                    )
+                                }
                         }
-                }
-            })
+                    })
+            }
     }
 
     override fun doOnError(e: Throwable?) {

@@ -1,7 +1,7 @@
 package com.zhl.lib_core.http
 
-import com.zhl.lib_core.http.interceptor.HeaderInterceptor
 import com.zhl.lib_core.http.interceptor.DownloadInterceptor
+import com.zhl.lib_core.http.interceptor.HeaderInterceptor
 import com.zhl.lib_core.http.service.DownloadService
 import com.zhl.lib_core.http.service.UploadService
 import io.reactivex.rxjava3.core.Observable
@@ -46,7 +46,7 @@ object RxHttpUtil {
         initDownloadRetrofit()
     }
 
-    fun initCommonRetrofit() {
+    private fun initCommonRetrofit() {
         okHttpClient = OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
@@ -63,7 +63,7 @@ object RxHttpUtil {
             .build()
     }
 
-    fun initDownloadRetrofit() {
+    private fun initDownloadRetrofit() {
         downloadOkHttpClient = OkHttpClient.Builder()
             .readTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)

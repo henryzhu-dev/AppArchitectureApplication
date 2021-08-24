@@ -37,6 +37,10 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     private var centerTitle: TextView? = null
 
+    protected open var showLoadingBlock: (() -> Unit)? = null
+
+    protected open var hideLoadingBlock: (() -> Unit)? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
