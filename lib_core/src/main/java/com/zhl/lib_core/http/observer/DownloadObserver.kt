@@ -5,6 +5,7 @@ import com.zhl.lib_core.http.util.DownloadUtil
 import com.zhl.lib_core.utils.AppTaskManager
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.ResponseBody
 
@@ -29,6 +30,11 @@ abstract class DownloadObserver(var fileName: String) : BaseObserver<ResponseBod
     abstract fun onStart()
 
     abstract fun onFailed(e: Throwable?)
+
+
+    override fun doOnSubscribe(d: Disposable?) {
+
+    }
 
     override fun doOnNext(data: ResponseBody) {
         onStart()

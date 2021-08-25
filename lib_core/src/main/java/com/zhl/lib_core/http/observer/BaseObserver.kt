@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 abstract class BaseObserver<T> : Observer<T>, ISubscriber<T> {
 
     override fun onSubscribe(d: Disposable?) {
-
+        doOnSubscribe(d)
     }
 
     override fun onNext(t: T) {

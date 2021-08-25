@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * desc   :
  * 参考    ：https://www.jianshu.com/p/9a5233bc1da8
  */
+@Deprecated
 public class ServiceGenerator {
 
     public static String BASE_URL = "http://yuenov.com:15555/";

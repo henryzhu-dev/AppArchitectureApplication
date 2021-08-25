@@ -29,7 +29,7 @@ object Transformer {
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doFinally {
-//                    loadingView?.hideLoadingView()
+                    loadingView?.hideLoadingView()
                 }
         }
     }

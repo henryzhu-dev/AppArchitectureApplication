@@ -125,7 +125,7 @@ object RxHttpUtil {
             val file = File(filePaths[i])
             val imageBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file)
             //"fileName"+i 后台接收图片流的参数名
-            builder.addFormDataPart("upload_file", file.name, imageBody)
+            builder.addFormDataPart("upload_file_$i", file.name, imageBody)
         }
 
         val parts = builder.build().parts

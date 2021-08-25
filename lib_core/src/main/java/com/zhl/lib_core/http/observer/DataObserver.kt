@@ -3,6 +3,7 @@ package com.zhl.lib_core.http.observer
 import com.zhl.lib_core.http.CommonCodeHandler
 import com.zhl.lib_core.model.BaseResponse
 import com.zhl.lib_core.utils.ToastUtil
+import io.reactivex.rxjava3.disposables.Disposable
 
 /**
  *    author : zhuhl
@@ -12,6 +13,9 @@ import com.zhl.lib_core.utils.ToastUtil
  */
 abstract class DataObserver<T> : BaseObserver<BaseResponse<T>>() {
 
+    override fun doOnSubscribe(d: Disposable?) {
+
+    }
 
     override fun doOnNext(data: BaseResponse<T>) {
         //consume为true表示公共业务，已拦截处理

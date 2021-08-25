@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.FitWindowsLinearLayout
 import androidx.appcompat.widget.Toolbar
 import androidx.viewbinding.ViewBinding
+import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider
 import com.zhl.lib_core.R
 import com.zhl.lib_core.utils.AppTaskManager
 import com.zhl.lib_core.utils.ClickUtil
@@ -26,6 +27,10 @@ import com.zhl.lib_core.utils.SoftInputUtil
  */
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
+    protected val scopeProvider by lazy {
+        AndroidLifecycleScopeProvider.from(this)
+    }
+
     private lateinit var _viewBinding: VB
     protected val binding get() = _viewBinding
 
@@ -36,10 +41,6 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     var mToolbar: Toolbar? = null
 
     private var centerTitle: TextView? = null
-
-    protected open var showLoadingBlock: (() -> Unit)? = null
-
-    protected open var hideLoadingBlock: (() -> Unit)? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

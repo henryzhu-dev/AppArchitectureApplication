@@ -1,18 +1,27 @@
 package com.zhl.module_main.activity
 
 import android.util.Log
+import androidx.lifecycle.Lifecycle
+import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider
+import autodispose2.autoDispose
 import com.google.gson.Gson
 import com.zhl.lib_common.dialog.ProgressDialogFragment
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
 import com.zhl.lib_core.http.RxHttpUtil
 import com.zhl.lib_core.http.Transformer
+import com.zhl.lib_core.http.observer.CommonObserver
 import com.zhl.lib_core.http.observer.DataObserver
 import com.zhl.lib_core.http.observer.DownloadObserver
 import com.zhl.lib_core.http.testData.BannerBean
 import com.zhl.lib_core.http.testData.TestApiService
 import com.zhl.lib_core.utils.LogUtil
 import com.zhl.module_main.databinding.ActivityNetworkTestBinding
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
+import okhttp3.ResponseBody
+import java.util.concurrent.TimeUnit
 
 /**
  *    author : zhuhl
@@ -21,17 +30,6 @@ import com.zhl.module_main.databinding.ActivityNetworkTestBinding
  *    refer  :
  */
 class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
-
-    /*
-    override var showLoadingBlock: (() -> Unit)? = {
-        ProgressDialogFragment().show(supportFragmentManager, "")
-    }
-
-    override var hideLoadingBlock: (() -> Unit)? = {
-        ProgressDialogFragment().dismiss()
-    }
-
-     */
 
     override fun initData() {
     }
@@ -43,7 +41,14 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
         binding.normalRequest.doubleClickCheck {
             RxHttpUtil.createService(TestApiService::class.java)
                 .getBanner()
-                .compose(Transformer.switchIO2MainSchedulers(ProgressDialogFragment(supportFragmentManager)))
+                .compose(
+                    Transformer.switchIO2MainSchedulers(
+                        ProgressDialogFragment(
+                            supportFragmentManager
+                        )
+                    )
+                )
+                .autoDispose(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
                 .subscribe(object : DataObserver<List<BannerBean>?>() {
 
                     override fun onSuccess(t: List<BannerBean>?) {
@@ -60,7 +65,14 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
 
 //            val dUrl = "https://t.alipayobjects.com/L1/71/100/and/alipay_wap_main.apk"
             RxHttpUtil.downloadFile(downloadUrl)
-                .compose(Transformer.switchIO2MainSchedulers(ProgressDialogFragment(supportFragmentManager)))
+                .compose(
+                    Transformer.switchIO2MainSchedulers(
+                        ProgressDialogFragment(
+                            supportFragmentManager
+                        )
+                    )
+                )
+                .autoDispose(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY))
                 .subscribe(object : DownloadObserver("test.apk") {
 
                     override fun onStart() {
@@ -94,14 +106,31 @@ class NetworkTestActivity : BaseActivity<ActivityNetworkTestBinding>() {
         }
 
         binding.uploadRequest.doubleClickCheck {
-            /*
             var filePaths = ArrayList<String>()
             RxHttpUtil.uploadFile(null, filePaths).compose(
                 Transformer.switchIO2MainSchedulers()
             )
-
-             */
+                .autoDispose(scopeProvider)
+                .subscribe(
+                    object : CommonObserver<ResponseBody>() {
+                        override fun onSuccess(t: ResponseBody) {
+                            LogUtil.d("上传文件", t.string());
+                        }
+                    }
+                )
         }
+
+        binding.autoDisposeTest.doubleClickCheck {
+            Observable
+                .interval(1, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .autoDispose(scopeProvider)
+                .subscribe {
+                    Log.d("间隔打印内容", "$it")
+                }
+        }
+
     }
 
     override fun getLayoutViewBinding(): ActivityNetworkTestBinding {
