@@ -70,15 +70,21 @@
         android:text="rx权限" />
 
     <Button
-        android:id="@+id/download"
+        android:id="@+id/coroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="协程" />
+
+    <Button
+        android:id="@+id/apkDownload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="下载" />
 
     <Button
-        android:id="@+id/coroutine"
+        android:id="@+id/network"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="协程" />
+        android:text="网络请求" />
 
 </LinearLayout>

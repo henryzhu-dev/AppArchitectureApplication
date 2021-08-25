@@ -128,4 +128,11 @@ dependencies {
     // optional - Test helpers
     testApi "androidx.room:room-testing:2.3.0"
 
+    //uber AutoDispose，处理rxjava内存泄漏
+    var auto_dispose_version = '2.1.0'
+    api "com.uber.autodispose2:autodispose:${auto_dispose_version}"
+    api "com.uber.autodispose2:autodispose-lifecycle:${auto_dispose_version}"
+    api "com.uber.autodispose2:autodispose-android:${auto_dispose_version}"
+    api "com.uber.autodispose2:autodispose-androidx-lifecycle:${auto_dispose_version}"
+
 }

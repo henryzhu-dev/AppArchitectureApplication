@@ -1,8 +1,8 @@
 package com.zhl.module_a.activity
 
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.utils.LogUtil
 import com.zhl.module_a.databinding.ActivityUserIndexBinding

@@ -1,19 +1,19 @@
 package com.zhl.module_book.activity
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_common.model.BookModel.BookBean
 import com.zhl.lib_common.service.BookService
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_core.databinding.ActivityCommonListBinding
 import com.zhl.lib_core.service.ServiceGenerator
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_book.R
 import com.zhl.module_book.adapter.CommonListAdapter
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.ObservableTransformer
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 /**
@@ -42,6 +42,7 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
         loadDataList(page)
     }
 
+
     override fun initOtherData() {
         adapter.setOnItemClickListener { adapter, view, position ->
             ToastUtil.show("点击了${position}项")
@@ -62,12 +63,17 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
     private fun loadDataList(page: Int) {
         var bookService = ServiceGenerator.createService(BookService::class.java)
         val bookListObservable = bookService.getBookListObservable(1, pageNum = page)
-        bookListObservable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        bookListObservable.compose(ObservableTransformer {
+            it
+        })
+            .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 { t ->
                     handleData(page, t.data)
-                }, { t ->
+                }, { t1 ->
                     handleError()
+                }, {
+
                 }
             )
     }
@@ -80,16 +86,18 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
         return false
     }
 
-    override fun onClick(v: View?) {
-        super.onClick(v)
-    }
-
 
     override fun getLayoutViewBinding(): ActivityCommonListBinding {
         return ActivityCommonListBinding.inflate(layoutInflater)
     }
 
-    override fun getTopTitle(): String {
-        return "通用列表样式"
+
+    override fun isShowToolBar(): Boolean {
+        return true
     }
+
+    override fun getToolBarTitle(): String {
+        return "通用标题样式"
+    }
+
 }

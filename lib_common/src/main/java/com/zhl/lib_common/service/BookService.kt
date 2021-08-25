@@ -1,7 +1,7 @@
 package com.zhl.lib_common.service
 
-import com.zhl.lib_common.model.BookModel.BookBean
 import com.zhl.lib_common.model.BookModel.BookBaseBean
+import com.zhl.lib_common.model.BookModel.BookBean
 import com.zhl.lib_common.model.BookModel.BookListBean
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.Call

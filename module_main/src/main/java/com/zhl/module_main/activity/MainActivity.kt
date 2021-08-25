@@ -14,13 +14,14 @@ import com.kd.murmur.lib_core.utils.DisplayUtils
 import com.permissionx.guolindev.PermissionX
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.yalantis.ucrop.UCrop
+import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
-import com.zhl.lib_core.constant.ARouterConstant
 import com.zhl.lib_core.doubleClickCheck
 import com.zhl.lib_core.dp2px
 import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
 import com.zhl.lib_core.px2dp
+import com.zhl.lib_core.utils.LogUtil
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.lib_download.DownloadBean
 import com.zhl.lib_download.DownloadListener
@@ -41,11 +42,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding.tvTest.text = "hello binding"
     }
 
     override fun initData() {
         EventBus.getDefault().register(this)
+        LogUtil.d("下载文件", "主线程id:" + Thread.currentThread().id)
     }
 
     override fun initListener() {
@@ -130,7 +131,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                 }
         }
-        binding.download.doubleClickCheck {
+        binding.apkDownload.doubleClickCheck {
             HDownloadManager.init("$packageName.fileProvider")
                 .setDownLoadBean(
                     DownloadBean(
@@ -151,6 +152,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.coroutine.doubleClickCheck {
             startActivity(Intent(this, BasicCoroutineActivity::class.java))
+        }
+        binding.network.doubleClickCheck {
+            startActivity(Intent(this, NetworkTestActivity::class.java))
         }
     }
 

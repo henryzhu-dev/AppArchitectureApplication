@@ -1,4 +1,4 @@
-rootProject.name = "RxjavaArchitectureApplication"
+rootProject.name = "AppArchitectureApplication"
 include ':app'
 include ':lib_core'
 include ':module_a'
