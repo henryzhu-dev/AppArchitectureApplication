@@ -85,6 +85,15 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected abstract fun getLayoutViewBinding(): VB
 
 
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+
     /**以下是toolbar相关的设置**/
     private fun initToolBar() {
         mToolbar = LayoutInflater.from(this).inflate(R.layout.toolbar_center, null) as Toolbar

@@ -2,7 +2,6 @@ package com.zhl.module_main.test.activity
 
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
-import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.lib_dialog.dialog.*
 import com.zhl.lib_dialog.listener.DialogClickListener
@@ -10,7 +9,6 @@ import com.zhl.lib_dialog.listener.DialogMultiClickListener
 import com.zhl.lib_dialog.listener.DialogSingleChoiceListener
 import com.zhl.module_main.R
 import com.zhl.module_main.databinding.ActivityDialogTestBinding
-import org.greenrobot.eventbus.EventBus
 
 
 /**
@@ -29,7 +27,6 @@ class DialogTestActivity : BaseActivity<ActivityDialogTestBinding>() {
 
     override fun initListener() {
         binding.btnDialog.doubleClickCheck {
-            /*
             val dialog =
                 DefaultAlertDialogFragment(
                     this,
@@ -44,10 +41,6 @@ class DialogTestActivity : BaseActivity<ActivityDialogTestBinding>() {
                         }
                     })
             dialog.show(supportFragmentManager, "")
-
-             */
-            EventBus.getDefault().post(CommonMessageEvent("777"))
-//            finish()
         }
         binding.btnSingleDialog.doubleClickCheck {
             val dialog = TraditionalSingleChoiceDialogFragment("选择颜色",

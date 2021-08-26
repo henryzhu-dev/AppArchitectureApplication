@@ -3,7 +3,7 @@
     package="com.zhl.module_a">
 
     <application>
-        <activity android:name="com.zhl.module_a.activity.UserIndexActivity" />
+        <activity android:name="com.zhl.module_a.activity.ModuleATestActivity" />
 
     </application>
 

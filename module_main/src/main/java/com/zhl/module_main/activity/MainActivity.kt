@@ -3,29 +3,27 @@ package com.zhl.module_main.activity
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.os.Environment
 import android.util.Log
+import autodispose2.autoDispose
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.models.album.entity.Photo
-import com.kd.murmur.lib_core.utils.DisplayUtils
 import com.permissionx.guolindev.PermissionX
 import com.tbruyelle.rxpermissions3.RxPermissions
 import com.yalantis.ucrop.UCrop
 import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
-import com.zhl.lib_core.dp2px
 import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
-import com.zhl.lib_core.px2dp
 import com.zhl.lib_core.utils.LogUtil
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.lib_download.DownloadBean
 import com.zhl.lib_download.DownloadListener
 import com.zhl.lib_download.HDownloadManager
+import com.zhl.lib_webview.constant.WebConstant
 import com.zhl.module_main.databinding.ActivityMainBinding
 import com.zhl.module_main.test.activity.DialogTestActivity
 import com.zhl.module_main.test.activity.MagicIndicatorSampleActivity
@@ -40,13 +38,11 @@ import java.lang.ref.WeakReference
 @Route(path = ARouterConstant.MAIN.INDEX)
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    val TAG = "MAIN_ACTIVITY_TAG"
 
     override fun initData() {
         EventBus.getDefault().register(this)
-        LogUtil.d("下载文件", "主线程id:" + Thread.currentThread().id)
+        LogUtil.d(TAG, "主线程id:" + Thread.currentThread().id)
     }
 
     override fun initListener() {
@@ -59,23 +55,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.btnViewPager2.doubleClickCheck {
             startActivity(Intent(this, SampleViewPager2Activity::class.java))
         }
-        binding.btnUserIndex.doubleClickCheck {
-            val f = 10f
-            val result1 = f.dp2px
-            val f1 = 100f
-            val result2 = f1.px2dp
-            Log.d("结果值", "${result1} + ; ${result2}")
-
-            val h1 = DisplayUtils.dp2px(10f)
-            val h2 = DisplayUtils.px2dp(100f)
-
-            Log.d("结果值", "${h1} + ; ${h2}")
-
-        }
         binding.jumpWebView.doubleClickCheck {
-//            startActivity(Intent(this, WebActivity::class.java))
+            ARouter.getInstance().build(WebConstant.WEB_PAGE).navigation()
         }
-        binding.jumpCapture.doubleClickCheck {
+        binding.btnEventBusTest.doubleClickCheck {
+            startActivity(Intent(this, EventBusTestActivity::class.java))
+        }
+        binding.easyPhotosCapture.doubleClickCheck {
             EasyPhotos.createCamera(this@MainActivity, false)
                 .setFileProviderAuthority("$packageName.fileProvider")
                 .start(9001)
@@ -83,7 +69,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.jumpMagicIndicator.doubleClickCheck {
             startActivity(Intent(this, MagicIndicatorSampleActivity::class.java))
         }
-        binding.requestPermission.doubleClickCheck {
+        binding.requestPermissionX.doubleClickCheck {
             PermissionX.init(this).permissions(Manifest.permission.CALL_PHONE)
                 .explainReasonBeforeRequest()
                 .onExplainRequestReason { scope, deniedList, beforeRequest ->
@@ -112,10 +98,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
         }
         binding.requestRxPermission.doubleClickCheck {
-            rxPermission.requestEachCombined(
+            RxPermissions(this).requestEachCombined(
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_PHONE_STATE
             )
+                .autoDispose(scopeProvider)
                 // will emit 2 Permission objects
                 .subscribe { permission ->
                     if (permission.granted) {
@@ -157,8 +144,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             startActivity(Intent(this, NetworkTestActivity::class.java))
         }
     }
-
-    private val rxPermission = RxPermissions(this)
 
     override fun loadData() {
 
