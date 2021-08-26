@@ -2,6 +2,8 @@ package com.zhl.module_book.activity
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import autodispose2.androidx.lifecycle.AndroidLifecycleScopeProvider
+import autodispose2.autoDispose
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
 import com.zhl.lib_common.constant.ARouterConstant
@@ -67,6 +69,7 @@ class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>()
             it
         })
             .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+            .autoDispose(AndroidLifecycleScopeProvider.from(this))
             .subscribe(
                 { t ->
                     handleData(page, t.data)

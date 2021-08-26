@@ -5,7 +5,7 @@ import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.utils.LogUtil
-import com.zhl.module_a.databinding.ActivityUserIndexBinding
+import com.zhl.module_a.databinding.ActivityModuleATestBinding
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
@@ -16,11 +16,11 @@ import org.greenrobot.eventbus.ThreadMode
  *    refer  :
  */
 
-@Route(path = ARouterConstant.USER.INDEX)
-class UserIndexActivity : BaseActivity<ActivityUserIndexBinding>() {
+@Route(path = ARouterConstant.A.TEST)
+class ModuleATestActivity : BaseActivity<ActivityModuleATestBinding>() {
 
-    override fun getLayoutViewBinding(): ActivityUserIndexBinding {
-        return ActivityUserIndexBinding.inflate(layoutInflater)
+    override fun getLayoutViewBinding(): ActivityModuleATestBinding {
+        return ActivityModuleATestBinding.inflate(layoutInflater)
     }
 
     override fun initListener() {

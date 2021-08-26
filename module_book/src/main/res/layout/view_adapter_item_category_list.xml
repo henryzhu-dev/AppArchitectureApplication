@@ -78,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:scaleType="fitXY"
-            android:src="@mipmap/ic_libraby_jianbian" />
+            android:src="@mipmap/ic_book_list_jianbian" />
 
         <LinearLayout
             android:layout_width="match_parent"
