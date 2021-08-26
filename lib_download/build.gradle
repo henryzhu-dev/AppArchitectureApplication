@@ -4,11 +4,12 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdkVersion configs.android.compileSdkVersion
+    buildToolsVersion configs.android.buildToolsVersion
 
     defaultConfig {
-        minSdk 18
-        targetSdk 30
+        minSdkVersion configs.android.minSdkVersion
+        targetSdkVersion configs.android.targetSdkVersion
         versionCode 1
         versionName "1.0"
 

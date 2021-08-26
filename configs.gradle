@@ -1,0 +1,11 @@
+ext.configs = [:]
+
+def android = [:]
+android.compileSdkVersion = 30
+android.buildToolsVersion = "30.0.3"
+android.applicationId = "com.zhl.apparchitecture"
+android.minSdkVersion = 19
+android.targetSdkVersion = 30
+android.versionCode = 1000
+android.versionName = "1.0.00"
+configs.android = android
