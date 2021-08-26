@@ -88,27 +88,4 @@ dependencies {
     api deps.magic_indicator.magic_indicator
     api deps.permission.permissionx
 
-
-    //rxjava
-    api 'io.reactivex.rxjava3:rxjava:3.0.13'
-    api 'io.reactivex.rxjava3:rxandroid:3.0.0'
-    //RxJava3 Adapter
-    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
-
-    //glide
-    api 'com.github.bumptech.glide:glide:4.11.0'
-
-    //RxPermissions
-    api 'com.github.tbruyelle:rxpermissions:0.12'
-
-    //EventBus
-    api 'org.greenrobot:eventbus:3.2.0'
-
-    //uber AutoDispose，处理rxjava内存泄漏
-    var auto_dispose_version = '2.1.0'
-    api "com.uber.autodispose2:autodispose:${auto_dispose_version}"
-    api "com.uber.autodispose2:autodispose-lifecycle:${auto_dispose_version}"
-    api "com.uber.autodispose2:autodispose-android:${auto_dispose_version}"
-    api "com.uber.autodispose2:autodispose-androidx-lifecycle:${auto_dispose_version}"
-
 }

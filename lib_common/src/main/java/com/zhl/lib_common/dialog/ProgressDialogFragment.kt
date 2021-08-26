@@ -2,7 +2,6 @@ package com.zhl.lib_common.dialog
 
 import androidx.fragment.app.FragmentManager
 import com.zhl.lib_common.R
-import com.zhl.lib_core.http.listener.ILoadingView
 import com.zhl.lib_dialog.dialog.BaseDialogFragment
 
 /**
@@ -11,7 +10,7 @@ import com.zhl.lib_dialog.dialog.BaseDialogFragment
  *    desc   : 网络请求过程中的加载弹窗
  *    refer  :
  */
-class ProgressDialogFragment(private val manager: FragmentManager) : BaseDialogFragment(), ILoadingView {
+class ProgressDialogFragment(private val manager: FragmentManager) : BaseDialogFragment() {
 
     init {
         isCancelable = false
@@ -25,11 +24,11 @@ class ProgressDialogFragment(private val manager: FragmentManager) : BaseDialogF
 
     }
 
-    override fun showLoadingView() {
+    fun showLoadingView() {
         show(manager, "")
     }
 
-    override fun hideLoadingView() {
+    fun hideLoadingView() {
         dismiss()
     }
 

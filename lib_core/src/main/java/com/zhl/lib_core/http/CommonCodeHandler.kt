@@ -1,14 +1,17 @@
 package com.zhl.lib_core.http
 
-import com.zhl.lib_core.model.BaseResponse
-
 /**
  *    author : zhuhl
- *    date   : 2021/8/23
+ *    date   : 2021/8/26
  *    desc   :
  *    refer  :
  */
 object CommonCodeHandler {
 
-    var commonCodeDealBlock: ((data: BaseResponse<*>) -> Boolean)? = null
+    /**
+     * 公共业务处理，如code==400表示token失效，需要跳转登录
+     */
+    var commonCodeDealBlock: ((data: Any?) -> Boolean)? = null
+
+
 }

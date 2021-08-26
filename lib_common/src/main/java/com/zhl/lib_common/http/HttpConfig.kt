@@ -2,7 +2,6 @@ package com.zhl.lib_common.http
 
 import com.zhl.lib_common.constant.SPConstant
 import com.zhl.lib_core.http.CommonCodeHandler
-import com.zhl.lib_core.http.RxHttpUtil
 import com.zhl.lib_core.http.interceptor.HeaderInterceptor
 import com.zhl.lib_core.utils.MMKVUtil
 
@@ -26,6 +25,7 @@ object HttpConfig {
         }
         //公共业务处理
         CommonCodeHandler.commonCodeDealBlock = {
+            /*
             if (it.code == 300) {
                 //token失效,跳转登录
 //                ARouter.getInstance().build(ARouterConstant.BOOK.BOOK_LIST).navigation()
@@ -35,9 +35,11 @@ object HttpConfig {
 
                 true
             }
+
+             */
             false
         }
-        RxHttpUtil.init(null)
+//        RxHttpUtil.init(null)
     }
 
 }

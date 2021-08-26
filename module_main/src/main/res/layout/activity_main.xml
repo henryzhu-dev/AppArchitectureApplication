@@ -32,26 +32,6 @@
         android:layout_height="wrap_content"
         android:text="跳转webView" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btnEventBusTest"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EventBus测试" />
-
-        <TextView
-            android:id="@+id/tvShow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="默认文案" />
-
-    </LinearLayout>
-
 
     <Button
         android:id="@+id/easyPhotosCapture"
@@ -72,12 +52,6 @@
         android:text="PermissionX" />
 
     <Button
-        android:id="@+id/requestRxPermission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RxPermission" />
-
-    <Button
         android:id="@+id/coroutine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,11 +62,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="apk下载" />
-
-    <Button
-        android:id="@+id/network"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="rxJava+retrofit网络请求" />
 
 </LinearLayout>

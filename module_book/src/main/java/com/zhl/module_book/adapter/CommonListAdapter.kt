@@ -1,11 +1,11 @@
 package com.zhl.module_book.adapter
 
+import android.widget.ImageView
+import coil.load
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.zhl.lib_common.model.BookModel.BookBean
-import com.zhl.lib_core.service.ServiceGenerator
-import com.zhl.lib_common.util.CommonImageLoadUtil
 import com.zhl.module_book.R
 
 /**
@@ -43,11 +43,7 @@ class CommonListAdapter() :
         holder.setText(R.id.tvBciAuthor, item.author)
         holder.setText(R.id.tvBciDesc, item.desc)
         holder.setTextColorRes(R.id.tvBciDesc, R.color.gray3)
-        CommonImageLoadUtil.loadImageWithContext(
-            context,
-            holder.getView(R.id.rivBciCoverImg),
-            ServiceGenerator.BASE_URL + item.coverImg
-        )
+        (holder.getView(R.id.rivBciCoverImg) as ImageView).load("http://yuenov.com:15555/" + item.coverImg)
     }
 
 

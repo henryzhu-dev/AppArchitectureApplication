@@ -4,19 +4,15 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Environment
-import android.util.Log
-import autodispose2.autoDispose
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.models.album.entity.Photo
 import com.permissionx.guolindev.PermissionX
-import com.tbruyelle.rxpermissions3.RxPermissions
 import com.yalantis.ucrop.UCrop
 import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
-import com.zhl.lib_core.event.CommonMessageEvent
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
 import com.zhl.lib_core.utils.LogUtil
 import com.zhl.lib_core.utils.ToastUtil
@@ -28,9 +24,6 @@ import com.zhl.module_main.databinding.ActivityMainBinding
 import com.zhl.module_main.test.activity.DialogTestActivity
 import com.zhl.module_main.test.activity.MagicIndicatorSampleActivity
 import com.zhl.module_main.test.activity.SampleViewPager2Activity
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 import java.io.File
 import java.lang.ref.WeakReference
 
@@ -41,7 +34,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     val TAG = "MAIN_ACTIVITY_TAG"
 
     override fun initData() {
-        EventBus.getDefault().register(this)
         LogUtil.d(TAG, "主线程id:" + Thread.currentThread().id)
     }
 
@@ -57,9 +49,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.jumpWebView.doubleClickCheck {
             ARouter.getInstance().build(WebConstant.WEB_PAGE).navigation()
-        }
-        binding.btnEventBusTest.doubleClickCheck {
-            startActivity(Intent(this, EventBusTestActivity::class.java))
         }
         binding.easyPhotosCapture.doubleClickCheck {
             EasyPhotos.createCamera(this@MainActivity, false)
@@ -97,27 +86,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     }
                 }
         }
-        binding.requestRxPermission.doubleClickCheck {
-            RxPermissions(this).requestEachCombined(
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_PHONE_STATE
-            )
-                .autoDispose(scopeProvider)
-                // will emit 2 Permission objects
-                .subscribe { permission ->
-                    if (permission.granted) {
-                        // `permission.name` is granted !
-                        Log.d("rx权限", "All permissions are granted !")
-                    } else if (permission.shouldShowRequestPermissionRationale) {
-                        // At least one denied permission without ask never again
-                        Log.d("rx权限", "${permission.name}被点了拒绝")
-                    } else {
-                        // At least one denied permission with ask never again
-                        // Need to go to the settings
-                        Log.d("rx权限", "${permission.name}被点了拒绝不再询问")
-                    }
-                }
-        }
         binding.apkDownload.doubleClickCheck {
             HDownloadManager.init("$packageName.fileProvider")
                 .setDownLoadBean(
@@ -139,9 +107,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.coroutine.doubleClickCheck {
             startActivity(Intent(this, BasicCoroutineActivity::class.java))
-        }
-        binding.network.doubleClickCheck {
-            startActivity(Intent(this, NetworkTestActivity::class.java))
         }
     }
 
@@ -180,19 +145,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             var output = UCrop.getOutput(data)
             return
         }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(messageEvent: CommonMessageEvent) {
-        Log.d("eventBus事件", "事件回调了")
-        binding.tvShow.text = messageEvent.msg?.let {
-            (it as String)
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        EventBus.getDefault().unregister(this)
     }
 
     override fun getLayoutViewBinding(): ActivityMainBinding {
