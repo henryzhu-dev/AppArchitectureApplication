@@ -15,6 +15,7 @@
         <activity android:name=".test.activity.DialogTestActivity" />
         <activity android:name=".test.activity.MagicIndicatorSampleActivity" />
         <activity android:name=".activity.NetworkTestActivity" />
+        <activity android:name=".activity.EventBusTestActivity" />
 
     </application>
 

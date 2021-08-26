@@ -45,7 +45,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(path: ':lib_common')
+    implementation project(path: ':lib_core')
 
     //组件中依赖阿里路由编译框架
     kapt 'com.alibaba:arouter-compiler:1.5.2'
