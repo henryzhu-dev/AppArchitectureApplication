@@ -46,7 +46,5 @@ android {
 dependencies {
     implementation project(path: ':lib_common')
     //ARouter注解处理器
-    kapt 'com.alibaba:arouter-compiler:1.5.2'
-    //EventBus注解处理器
-    kapt 'org.greenrobot:eventbus-annotation-processor:3.2.0'
+    kapt deps.arouter.arouter_compiler
 }

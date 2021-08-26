@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
 
     api project(path: ':lib_core')
     api project(path: ':lib_fileprovider')
