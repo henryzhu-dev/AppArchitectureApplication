@@ -1,5 +1,6 @@
 package com.zhl.lib_core.http.interceptor
 
+import com.zhl.lib_core.utils.AppTaskManager
 import com.zhl.lib_core.utils.NetworkUtil
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -15,7 +16,7 @@ class CacheInterceptor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
-        if (!NetworkUtil.isNetworkAvailable()) {
+        if (!NetworkUtil.isNetworkAvailable(AppTaskManager.getApplicationContext())) {
             request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build()
         }
         return chain.proceed(request)

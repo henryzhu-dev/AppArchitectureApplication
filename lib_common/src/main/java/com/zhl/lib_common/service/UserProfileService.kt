@@ -1,6 +1,6 @@
 package com.zhl.lib_common.service
 
-import com.zhl.lib_common.model.BaseRespModel
+import com.zhl.lib_common.model.RespModel
 import com.zhl.lib_common.model.book.BookListModel
 import com.zhl.lib_common.model.book.BookModel
 import com.zhl.lib_core.http.HttpService
@@ -26,5 +26,5 @@ interface UserProfileService {
         @Query("categoryId") categoryId: Int,
         @Query("pageSize") pageSize: Int,
         @Query("pageNum") pageNum: Int
-    ): BaseRespModel<BookListModel<BookModel>>
+    ): RespModel<BookListModel<BookModel>>
 }
