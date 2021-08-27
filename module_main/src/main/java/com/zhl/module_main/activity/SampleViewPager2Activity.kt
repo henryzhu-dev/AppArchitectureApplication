@@ -1,10 +1,10 @@
-package com.zhl.module_main.test.activity
+package com.zhl.module_main.activity
 
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.adapter.BaseViewPager2Adapter
 import com.zhl.lib_core.fragment.BaseFragment
 import com.zhl.module_main.databinding.ActivitySampleViewpager2Binding
-import com.zhl.module_main.test.fragment.ViewPager2SampleFragment
+import com.zhl.module_main.fragment.ViewPager2SampleFragment
 
 /**
  *    author : zhuhl

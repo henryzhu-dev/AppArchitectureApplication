@@ -1,11 +1,13 @@
-package com.zhl.module_main.test.fragment
+package com.zhl.module_main.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.zhl.lib_core.fragment.BaseFragment
 import com.zhl.module_main.R
 import com.zhl.module_main.databinding.FragmentViewpager2SampleBinding
+import com.zhl.module_main.vm.UserProfileViewModel
 
 /**
  *    author : zhuhl
@@ -14,6 +16,9 @@ import com.zhl.module_main.databinding.FragmentViewpager2SampleBinding
  *    refer  :
  */
 class ViewPager2SampleFragment : BaseFragment<FragmentViewpager2SampleBinding>() {
+
+
+    val viewModel: UserProfileViewModel by viewModels()
 
     var position: Int = -1
 

@@ -1,4 +1,4 @@
-package com.zhl.module_main.test.activity
+package com.zhl.module_main.activity
 
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck

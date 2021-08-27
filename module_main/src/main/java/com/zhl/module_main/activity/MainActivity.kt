@@ -21,9 +21,6 @@ import com.zhl.lib_download.DownloadListener
 import com.zhl.lib_download.HDownloadManager
 import com.zhl.lib_webview.constant.WebConstant
 import com.zhl.module_main.databinding.ActivityMainBinding
-import com.zhl.module_main.test.activity.DialogTestActivity
-import com.zhl.module_main.test.activity.MagicIndicatorSampleActivity
-import com.zhl.module_main.test.activity.SampleViewPager2Activity
 import java.io.File
 import java.lang.ref.WeakReference
 
@@ -107,6 +104,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.coroutine.doubleClickCheck {
             startActivity(Intent(this, BasicCoroutineActivity::class.java))
+        }
+        binding.btnUserProfile.doubleClickCheck {
+            startActivity(Intent(this, UserProfileActivity::class.java))
         }
     }
 

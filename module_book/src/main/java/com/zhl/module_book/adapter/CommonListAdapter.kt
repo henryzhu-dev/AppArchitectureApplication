@@ -5,7 +5,7 @@ import coil.load
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.zhl.lib_common.model.BookModel.BookBean
+import com.zhl.lib_common.model.book.BookModel
 import com.zhl.module_book.R
 
 /**
@@ -14,7 +14,7 @@ import com.zhl.module_book.R
  *    desc   :
  */
 class CommonListAdapter() :
-    BaseQuickAdapter<BookBean, BaseViewHolder>(
+    BaseQuickAdapter<BookModel, BaseViewHolder>(
         R.layout.view_adapter_item_category_list
     ), LoadMoreModule {
 
@@ -38,7 +38,7 @@ class CommonListAdapter() :
     }
 
 
-    override fun convert(holder: BaseViewHolder, item: BookBean) {
+    override fun convert(holder: BaseViewHolder, item: BookModel) {
         holder.setText(R.id.tvBciTitle, item.title)
         holder.setText(R.id.tvBciAuthor, item.author)
         holder.setText(R.id.tvBciDesc, item.desc)

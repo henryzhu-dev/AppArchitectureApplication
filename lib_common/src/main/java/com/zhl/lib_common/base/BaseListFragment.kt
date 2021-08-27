@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.zhl.lib_common.R
-import com.zhl.lib_common.model.BookModel.BookListBean
+import com.zhl.lib_common.model.book.BookListModel
 import com.zhl.lib_core.fragment.BaseFragment
 
 /**
@@ -63,7 +63,7 @@ abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(), Swipe
         loadDataList(currentPage)
     }
 
-    fun handleData(page: Int, bookListBean: BookListBean<T>) {
+    fun handleData(page: Int, bookListBean: BookListModel<T>) {
         if (swipeRefreshLayout?.isRefreshing == true) {
             swipeRefreshLayout?.isRefreshing = false
         }

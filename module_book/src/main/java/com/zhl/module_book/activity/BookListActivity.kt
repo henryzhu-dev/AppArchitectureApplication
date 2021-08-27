@@ -5,7 +5,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
 import com.zhl.lib_common.constant.ARouterConstant
-import com.zhl.lib_common.model.BookModel.BookBean
+import com.zhl.lib_common.model.book.BookModel
 import com.zhl.lib_core.databinding.ActivityCommonListBinding
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_book.R
@@ -18,7 +18,7 @@ import com.zhl.module_book.adapter.CommonListAdapter
  */
 
 @Route(path = ARouterConstant.BOOK.BOOK_LIST)
-class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookBean>() {
+class BookListActivity : BaseListActivity<ActivityCommonListBinding, BookModel>() {
 
     private val TAG = BookListActivity::class.java.simpleName
 
