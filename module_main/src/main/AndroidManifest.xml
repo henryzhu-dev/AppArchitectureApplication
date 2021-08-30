@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhl.module_main">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application>
 
         <activity android:name=".activity.MainActivity">
@@ -17,6 +19,7 @@
         <activity android:name=".activity.BasicCoroutineActivity" />
         <activity android:name=".activity.NetworkTestActivity" />
         <activity android:name=".activity.UserProfileActivity" />
+        <activity android:name=".activity.LiveDataSampleActivity" />
 
     </application>
 

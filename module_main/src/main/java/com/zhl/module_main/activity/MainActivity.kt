@@ -108,6 +108,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.btnUserProfile.doubleClickCheck {
             startActivity(Intent(this, UserProfileActivity::class.java))
         }
+        binding.btnLiveData.doubleClickCheck {
+            startActivity(Intent(this, LiveDataSampleActivity::class.java))
+        }
     }
 
     override fun loadData() {
