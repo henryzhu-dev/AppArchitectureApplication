@@ -1,6 +1,9 @@
 package com.zhl.lib_core
 
 import android.app.Application
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStore
+import androidx.lifecycle.ViewModelStoreOwner
 import com.zhl.lib_core.constant.AppConstant
 import com.zhl.lib_core.utils.*
 
@@ -10,11 +13,16 @@ import com.zhl.lib_core.utils.*
  *    desc   :
  *    refer  :
  */
-abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBackgroundSwitchListener {
+abstract class BaseApplication : Application(),
+    AppBackgroundDetectManager.AppBackgroundSwitchListener, ViewModelStoreOwner {
+
+    private lateinit var mAppViewModelStore: ViewModelStore
 
 
     override fun onCreate() {
         super.onCreate()
+
+        mAppViewModelStore = ViewModelStore()
 
         initCore()
         initCommon()
@@ -47,5 +55,18 @@ abstract class BaseApplication : Application(), AppBackgroundDetectManager.AppBa
 
     override fun onBackground() {
 
+    }
+
+    override fun getViewModelStore(): ViewModelStore {
+        return mAppViewModelStore
+    }
+
+    fun getAppViewModelProvider(): ViewModelProvider {
+        return ViewModelProvider(this, getAppFactory())
+    }
+
+    private fun getAppFactory(): ViewModelProvider.Factory {
+        val factory = ViewModelProvider.AndroidViewModelFactory.getInstance(this)
+        return factory
     }
 }
