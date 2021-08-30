@@ -21,6 +21,7 @@ versions.espresso = "3.4.0"
 versions.lifecycle = "2.3.1"
 versions.livedata = "2.3.1"
 versions.viewmodel = "2.3.1"
+versions.fragment_ktx = "1.3.6"
 versions.coroutines = "1.5.0"
 versions.room = "2.3.0"
 
@@ -40,6 +41,7 @@ versions.easy_photos = "3.1.3"
 versions.ucrop = "2.2.6"
 versions.magic_indicator = "1.7.0"
 versions.permissionx = "1.4.0"
+versions.live_event_bus = "1.8.0"
 
 //----以下是依赖的库----
 def androidx = [:]
@@ -68,6 +70,7 @@ jetpack.lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycl
 jetpack.lifecycle_compiler = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
 jetpack.livedata = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.livedata"
 jetpack.viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.viewmodel"
+jetpack.fragment_ktx = "androidx.fragment:fragment-ktx:$versions.fragment_ktx"
 jetpack.coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:$versions.coroutines"
 jetpack.coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
 jetpack.room = "androidx.room:room-runtime:$versions.room"
@@ -117,3 +120,7 @@ deps.magic_indicator = magic_indicator
 def permission = [:]
 permission.permissionx = "com.permissionx.guolindev:permissionx:$versions.permissionx"
 deps.permission = permission
+
+def event_bus = [:]
+event_bus.live_event_bus = "io.github.jeremyliao:live-event-bus-x:$versions.live_event_bus"
+deps.event_bus = event_bus

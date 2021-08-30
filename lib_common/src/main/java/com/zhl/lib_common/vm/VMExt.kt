@@ -1,5 +1,6 @@
 package com.zhl.lib_common.vm
 
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
@@ -97,3 +98,24 @@ public inline fun <reified VM : ViewModel> Fragment.getActivityVM(
     { requireActivity().viewModelStore },
     factoryProducer ?: { requireActivity().defaultViewModelProviderFactory }
 )
+
+
+/**
+ * View中获取Activity的ViewModel
+ *
+ * @param VM
+ * @return
+ */
+public inline fun <reified VM : ViewModel> View.getActivityVM(): VM {
+    return ViewModelProvider(context as ComponentActivity).get(VM::class.java)
+}
+
+/**
+ * View中获取Fragment的ViewModel
+ *
+ * @param VM
+ * @return
+ */
+public inline fun <reified VM : ViewModel> View.getFragmentVM(fragment: Fragment): Lazy<VM> {
+    return fragment.getFragmentVM<VM>()
+}
