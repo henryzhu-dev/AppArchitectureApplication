@@ -75,4 +75,24 @@
         android:layout_height="wrap_content"
         android:text="livedata" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnLiveDataBus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="livedata" />
+
+        <TextView
+            android:id="@+id/tvBus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="接受消息：默认" />
+
+    </LinearLayout>
+
+
 </LinearLayout>

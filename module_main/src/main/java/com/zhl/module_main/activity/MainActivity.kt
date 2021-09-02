@@ -8,6 +8,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.huantansheng.easyphotos.EasyPhotos
 import com.huantansheng.easyphotos.models.album.entity.Photo
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.permissionx.guolindev.PermissionX
 import com.yalantis.ucrop.UCrop
 import com.zhl.lib_common.constant.ARouterConstant
@@ -32,6 +33,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initData() {
         LogUtil.d(TAG, "主线程id:" + Thread.currentThread().id)
+        LiveEventBus.get("some_key", String::class.java)
+            .observeSticky(this){
+
+            }
     }
 
     override fun initListener() {
@@ -110,6 +115,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.btnLiveData.doubleClickCheck {
             startActivity(Intent(this, LiveDataSampleActivity::class.java))
+        }
+        binding.btnLiveDataBus.doubleClickCheck {
+            startActivity(Intent(this, UserProfileActivity::class.java))
         }
     }
 
