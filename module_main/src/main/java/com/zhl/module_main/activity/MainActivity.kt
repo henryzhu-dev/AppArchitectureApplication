@@ -33,9 +33,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initData() {
         LogUtil.d(TAG, "主线程id:" + Thread.currentThread().id)
+        //liveEventBus使用示例
+        LiveEventBus.config().lifecycleObserverAlwaysActive(false)
         LiveEventBus.get("some_key", String::class.java)
-            .observeSticky(this){
-
+            .observe(this){
+                binding.tvBus.text = it
             }
     }
 
