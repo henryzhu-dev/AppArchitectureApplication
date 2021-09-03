@@ -30,6 +30,20 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
+    <!--中间弹窗框动画-->
+    <style name="dialogCentreAnim" >
+        <item name="android:windowEnterAnimation">@anim/dialog_center_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_center_anim_exit</item>
+    </style>
+
+    <!--底部弹窗框动画-->
+    <style name="dialogBottomAnim" >
+        <item name="android:windowEnterAnimation">@anim/dialog_bottom_anim_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_bottom_anim_exit</item>
+    </style>
+
+
+
     <!--ShapeableImageView 圆 -->
     <style name="CircleStyle">
         <item name="cornerFamily">rounded</item>

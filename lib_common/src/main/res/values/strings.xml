@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">AppArchitectureSample</string>
 
+    <string name="dialog_btn_title">title</string>
+    <string name="dialog_btn_cancel">cancel</string>
+    <string name="dialog_btn_confirm">confirm</string>
+
 </resources>

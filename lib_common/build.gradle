@@ -30,6 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -37,7 +40,6 @@ dependencies {
 
     api project(path: ':lib_core')
     api project(path: ':lib_fileprovider')
-    api project(path: ':lib_dialog')
     api project(path: ':lib_webview')
 
 

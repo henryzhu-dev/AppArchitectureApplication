@@ -1,12 +1,13 @@
 package com.zhl.module_main.activity
 
+import com.zhl.lib_common.dialog.dialog.CommonDialogFragment
+import com.zhl.lib_common.dialog.dialog.system.*
+import com.zhl.lib_common.dialog.listener.DialogClickListener
+import com.zhl.lib_common.dialog.listener.DialogMultiClickListener
+import com.zhl.lib_common.dialog.listener.DialogSingleChoiceListener
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
 import com.zhl.lib_core.utils.ToastUtil
-import com.zhl.lib_dialog.dialog.*
-import com.zhl.lib_dialog.listener.DialogClickListener
-import com.zhl.lib_dialog.listener.DialogMultiClickListener
-import com.zhl.lib_dialog.listener.DialogSingleChoiceListener
 import com.zhl.module_main.R
 import com.zhl.module_main.databinding.ActivityDialogTestBinding
 
@@ -88,7 +89,6 @@ class DialogTestActivity : BaseActivity<ActivityDialogTestBinding>() {
         }
         binding.appUseViewDialog.doubleClickCheck {
             val dialog = CommonDialogFragment(
-                this,
                 "传进去的内容",
                 object : DialogClickListener {
                     override fun onDialogConfirmClick() {
