@@ -3,7 +3,12 @@ package com.zhl.module_main.activity
 import android.Manifest
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
+import coil.ImageLoader
+import coil.decode.GifDecoder
+import coil.decode.ImageDecoderDecoder
+import coil.load
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.huantansheng.easyphotos.EasyPhotos
@@ -21,6 +26,7 @@ import com.zhl.lib_download.DownloadBean
 import com.zhl.lib_download.DownloadListener
 import com.zhl.lib_download.HDownloadManager
 import com.zhl.lib_webview.constant.WebConstant
+import com.zhl.module_main.R
 import com.zhl.module_main.databinding.ActivityMainBinding
 import java.io.File
 import java.lang.ref.WeakReference
@@ -36,7 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         //liveEventBus使用示例
         LiveEventBus.config().lifecycleObserverAlwaysActive(false)
         LiveEventBus.get("some_key", String::class.java)
-            .observe(this){
+            .observe(this) {
                 binding.tvBus.text = it
             }
     }
@@ -120,6 +126,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
         binding.btnLiveDataBus.doubleClickCheck {
             startActivity(Intent(this, UserProfileActivity::class.java))
+        }
+        binding.btnWebP.doubleClickCheck {
+            val imageLoader = ImageLoader.Builder(this)
+                .componentRegistry {
+                    if (Build.VERSION.SDK_INT >= 28) {
+                        add(ImageDecoderDecoder(this@MainActivity))
+                    } else {
+                        add(GifDecoder())
+                    }
+                }
+                .build()
+            binding.ivImage.load(R.mipmap.audio_anim, imageLoader)
+        }
+        binding.btnStopWebP.doubleClickCheck {
+            binding.ivImage.load(R.mipmap.audio_anim)
+        }
+        binding.btnLottie.doubleClickCheck {
+            startActivity(Intent(this, LottieTestActivity::class.java))
         }
     }
 

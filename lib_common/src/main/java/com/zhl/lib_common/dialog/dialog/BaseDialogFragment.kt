@@ -85,7 +85,7 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment() {
         mAnimationId?.let {
             dialog?.window?.setWindowAnimations(it)
         }
-        if(mAnimationId == null) {
+        if (mAnimationId == null) {
             dialog?.window?.setWindowAnimations(R.style.dialogCentreAnim)
         } else {
             dialog?.window?.setWindowAnimations(mAnimationId!!)

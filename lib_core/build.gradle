@@ -88,10 +88,14 @@ dependencies {
     api deps.mmkv.mmkv_static
     api deps.adapter.BaseRecyclerViewAdapterHelper
     api deps.coil.coil
+    api deps.coil.coil_gif
+    api deps.coil.coil_svg
+    api deps.coil.coil_video
     api deps.easy_photos.easy_photos
     api deps.ucrop.ucrop
     api deps.magic_indicator.magic_indicator
     api deps.permission.permissionx
     api deps.event_bus.live_event_bus
+    api deps.lottie.lottie
 
 }

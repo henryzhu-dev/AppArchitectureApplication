@@ -20,6 +20,7 @@
         <activity android:name=".activity.NetworkTestActivity" />
         <activity android:name=".activity.UserProfileActivity" />
         <activity android:name=".activity.LiveDataSampleActivity" />
+        <activity android:name=".activity.LottieTestActivity" />
 
     </application>
 

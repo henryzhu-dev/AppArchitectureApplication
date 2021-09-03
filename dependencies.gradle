@@ -42,6 +42,7 @@ versions.ucrop = "2.2.6"
 versions.magic_indicator = "1.7.0"
 versions.permissionx = "1.4.0"
 versions.live_event_bus = "1.8.0"
+versions.lottie = "4.1.0"
 
 //----以下是依赖的库----
 def androidx = [:]
@@ -103,6 +104,10 @@ deps.adapter = adapter
 
 def coil = [:]
 coil.coil = "io.coil-kt:coil:$versions.coil"
+coil.coil_gif = "io.coil-kt:coil-gif:$versions.coil"
+coil.coil_svg = "io.coil-kt:coil-svg:$versions.coil"
+coil.coil_video = "io.coil-kt:coil-video:$versions.coil"
+
 deps.coil = coil
 
 def easy_photos = [:]
@@ -124,3 +129,7 @@ deps.permission = permission
 def event_bus = [:]
 event_bus.live_event_bus = "io.github.jeremyliao:live-event-bus-x:$versions.live_event_bus"
 deps.event_bus = event_bus
+
+def lottie = [:]
+lottie.lottie = "com.airbnb.android:lottie:$versions.lottie"
+deps.lottie = lottie
