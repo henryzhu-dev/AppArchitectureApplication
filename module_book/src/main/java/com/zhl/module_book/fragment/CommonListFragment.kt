@@ -47,6 +47,7 @@ class CommonListFragment : BaseListFragment<FragmentCommonListBinding, BookModel
                 return@OnItemChildClickListener
             }
         })
+        childFragmentManager
     }
 
 

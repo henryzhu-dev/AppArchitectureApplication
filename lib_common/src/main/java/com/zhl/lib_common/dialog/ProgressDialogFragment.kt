@@ -1,8 +1,8 @@
 package com.zhl.lib_common.dialog
 
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.zhl.lib_common.databinding.ProgressDialogBinding
 import com.zhl.lib_common.dialog.dialog.BaseDialogFragment
 
@@ -12,20 +12,14 @@ import com.zhl.lib_common.dialog.dialog.BaseDialogFragment
  *    desc   : 网络请求过程中的加载弹窗
  *    refer  :
  */
-class ProgressDialogFragment(private val manager: FragmentManager) :
+class ProgressDialogFragment :
     BaseDialogFragment<ProgressDialogBinding>() {
-
-
-    fun showLoadingView() {
-        show(manager, "")
-    }
-
-    fun hideLoadingView() {
-        dismiss()
-    }
 
     override fun init() {
         setCancel(false)
+        setAmount(0f)
+        //屏蔽返回键
+        dialog?.setOnKeyListener { dialog, keyCode, event -> keyCode == KeyEvent.KEYCODE_BACK }
     }
 
     override fun getViewBinding(
