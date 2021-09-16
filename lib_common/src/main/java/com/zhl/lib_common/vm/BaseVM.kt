@@ -110,7 +110,8 @@ fun <T> BaseVM.requestNotWrapper(
     onSuccess: (T) -> Unit,
     onError: (e: Throwable) -> Unit = {},
     isShowLoading: Boolean = false,
-    isShowErrorView: Boolean = false
+    isShowErrorView: Boolean = false,
+    isShowEmptyView: Boolean = true
 ): Job {
     return viewModelScope.launch {
         kotlin.runCatching {

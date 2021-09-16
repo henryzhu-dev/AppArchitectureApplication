@@ -18,13 +18,14 @@ import com.zhl.lib_core.utils.AppTaskManager
 import com.zhl.lib_core.utils.ClickUtil
 import com.zhl.lib_core.utils.ScreenUtil
 import com.zhl.lib_core.utils.SoftInputUtil
+import com.zhl.lib_pagestate.listener.PageStateListener
 
 /**
  *    author : zhuhl
  *    date   : 2021/6/24
  *    desc   : 基类
  */
-abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity(), PageStateListener {
 
     private lateinit var _viewBinding: VB
     protected val binding get() = _viewBinding
@@ -172,5 +173,26 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
                 it.topMargin = ScreenUtil.getStatusBarHeight(this)
             }
         }
+    }
+
+    /*
+    private val statePage: MultiStateContainer by lazy {
+        MultiStatePage.bindMultiState(this) {
+            initData()
+        }
+    }
+
+     */
+
+    override fun showLoading() {
+
+    }
+
+    override fun showEmpty() {
+
+    }
+
+    override fun showError() {
+
     }
 }

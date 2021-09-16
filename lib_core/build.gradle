@@ -46,6 +46,8 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
+    implementation project(path: ':lib_pagestate')
+
     api deps.androidx.kotlin_stdlib
     api deps.androidx.android_core_ktx
     api deps.androidx.appcompat
