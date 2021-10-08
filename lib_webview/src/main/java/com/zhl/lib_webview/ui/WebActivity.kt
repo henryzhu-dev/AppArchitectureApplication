@@ -72,5 +72,4 @@ open class WebActivity : BaseActivity<ActivityWebBinding>(), WebViewListener {
         return ActivityWebBinding.inflate(layoutInflater)
     }
 
-
 }
