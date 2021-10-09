@@ -31,17 +31,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     companion object {
 
         val iconList = mutableListOf<Int>(
-            R.mipmap.icon_btm_index_normal,
-            R.mipmap.icon_btm_dashboard_normal,
-            R.mipmap.icon_btm_notification_normal,
-            R.mipmap.icon_btm_me_normal
+            R.mipmap.ic_main_home_normal,
+            R.mipmap.ic_main_dashboard_normal,
+            R.mipmap.ic_main_notification_normal,
+            R.mipmap.ic_main_me_normal
         )
 
         val iconSelectedList = mutableListOf<Int>(
-            R.mipmap.icon_btm_index_selected,
-            R.mipmap.icon_btm_dashboard_selected,
-            R.mipmap.icon_btm_notification_selected,
-            R.mipmap.icon_btm_me_selected
+            R.mipmap.ic_main_home_selected,
+            R.mipmap.ic_main_dashboard_selected,
+            R.mipmap.ic_main_notification_selected,
+            R.mipmap.ic_main_me_selected
         )
 
         val titleList = mutableListOf<String>("Home", "Dashboard", "Notifications", "Me")

@@ -140,10 +140,10 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
                     }
                 }
                 .build()
-            binding.ivImage.load(R.mipmap.audio_anim, imageLoader)
+            binding.ivImage.load(R.mipmap.ic_test_webp, imageLoader)
         }
         binding.btnStopWebP.doubleClickCheck {
-            binding.ivImage.load(R.mipmap.audio_anim)
+            binding.ivImage.load(R.mipmap.ic_test_webp)
         }
         binding.btnLottie.doubleClickCheck {
             startActivity(Intent(this, LottieTestActivity::class.java))

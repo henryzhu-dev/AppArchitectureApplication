@@ -17,7 +17,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     override fun initData() {
         binding.btnTest.setOnClickListener {
-            startActivity(Intent(requireContext(), TestActivity::class.java))
+
         }
     }
 
