@@ -48,6 +48,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
+    private lateinit var commonNavigator: CommonNavigator
+
     private val pagerAdapter by lazy {
         val fragmentList = mutableListOf<BaseFragment<*>>(
             HomeFragment(),
@@ -65,7 +67,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun initMagicIndicator() {
         binding.magicIndicator.setBackgroundColor(Color.WHITE)
-        val commonNavigator = CommonNavigator(this)
+        commonNavigator = CommonNavigator(this)
         commonNavigator.isAdjustMode = true
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getCount(): Int {
@@ -78,6 +80,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                     .inflate(R.layout.layout_main_btm_indicator_item, null)
                 val ivIcon = customLayout.findViewById<ImageView>(R.id.ivIcon)
                 val tvName = customLayout.findViewById<TextView>(R.id.tvName)
+                val tvBadge = customLayout.findViewById<TextView>(R.id.tvBadge)
                 tvName.text = titleList[index]
                 ivIcon.setImageResource(iconList[index])
                 commonPagerTitleView.setContentView(customLayout)
@@ -136,9 +139,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     override fun loadData() {
+
     }
 
     override fun initListener() {
+
     }
 
     override fun getLayoutViewBinding(): ActivityMainBinding {
