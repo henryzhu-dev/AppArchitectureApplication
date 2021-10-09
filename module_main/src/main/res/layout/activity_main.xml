@@ -1,128 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnCommonList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="列表" />
-
-    <Button
-        android:id="@+id/btnDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="弹窗样式" />
-
-
-    <Button
-        android:id="@+id/btnViewPager2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="垂直滑动viewPager2" />
-
-    <Button
-        android:id="@+id/jumpWebView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="跳转webView" />
-
-
-    <Button
-        android:id="@+id/easyPhotosCapture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="easyPhotos" />
-
-    <Button
-        android:id="@+id/jumpMagicIndicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MagicIndicator" />
-
-    <Button
-        android:id="@+id/requestPermissionX"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PermissionX" />
-
-    <Button
-        android:id="@+id/coroutine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="协程" />
-
-    <Button
-        android:id="@+id/apkDownload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="apk下载" />
-
-    <Button
-        android:id="@+id/btnUserProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户信息" />
-
-    <Button
-        android:id="@+id/btnLiveData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="livedata" />
-
-    <LinearLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/btnLiveDataBus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="livedata" />
-
-        <TextView
-            android:id="@+id/tvBus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="接受消息：默认" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="0.5dp"
+        android:background="@color/gray9" />
 
-        <Button
-            android:id="@+id/btnWebP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="webp图片加载" />
-
-        <Button
-            android:id="@+id/btnStopWebP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="停止webp图片" />
-
-        <ImageView
-            android:id="@+id/ivImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="接受消息：默认" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnLottie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="lottie" />
+    <net.lucode.hackware.magicindicator.MagicIndicator
+        android:id="@+id/magicIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="55dp" />
 
 </LinearLayout>
