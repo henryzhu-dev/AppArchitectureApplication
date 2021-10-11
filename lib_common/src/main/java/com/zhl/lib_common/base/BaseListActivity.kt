@@ -44,7 +44,9 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         //设置是否可以上拉加载更多
         adapter.loadMoreModule.isEnableLoadMore = enableLoadMore()
         //设置上拉加载监听
-        adapter.loadMoreModule.setOnLoadMoreListener(this)
+        if (enableLoadMore()) {
+            adapter.loadMoreModule.setOnLoadMoreListener(this)
+        }
         initOtherData()
     }
 
@@ -68,10 +70,15 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         loadDataList(currentPage)
     }
 
-    fun handleData(page: Int, listResp: ListResp<T>) {
+    fun handleData(listResp: ListResp<T>?) {
+        if (listResp == null) {
+            handleError()
+            return
+        }
         if (swipeRefreshLayout?.isRefreshing == true) {
             swipeRefreshLayout?.isRefreshing = false
         }
+        val page = listResp.pageNum
         val list = listResp.list
         if (page == 1 && list == null || list.isEmpty()) {
             //加载第一页为空

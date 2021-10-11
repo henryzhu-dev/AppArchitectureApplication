@@ -24,7 +24,7 @@ class SampleListViewModel : BaseVM() {
     fun getList(pageNum: Int) {
         request(
             {
-                SAMPLE_SERVICE.getUserInfo(1, 2, 0)
+                SAMPLE_SERVICE.getUserInfo(1, 5, pageNum)
             },
             {
                 listLiveData.value = it

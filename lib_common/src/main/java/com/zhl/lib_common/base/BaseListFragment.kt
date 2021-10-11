@@ -1,6 +1,5 @@
 package com.zhl.lib_common.base
 
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -44,7 +43,9 @@ abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(),
         //设置是否可以上拉加载更多
         adapter.loadMoreModule.isEnableLoadMore = enableLoadMore()
         //设置上拉加载监听
-        adapter.loadMoreModule.setOnLoadMoreListener(this)
+        if (enableLoadMore()) {
+            adapter.loadMoreModule.setOnLoadMoreListener(this)
+        }
         initOtherData()
     }
 
