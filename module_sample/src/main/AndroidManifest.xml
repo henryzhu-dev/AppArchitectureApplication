@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhl.module_sample">
+
+    <application>
+
+        <activity android:name="com.zhl.module_sample.activity.SampleListActivity" />
+
+    </application>
+
+</manifest>

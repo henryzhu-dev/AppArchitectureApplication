@@ -7,6 +7,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.zhl.lib_common.base.BaseListFragment
 import com.zhl.lib_common.model.BookModel
+import com.zhl.lib_common.vm.getFragmentVM
 import com.zhl.module_main.adapter.RecentUpdateBookAdapter
 import com.zhl.module_main.databinding.FragmentHomeBinding
 import com.zhl.module_main.vm.HomeViewModel
@@ -19,9 +20,7 @@ import com.zhl.module_main.vm.HomeViewModel
  */
 class HomeFragment : BaseListFragment<FragmentHomeBinding, BookModel>() {
 
-    private val homeViewModel: HomeViewModel by lazy {
-        HomeViewModel()
-    }
+    private val homeViewModel by getFragmentVM<HomeViewModel>()
 
     override val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         binding.swipeRefreshLayout

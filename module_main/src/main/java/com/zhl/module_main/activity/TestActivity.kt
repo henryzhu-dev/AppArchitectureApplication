@@ -26,6 +26,10 @@ import com.zhl.lib_download.DownloadListener
 import com.zhl.lib_download.HDownloadManager
 import com.zhl.lib_webview.constant.WebConstant
 import com.zhl.module_main.R
+import com.zhl.module_main.activity.test.BasicCoroutineActivity
+import com.zhl.module_main.activity.test.DialogTestActivity
+import com.zhl.module_main.activity.test.LiveDataSampleActivity
+import com.zhl.module_main.activity.test.MagicIndicatorSampleActivity
 import com.zhl.module_main.databinding.ActivityTestBinding
 import java.io.File
 import java.lang.ref.WeakReference
@@ -52,7 +56,7 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
 
     override fun initListener() {
         binding.btnCommonList.doubleClickCheck {
-            ARouter.getInstance().build(ARouterConstant.BOOK.BOOK_LIST).navigation()
+            ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_LIST).navigation()
         }
         binding.btnDialog.doubleClickCheck {
             startActivity(Intent(this, DialogTestActivity::class.java))
@@ -121,14 +125,11 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
         binding.coroutine.doubleClickCheck {
             startActivity(Intent(this, BasicCoroutineActivity::class.java))
         }
-        binding.btnUserProfile.doubleClickCheck {
-            startActivity(Intent(this, UserProfileActivity::class.java))
-        }
         binding.btnLiveData.doubleClickCheck {
             startActivity(Intent(this, LiveDataSampleActivity::class.java))
         }
         binding.btnLiveDataBus.doubleClickCheck {
-            startActivity(Intent(this, UserProfileActivity::class.java))
+//            startActivity(Intent(this, UserProfileActivity::class.java))
         }
         binding.btnWebP.doubleClickCheck {
             val imageLoader = ImageLoader.Builder(this)

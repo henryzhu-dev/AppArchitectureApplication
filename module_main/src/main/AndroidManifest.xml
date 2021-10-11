@@ -14,12 +14,12 @@
         </activity>
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.SampleViewPager2Activity" />
-        <activity android:name=".activity.DialogTestActivity" />
-        <activity android:name=".activity.MagicIndicatorSampleActivity" />
-        <activity android:name=".activity.BasicCoroutineActivity" />
+        <activity android:name=".activity.test.DialogTestActivity" />
+        <activity android:name=".activity.test.MagicIndicatorSampleActivity" />
+        <activity android:name=".activity.test.BasicCoroutineActivity" />
         <activity android:name=".activity.NetworkTestActivity" />
         <activity android:name=".activity.UserProfileActivity" />
-        <activity android:name=".activity.LiveDataSampleActivity" />
+        <activity android:name=".activity.test.LiveDataSampleActivity" />
         <activity android:name=".activity.LottieTestActivity" />
     </application>
 

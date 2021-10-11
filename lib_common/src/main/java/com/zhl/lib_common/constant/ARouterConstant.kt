@@ -13,9 +13,9 @@ object ARouterConstant {
         const val INDEX = "$MAIN/index"
     }
 
-    object BOOK {
-        private const val BOOK = "/book"
-        const val BOOK_LIST = "$BOOK/list"
+    object SAMPLE {
+        private const val SAMPLE = "/sample"
+        const val SAMPLE_LIST = "$SAMPLE/list"
     }
 
 

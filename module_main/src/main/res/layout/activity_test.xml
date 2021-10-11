@@ -11,7 +11,7 @@
         android:id="@+id/btnCommonList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="列表" />
+        android:text="列表Activity" />
 
     <Button
         android:id="@+id/btnDialog"
@@ -62,12 +62,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="apk下载" />
-
-    <Button
-        android:id="@+id/btnUserProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="用户信息" />
 
     <Button
         android:id="@+id/btnLiveData"

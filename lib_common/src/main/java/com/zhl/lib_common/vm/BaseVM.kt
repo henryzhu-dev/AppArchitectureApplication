@@ -30,7 +30,7 @@ open class BaseVM : ViewModel() {
             }
             20000 -> {
                 //其他统一跳转
-                ARouter.getInstance().build(ARouterConstant.BOOK.BOOK_LIST).navigation()
+                ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_LIST).navigation()
                 consume = true
             }
         }

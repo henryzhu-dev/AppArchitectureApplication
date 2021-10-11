@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
 }
@@ -9,30 +9,24 @@ android {
     buildToolsVersion configs.android.buildToolsVersion
 
     defaultConfig {
-        applicationId configs.android.applicationId
         minSdkVersion configs.android.minSdkVersion
         targetSdkVersion configs.android.targetSdkVersion
-        versionCode configs.android.versionCode
-        versionName configs.android.versionName
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        multiDexEnabled true
+        consumerProguardFiles "consumer-rules.pro"
 
         kapt {
             arguments {
                 arg("AROUTER_MODULE_NAME", project.getName())
-                arg('eventBusIndex', applicationId + '.MyEventBusAppIndex')
+                arg('eventBusIndex', 'com.zhl.module_sample.BookEventBusIndex')
             }
         }
     }
 
     buildTypes {
-        debug {
-            debuggable true
-        }
         release {
-            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -41,25 +35,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
     buildFeatures {
         viewBinding true
     }
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation project(path: ':lib_common')
-
-    implementation project(path: ':module_main')
-    implementation project(path: ':module_sample')
-    implementation project(path: ':module_a')
-    implementation project(path: ':module_b')
-
-
+    //ARouter注解处理器
+    kapt deps.arouter.arouter_compiler
 }
