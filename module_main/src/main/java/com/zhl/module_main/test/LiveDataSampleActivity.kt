@@ -1,4 +1,4 @@
-package com.zhl.module_main.activity.test
+package com.zhl.module_main.test
 
 import android.Manifest
 import com.zhl.lib_core.activity.BaseActivity

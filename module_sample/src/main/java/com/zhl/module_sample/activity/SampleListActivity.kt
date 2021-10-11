@@ -72,7 +72,7 @@ class SampleListActivity : BaseListActivity<ActivityCommonListBinding, BookModel
     }
 
     override fun enableLoadMore(): Boolean {
-        return false
+        return true
     }
 
 

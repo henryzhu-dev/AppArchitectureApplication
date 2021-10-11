@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.zhl.lib_core.fragment.BaseFragment
 import com.zhl.module_main.R
-import com.zhl.module_main.activity.TestActivity
 import com.zhl.module_main.databinding.FragmentMeBinding
+import com.zhl.module_main.test.TestActivity
 
 /**
  *    author : zhuhl

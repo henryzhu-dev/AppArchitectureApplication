@@ -12,15 +12,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TestActivity" />
-        <activity android:name=".activity.SampleViewPager2Activity" />
-        <activity android:name=".activity.test.DialogTestActivity" />
-        <activity android:name=".activity.test.MagicIndicatorSampleActivity" />
-        <activity android:name=".activity.test.BasicCoroutineActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".test.SampleViewPager2Activity" />
+        <activity android:name=".test.DialogTestActivity" />
+        <activity android:name=".test.MagicIndicatorSampleActivity" />
+        <activity android:name=".test.BasicCoroutineActivity" />
         <activity android:name=".activity.NetworkTestActivity" />
         <activity android:name=".activity.UserProfileActivity" />
-        <activity android:name=".activity.test.LiveDataSampleActivity" />
-        <activity android:name=".activity.LottieTestActivity" />
+        <activity android:name=".test.LiveDataSampleActivity" />
+        <activity android:name=".test.LottieTestActivity" />
     </application>
 
 </manifest>

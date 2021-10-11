@@ -1,4 +1,4 @@
-package com.zhl.module_main.activity
+package com.zhl.module_main.test
 
 import android.animation.Animator
 import android.util.Log

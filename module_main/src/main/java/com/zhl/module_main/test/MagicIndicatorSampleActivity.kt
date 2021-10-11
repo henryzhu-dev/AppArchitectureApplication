@@ -1,4 +1,4 @@
-package com.zhl.module_main.activity.test
+package com.zhl.module_main.test
 
 import android.content.Context
 import android.graphics.Color
@@ -6,7 +6,6 @@ import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.adapter.BaseFragmentStatePagerAdapter
 import com.zhl.lib_core.fragment.BaseFragment
 import com.zhl.module_main.databinding.ActivityMagicIndicatorSampleBinding
-import com.zhl.module_main.fragment.ViewPager2SampleFragment
 import net.lucode.hackware.magicindicator.ViewPagerHelper
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.CommonNavigator
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.CommonNavigatorAdapter

@@ -1,4 +1,4 @@
-package com.zhl.module_main.activity
+package com.zhl.module_main.test
 
 import android.Manifest
 import android.content.Intent
@@ -26,13 +26,11 @@ import com.zhl.lib_download.DownloadListener
 import com.zhl.lib_download.HDownloadManager
 import com.zhl.lib_webview.constant.WebConstant
 import com.zhl.module_main.R
-import com.zhl.module_main.activity.test.BasicCoroutineActivity
-import com.zhl.module_main.activity.test.DialogTestActivity
-import com.zhl.module_main.activity.test.LiveDataSampleActivity
-import com.zhl.module_main.activity.test.MagicIndicatorSampleActivity
 import com.zhl.module_main.databinding.ActivityTestBinding
+import com.zhl.module_main.test.*
 import java.io.File
 import java.lang.ref.WeakReference
+import java.util.*
 
 /**
  *    author : zhuhl

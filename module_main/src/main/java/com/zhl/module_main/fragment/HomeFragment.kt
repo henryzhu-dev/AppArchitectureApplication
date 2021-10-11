@@ -53,7 +53,7 @@ class HomeFragment : BaseListFragment<FragmentHomeBinding, BookModel>() {
     }
 
     override fun enableLoadMore(): Boolean {
-        return false
+        return true
     }
 
     override fun getViewBinding(

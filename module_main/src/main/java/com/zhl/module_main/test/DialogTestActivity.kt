@@ -1,4 +1,4 @@
-package com.zhl.module_main.activity.test
+package com.zhl.module_main.test
 
 import com.zhl.lib_common.dialog.dialog.CommonDialogFragment
 import com.zhl.lib_common.dialog.dialog.system.*
