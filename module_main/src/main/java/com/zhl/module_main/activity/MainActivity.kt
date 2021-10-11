@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.activity.BaseActivity
-import com.zhl.lib_core.adapter.BaseFragmentPagerAdapter
+import com.zhl.lib_core.adapter.BaseFragmentStatePagerAdapter
 import com.zhl.lib_core.fragment.BaseFragment
 import com.zhl.module_main.R
 import com.zhl.module_main.databinding.ActivityMainBinding
@@ -57,11 +57,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             NotificationsFragment(),
             MeFragment()
         )
-        BaseFragmentPagerAdapter(supportFragmentManager, fragmentList)
+        BaseFragmentStatePagerAdapter(supportFragmentManager, fragmentList)
     }
 
     override fun initData() {
         binding.viewPager.adapter = pagerAdapter
+        binding.viewPager.offscreenPageLimit = 3
         initMagicIndicator()
     }
 

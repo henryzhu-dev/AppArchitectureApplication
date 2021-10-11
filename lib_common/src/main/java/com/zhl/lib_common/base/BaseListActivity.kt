@@ -7,7 +7,7 @@ import androidx.viewbinding.ViewBinding
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnLoadMoreListener
 import com.zhl.lib_common.R
-import com.zhl.lib_common.model.book.BookListModel
+import com.zhl.lib_common.model.ListResp
 import com.zhl.lib_core.activity.BaseActivity
 
 /**
@@ -68,11 +68,11 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         loadDataList(currentPage)
     }
 
-    fun handleData(page: Int, bookListBean: BookListModel<T>) {
+    fun handleData(page: Int, listResp: ListResp<T>) {
         if (swipeRefreshLayout?.isRefreshing == true) {
             swipeRefreshLayout?.isRefreshing = false
         }
-        val list = bookListBean.list
+        val list = listResp.list
         if (page == 1 && list == null || list.isEmpty()) {
             //加载第一页为空
             adapter.loadMoreModule.loadMoreComplete()
@@ -84,7 +84,7 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         } else {
             adapter.addData(list)
         }
-        val isLastPage = adapter.data.size >= bookListBean.total || list == null || list.isEmpty()
+        val isLastPage = adapter.data.size >= listResp.total || list == null || list.isEmpty()
         if (isLastPage) {
             adapter.loadMoreModule.loadMoreEnd(false)
         } else {

@@ -1,4 +1,4 @@
-package com.zhl.lib_common.model.book
+package com.zhl.lib_common.model
 
 /**
  *    author : zhuhl
@@ -6,7 +6,7 @@ package com.zhl.lib_common.model.book
  *    desc   :
  *    refer  :
  */
-data class BookListModel<T>(
+data class ListResp<T>(
     val pageNum: Int,
     val pageSize: Int,
     val total: Int,

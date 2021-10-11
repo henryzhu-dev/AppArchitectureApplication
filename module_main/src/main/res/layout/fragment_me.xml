@@ -9,10 +9,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="220dp"
-            android:background="@color/_1296db" />
+            android:background="@color/_1296db"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_dp_5"
+                android:text="ID:12931293"
+                android:textColor="@color/white"
+                android:textSize="@dimen/common_sp_16"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
 
         <LinearLayout

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.zhl.lib_common.base.BaseListFragment
-import com.zhl.lib_common.model.book.BookModel
+import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_core.databinding.FragmentCommonListBinding
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_book.R

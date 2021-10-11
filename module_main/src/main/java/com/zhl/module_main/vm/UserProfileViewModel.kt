@@ -1,8 +1,8 @@
 package com.zhl.module_main.vm
 
 import androidx.lifecycle.MutableLiveData
-import com.zhl.lib_common.model.book.BookListModel
-import com.zhl.lib_common.model.book.BookModel
+import com.zhl.lib_common.model.ListResp
+import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_common.service.userProfileService
 import com.zhl.lib_common.vm.BaseVM
 import com.zhl.lib_common.vm.request
@@ -15,7 +15,7 @@ import com.zhl.lib_common.vm.request
  */
 class UserProfileViewModel : BaseVM() {
 
-    val userProfileLiveData = MutableLiveData<BookListModel<BookModel>>()
+    val userProfileLiveData = MutableLiveData<ListResp<BookModel>>()
 
     fun getUserProfile() {
         request(

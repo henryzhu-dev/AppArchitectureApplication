@@ -1,28 +1,60 @@
 package com.zhl.module_main.fragment
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.zhl.lib_core.fragment.BaseFragment
-import com.zhl.module_main.activity.TestActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.zhl.lib_common.base.BaseListFragment
+import com.zhl.lib_common.model.BookModel
+import com.zhl.module_main.adapter.RecentUpdateBookAdapter
 import com.zhl.module_main.databinding.FragmentHomeBinding
+import com.zhl.module_main.vm.HomeViewModel
 
 /**
  *    author : zhuhl
  *    date   : 2021/10/9
- *    desc   :
+ *    desc   : Home页
  *    refer  :
  */
-class HomeFragment : BaseFragment<FragmentHomeBinding>() {
+class HomeFragment : BaseListFragment<FragmentHomeBinding, BookModel>() {
 
-    override fun initData() {
-        binding.btnTest.setOnClickListener {
+    private val homeViewModel: HomeViewModel by lazy {
+        HomeViewModel()
+    }
 
+    override val swipeRefreshLayout: SwipeRefreshLayout by lazy {
+        binding.swipeRefreshLayout
+    }
+
+    override val recyclerView: RecyclerView
+        get() = binding.rvRecentUpdate
+
+
+    override val adapter: BaseQuickAdapter<BookModel, *> by lazy {
+        RecentUpdateBookAdapter()
+    }
+
+    override val loadDataList: (page: Int) -> Unit = { page ->
+        loadDataList(page)
+    }
+
+    override fun initOtherData() {
+        homeViewModel.homeListLiveData.observe(this) {
+            handleData(it)
         }
     }
 
-    override fun loadData() {
+    private fun loadDataList(pageNum: Int) {
+        homeViewModel.getHomeList(pageNum)
+    }
 
+    override fun enableRefresh(): Boolean {
+        return true
+    }
+
+    override fun enableLoadMore(): Boolean {
+        return false
     }
 
     override fun getViewBinding(

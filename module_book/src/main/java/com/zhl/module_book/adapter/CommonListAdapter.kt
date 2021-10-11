@@ -5,7 +5,7 @@ import coil.load
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.module.LoadMoreModule
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
-import com.zhl.lib_common.model.book.BookModel
+import com.zhl.lib_common.model.BookModel
 import com.zhl.module_book.R
 
 /**

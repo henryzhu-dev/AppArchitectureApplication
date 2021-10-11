@@ -5,7 +5,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
 import com.zhl.lib_common.constant.ARouterConstant
-import com.zhl.lib_common.model.book.BookModel
+import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_core.databinding.ActivityCommonListBinding
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_book.R

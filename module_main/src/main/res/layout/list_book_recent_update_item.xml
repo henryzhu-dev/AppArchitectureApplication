@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp">
+
+    <View
+        android:id="@+id/viewClLine"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ebebeb" />
+
+    <RelativeLayout
+        android:id="@+id/rlClContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewClLine"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/rivClCoverImg"
+            android:layout_width="60dp"
+            android:layout_height="81dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/rivClCoverImg"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvClTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="title"
+                android:textColor="@color/gray3"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvClDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="desc"
+                android:textColor="@color/gray9"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvClAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="author"
+                    android:textColor="@color/gray9"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tvClCategoryName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/shape_ffffff_all_3_stroke_9b9b9b"
+                    android:gravity="center"
+                    android:paddingLeft="6dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="3dp"
+                    android:text="分类"
+                    android:textColor="#A5A5A5"
+                    android:textSize="9sp" />
+
+                <TextView
+                    android:id="@+id/tvClLz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tvClCategoryName"
+                    android:background="@drawable/shape_ffffff_all_3_stroke_77aae4"
+                    android:gravity="center"
+                    android:paddingLeft="6dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="3dp"
+                    android:text="连载"
+                    android:textColor="#77ffe4"
+                    android:textSize="9sp" />
+
+                <TextView
+                    android:id="@+id/tvClWj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/tvClLz"
+                    android:background="@drawable/shape_ffffff_all_3_stroke_24b838"
+                    android:gravity="center"
+                    android:paddingLeft="6dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="6dp"
+                    android:paddingBottom="3dp"
+                    android:text="完结"
+                    android:textColor="#24b838"
+                    android:textSize="9sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

@@ -1,8 +1,8 @@
 package com.zhl.lib_common.service
 
 import com.zhl.lib_common.model.RespModel
-import com.zhl.lib_common.model.book.BookListModel
-import com.zhl.lib_common.model.book.BookModel
+import com.zhl.lib_common.model.ListResp
+import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_core.http.HttpService
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -26,5 +26,5 @@ interface UserProfileService {
         @Query("categoryId") categoryId: Int,
         @Query("pageSize") pageSize: Int,
         @Query("pageNum") pageNum: Int
-    ): RespModel<BookListModel<BookModel>>
+    ): RespModel<ListResp<BookModel>>
 }
