@@ -22,9 +22,16 @@ val SAMPLE_SERVICE: SampleService by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZ
 interface SampleService {
 
     @GET("app/open/api/book/getCategoryId")
-    suspend fun getUserInfo(
+    suspend fun getBookList(
         @Query("categoryId") categoryId: Int,
         @Query("pageSize") pageSize: Int,
         @Query("pageNum") pageNum: Int
     ): RespModel<ListResp<BookModel>>
+
+
+    @GET("app/open/api/book/getDetail")
+    suspend fun getBookDetail(
+        @Query("bookId") bookId: String
+    ): RespModel<BookModel>
+
 }

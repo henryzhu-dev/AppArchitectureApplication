@@ -5,6 +5,8 @@
     <application>
 
         <activity android:name="com.zhl.module_sample.activity.SampleListActivity" />
+        <activity android:name="com.zhl.module_sample.activity.SampleDetailActivity" />
+
 
     </application>
 

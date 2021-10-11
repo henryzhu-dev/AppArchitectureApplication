@@ -17,8 +17,6 @@
         <activity android:name=".test.DialogTestActivity" />
         <activity android:name=".test.MagicIndicatorSampleActivity" />
         <activity android:name=".test.BasicCoroutineActivity" />
-        <activity android:name=".activity.NetworkTestActivity" />
-        <activity android:name=".activity.UserProfileActivity" />
         <activity android:name=".test.LiveDataSampleActivity" />
         <activity android:name=".test.LottieTestActivity" />
     </application>

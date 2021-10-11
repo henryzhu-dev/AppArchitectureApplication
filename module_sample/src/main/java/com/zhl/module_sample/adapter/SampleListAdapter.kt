@@ -15,7 +15,7 @@ import com.zhl.module_sample.R
  */
 class SampleListAdapter() :
     BaseQuickAdapter<BookModel, BaseViewHolder>(
-        R.layout.view_adapter_item_category_list
+        R.layout.list_sample_list_item
     ), LoadMoreModule {
 
     init {

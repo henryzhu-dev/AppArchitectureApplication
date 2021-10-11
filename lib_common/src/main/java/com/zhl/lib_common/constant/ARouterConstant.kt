@@ -16,6 +16,7 @@ object ARouterConstant {
     object SAMPLE {
         private const val SAMPLE = "/sample"
         const val SAMPLE_LIST = "$SAMPLE/list"
+        const val SAMPLE_DETAIL = "$SAMPLE/detail"
     }
 
 

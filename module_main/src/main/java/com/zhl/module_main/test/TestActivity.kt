@@ -56,6 +56,9 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
         binding.btnCommonList.doubleClickCheck {
             ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_LIST).navigation()
         }
+        binding.btnActivityDetail.doubleClickCheck {
+            ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_DETAIL).navigation()
+        }
         binding.btnDialog.doubleClickCheck {
             startActivity(Intent(this, DialogTestActivity::class.java))
         }
