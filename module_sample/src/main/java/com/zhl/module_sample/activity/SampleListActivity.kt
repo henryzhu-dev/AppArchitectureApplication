@@ -43,10 +43,14 @@ class SampleListActivity : BaseListActivity<ActivityCommonListBinding, BookModel
     }
 
 
-    override fun initOtherData() {
+    override fun createObserver() {
         sampleListViewModel.listLiveData.observe(this) {
             handleData(it)
         }
+    }
+
+
+    override fun initOtherData() {
         adapter.setOnItemClickListener { adapter, view, position ->
             ToastUtil.show("点击了${position}项")
         }

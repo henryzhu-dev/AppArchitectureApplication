@@ -26,7 +26,6 @@ class SmartListActivity : BaseSmartListActivity<ActivitySmartListBinding, BookMo
     private val sampleListViewModel by getActivityVM<SampleListViewModel>()
 
     override val smartRefreshLayout: SmartRefreshLayout by lazy {
-        binding.refreshLayout.setRefreshHeader(binding.header)
         binding.refreshLayout
     }
     override val recyclerView: RecyclerView by lazy {
