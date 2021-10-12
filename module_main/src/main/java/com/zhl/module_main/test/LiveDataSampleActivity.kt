@@ -36,6 +36,10 @@ class LiveDataSampleActivity : BaseActivity<ActivityLiveDataSampleBinding>() {
         }
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
     }
 

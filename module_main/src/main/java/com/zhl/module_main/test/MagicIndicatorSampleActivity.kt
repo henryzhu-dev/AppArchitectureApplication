@@ -65,6 +65,10 @@ class MagicIndicatorSampleActivity : BaseActivity<ActivityMagicIndicatorSampleBi
         ViewPagerHelper.bind(binding.magicIndicator, binding.viewPager)
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
     }
 

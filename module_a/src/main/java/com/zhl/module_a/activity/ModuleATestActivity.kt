@@ -25,6 +25,10 @@ class ModuleATestActivity : BaseActivity<ActivityModuleATestBinding>() {
     override fun initData() {
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
     }
 

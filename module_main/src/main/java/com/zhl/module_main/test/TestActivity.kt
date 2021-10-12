@@ -52,9 +52,16 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
             }
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun initListener() {
         binding.btnCommonList.doubleClickCheck {
             ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_LIST).navigation()
+        }
+        binding.btnSmartList.doubleClickCheck {
+            ARouter.getInstance().build(ARouterConstant.SAMPLE.SMART_LIST).navigation()
         }
         binding.btnActivityDetail.doubleClickCheck {
             ARouter.getInstance().build(ARouterConstant.SAMPLE.SAMPLE_DETAIL).navigation()

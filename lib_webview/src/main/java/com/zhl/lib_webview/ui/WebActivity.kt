@@ -36,6 +36,10 @@ open class WebActivity : BaseActivity<ActivityWebBinding>(), WebViewListener {
         url = "https://www.baidu.com/"
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun initListener() {
         lifecycle.addObserver(binding.webView)
     }

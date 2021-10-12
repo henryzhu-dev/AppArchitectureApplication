@@ -64,7 +64,7 @@ class SampleListActivity : BaseListActivity<ActivityCommonListBinding, BookModel
     }
 
     private fun loadDataList(page: Int) {
-        sampleListViewModel.getList(page)
+        sampleListViewModel.getList(page, 10)
     }
 
     override fun enableRefresh(): Boolean {

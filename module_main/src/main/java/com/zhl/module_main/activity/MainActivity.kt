@@ -143,6 +143,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun initListener() {
 
     }

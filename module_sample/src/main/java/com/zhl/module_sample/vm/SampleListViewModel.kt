@@ -21,10 +21,10 @@ class SampleListViewModel : BaseVM() {
     val listLiveData: MutableLiveData<ListResp<BookModel>> = MutableLiveData()
 
 
-    fun getList(pageNum: Int) {
+    fun getList(pageNum: Int, pageSize: Int) {
         request(
             {
-                SAMPLE_SERVICE.getBookList(1, 5, pageNum)
+                SAMPLE_SERVICE.getBookList(1, pageSize, pageNum)
             },
             {
                 listLiveData.value = it

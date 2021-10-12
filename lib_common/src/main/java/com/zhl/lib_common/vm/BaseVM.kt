@@ -6,7 +6,6 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.google.gson.Gson
 import com.zhl.lib_common.constant.ARouterConstant
 import com.zhl.lib_core.http.BaseRespModel
-import com.zhl.lib_core.utils.LogUtil
 import com.zhl.lib_core.utils.ToastUtil
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -65,7 +64,7 @@ fun <T> BaseVM.request(
             block()
         }.onSuccess {
             kotlin.runCatching {
-                LogUtil.d("网络请求结果", "返回数据：" + Gson().toJson(it))
+//                LogUtil.d("网络请求结果", "返回数据：" + Gson().toJson(it))
                 if (isShowLoading) {
                     // TODO: 2021/8/27 此处需要关闭弹窗
 
@@ -122,7 +121,7 @@ fun <T> BaseVM.requestNotWrapper(
             block()
         }.onSuccess {
             kotlin.runCatching {
-                LogUtil.d("网络请求结果", "返回数据：" + Gson().toJson(it))
+//                LogUtil.d("网络请求结果", "返回数据：" + Gson().toJson(it))
                 if (isShowLoading) {
                     // TODO: 2021/8/27 此处需要关闭弹窗
 

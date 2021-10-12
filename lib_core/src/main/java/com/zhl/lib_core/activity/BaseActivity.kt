@@ -50,6 +50,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         }
         initListener()
         initData()
+        createObserver()
         loadData()
     }
 
@@ -73,9 +74,19 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
     protected abstract fun initData()
 
-    protected abstract fun loadData()
+    /**
+     * 创建LiveData数据观察者
+     */
+    protected abstract fun createObserver()
 
-    protected abstract fun initListener()
+
+    protected open fun loadData() {
+
+    }
+
+    protected open fun initListener() {
+
+    }
 
     protected abstract fun getLayoutViewBinding(): VB
 

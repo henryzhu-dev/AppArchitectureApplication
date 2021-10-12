@@ -17,6 +17,10 @@ class LottieTestActivity : BaseActivity<ActivityLottieTestBinding>() {
 
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
 
     }

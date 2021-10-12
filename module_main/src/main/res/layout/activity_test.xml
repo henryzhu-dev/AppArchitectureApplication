@@ -14,6 +14,12 @@
         android:text="列表Activity" />
 
     <Button
+        android:id="@+id/btnSmartList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Smart列表Activity" />
+
+    <Button
         android:id="@+id/btnActivityDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -23,6 +23,10 @@ class DialogTestActivity : BaseActivity<ActivityDialogTestBinding>() {
     override fun initData() {
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
     }
 

@@ -24,6 +24,10 @@ class SampleViewPager2Activity : BaseActivity<ActivitySampleViewpager2Binding>()
         binding.pager.adapter = BaseViewPager2Adapter(this, fragmentList)
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
     }
 

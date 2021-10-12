@@ -27,6 +27,10 @@ class SampleDetailActivity : BaseActivity<ActivitySampleDetailBinding>() {
         }
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
         sampleDetailViewModel.getDetail()
     }
