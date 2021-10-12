@@ -1,5 +1,6 @@
 package com.zhl.lib_common.base
 
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -23,12 +24,22 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
     abstract val swipeRefreshLayout: SwipeRefreshLayout?
     abstract val recyclerView: RecyclerView
     abstract val adapter: BaseQuickAdapter<T, *>
-    abstract val loadDataList: ((page: Int) -> Unit)
 
     /**
-     * 当前数据页码
+     * 当前页码
      */
-    private var currentPage = 1
+    protected var pageNumber: Int = firstPage()
+    protected var pageSize: Int = 10
+    protected fun firstPage(): Int {
+        return 1
+    }
+
+    /**
+     * 是否需要自动刷新
+     */
+    open var needAutoRefresh = true
+
+    abstract val loadDataList: ((page: Int) -> Unit)
 
 
     override fun initData() {
@@ -53,7 +64,9 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
     abstract fun initOtherData()
 
     override fun loadData() {
-        onRefresh()
+        if (needAutoRefresh) {
+            onRefresh()
+        }
     }
 
     override fun initListener() {
@@ -61,13 +74,13 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
     }
 
     override fun onRefresh() {
-        currentPage = 1
-        loadDataList(currentPage)
+        pageNumber = 1
+        loadDataList(pageNumber)
     }
 
     override fun onLoadMore() {
-        currentPage++
-        loadDataList(currentPage)
+        pageNumber++
+        loadDataList(pageNumber)
     }
 
     fun handleData(listResp: ListResp<T>?) {
@@ -103,7 +116,7 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         if (swipeRefreshLayout?.isRefreshing == true) {
             swipeRefreshLayout?.isRefreshing = false
         }
-        if (currentPage == 1) {
+        if (pageNumber == 1) {
             adapter.setEmptyView(getErrorLayout())
         } else {
             adapter.loadMoreModule.loadMoreFail()
@@ -128,11 +141,19 @@ abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),
         return R.layout.layout_common_loading_view
     }
 
-    protected fun getEmptyLayout(): Int {
-        return R.layout.layout_common_empty_view
+    protected fun getEmptyLayout(): View {
+        val emptyLayout = View.inflate(this, R.layout.layout_common_empty_view, null)
+        emptyLayout.setOnClickListener {
+            onRefresh()
+        }
+        return emptyLayout
     }
 
-    protected fun getErrorLayout(): Int {
-        return R.layout.layout_common_error_view
+    protected fun getErrorLayout(): View {
+        val errorLayout = View.inflate(this, R.layout.layout_common_error_view, null)
+        errorLayout.setOnClickListener {
+            onRefresh()
+        }
+        return errorLayout
     }
 }

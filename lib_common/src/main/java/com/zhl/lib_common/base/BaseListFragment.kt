@@ -23,12 +23,23 @@ abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(),
     abstract val swipeRefreshLayout: SwipeRefreshLayout?
     abstract val recyclerView: RecyclerView
     abstract val adapter: BaseQuickAdapter<T, *>
-    abstract val loadDataList: ((page: Int) -> Unit)
 
     /**
      * 当前数据页码
      */
-    private var currentPage = 1
+    protected var pageNumber: Int = firstPage()
+    protected var pageSize: Int = 10
+    protected fun firstPage(): Int {
+        return 1
+    }
+
+    /**
+     * 是否需要自动刷新
+     */
+    open var needAutoRefresh = true
+
+
+    abstract val loadDataList: ((page: Int) -> Unit)
 
     override fun initData() {
         //设置是否可下拉刷新
@@ -52,17 +63,19 @@ abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(),
     abstract fun initOtherData()
 
     override fun loadData() {
-        onRefresh()
+        if (needAutoRefresh) {
+            onRefresh()
+        }
     }
 
     override fun onRefresh() {
-        currentPage = 1
-        loadDataList(currentPage)
+        pageNumber = 1
+        loadDataList(pageNumber)
     }
 
     override fun onLoadMore() {
-        currentPage++
-        loadDataList(currentPage)
+        pageNumber++
+        loadDataList(pageNumber)
     }
 
     fun handleData(listBean: ListResp<T>?) {
@@ -98,7 +111,7 @@ abstract class BaseListFragment<VB : ViewBinding, T> : BaseFragment<VB>(),
         if (swipeRefreshLayout?.isRefreshing == true) {
             swipeRefreshLayout?.isRefreshing = false
         }
-        if (currentPage == 1) {
+        if (pageNumber == 1) {
             adapter.setEmptyView(getErrorLayout())
         } else {
             adapter.loadMoreModule.loadMoreFail()

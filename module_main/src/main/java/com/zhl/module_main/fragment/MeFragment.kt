@@ -21,6 +21,10 @@ class MeFragment : BaseFragment<FragmentMeBinding>(), View.OnClickListener {
         binding.llQuestion.setOnClickListener(this)
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
 
     }

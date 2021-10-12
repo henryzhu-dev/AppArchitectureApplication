@@ -41,6 +41,10 @@ class ViewPager2SampleFragment : BaseFragment<FragmentViewpager2SampleBinding>()
         }
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
 
     }

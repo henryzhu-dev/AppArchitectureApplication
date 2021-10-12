@@ -17,6 +17,10 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding>() {
 
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
 
     }

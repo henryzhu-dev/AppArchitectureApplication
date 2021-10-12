@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.zhl.lib_common.base.BaseListFragment
+import com.zhl.lib_common.databinding.LayoutCommonListBinding
 import com.zhl.lib_common.model.BookModel
-import com.zhl.lib_core.databinding.FragmentCommonListBinding
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_sample.R
 import com.zhl.module_sample.adapter.SampleListAdapter
@@ -18,7 +18,7 @@ import com.zhl.module_sample.adapter.SampleListAdapter
  *    desc   :
  *    refer  : 通用的列表Fragment
  */
-class SampleListFragment : BaseListFragment<FragmentCommonListBinding, BookModel>() {
+class SampleListFragment : BaseListFragment<LayoutCommonListBinding, BookModel>() {
 
     override val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         binding.swipeRefreshLayout
@@ -33,6 +33,10 @@ class SampleListFragment : BaseListFragment<FragmentCommonListBinding, BookModel
 
     override val loadDataList: (page: Int) -> Unit = {
         loadDataList(it)
+    }
+
+    override fun createObserver() {
+
     }
 
     override fun initOtherData() {
@@ -70,8 +74,8 @@ class SampleListFragment : BaseListFragment<FragmentCommonListBinding, BookModel
     override fun getViewBinding(
         inflater: LayoutInflater,
         viewGroup: ViewGroup?
-    ): FragmentCommonListBinding {
-        return FragmentCommonListBinding.inflate(inflater)
+    ): LayoutCommonListBinding {
+        return LayoutCommonListBinding.inflate(inflater)
     }
 
 }

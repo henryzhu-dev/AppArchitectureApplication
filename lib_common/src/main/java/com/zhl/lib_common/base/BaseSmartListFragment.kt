@@ -10,17 +10,16 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener
 import com.zhl.lib_common.R
 import com.zhl.lib_common.model.ListResp
-import com.zhl.lib_core.activity.BaseActivity
+import com.zhl.lib_core.fragment.BaseFragment
 
 /**
  *    author : zhuhl
  *    date   : 2021/10/12
- *    desc   : 通过smartRefreshLayout实现的列表基类
+ *    desc   :
  *    refer  :
  */
-abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), OnRefreshListener,
+abstract class BaseSmartListFragment<VB : ViewBinding, T> : BaseFragment<VB>(), OnRefreshListener,
     com.chad.library.adapter.base.listener.OnLoadMoreListener {
-
 
     abstract val smartRefreshLayout: SmartRefreshLayout
     abstract val recyclerView: RecyclerView
@@ -43,7 +42,6 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
 
 
     abstract val loadDataList: ((page: Int) -> Unit)
-
 
     override fun initData() {
         //绑定recyclerView和Adapter
@@ -80,8 +78,11 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
         //设置adapter显示的动画效果
         adapter.animationEnable = true
         adapter.adapterAnimation = AlphaInAnimation(0.4f)
+        initOtherData()
     }
 
+
+    abstract fun initOtherData()
 
     override fun onRefresh(refreshLayout: RefreshLayout) {
         pageNumber = firstPage()
@@ -149,7 +150,7 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
     }
 
     protected fun getEmptyLayout(): View {
-        val emptyLayout = View.inflate(this, R.layout.layout_common_empty_view, null)
+        val emptyLayout = View.inflate(activity, R.layout.layout_common_empty_view, null)
         emptyLayout.setOnClickListener {
             onRefresh(smartRefreshLayout)
         }
@@ -157,7 +158,7 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
     }
 
     protected fun getErrorLayout(): View {
-        val errorLayout = View.inflate(this, R.layout.layout_common_error_view, null)
+        val errorLayout = View.inflate(activity, R.layout.layout_common_error_view, null)
         errorLayout.setOnClickListener {
             onRefresh(smartRefreshLayout)
         }

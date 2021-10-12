@@ -7,10 +7,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhl.lib_common.base.BaseSmartListActivity
 import com.zhl.lib_common.constant.ARouterConstant
+import com.zhl.lib_common.databinding.LayoutCommonSmartListBinding
 import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_common.vm.getActivityVM
 import com.zhl.module_sample.adapter.SampleListAdapter
-import com.zhl.module_sample.databinding.ActivitySmartListBinding
 import com.zhl.module_sample.vm.SampleListViewModel
 
 
@@ -21,7 +21,7 @@ import com.zhl.module_sample.vm.SampleListViewModel
  */
 
 @Route(path = ARouterConstant.SAMPLE.SMART_LIST)
-class SmartListActivity : BaseSmartListActivity<ActivitySmartListBinding, BookModel>() {
+class SmartListActivity : BaseSmartListActivity<LayoutCommonSmartListBinding, BookModel>() {
 
     private val sampleListViewModel by getActivityVM<SampleListViewModel>()
 
@@ -54,7 +54,7 @@ class SmartListActivity : BaseSmartListActivity<ActivitySmartListBinding, BookMo
     }
 
 
-    override fun getLayoutViewBinding(): ActivitySmartListBinding {
-        return ActivitySmartListBinding.inflate(layoutInflater)
+    override fun getLayoutViewBinding(): LayoutCommonSmartListBinding {
+        return LayoutCommonSmartListBinding.inflate(layoutInflater)
     }
 }

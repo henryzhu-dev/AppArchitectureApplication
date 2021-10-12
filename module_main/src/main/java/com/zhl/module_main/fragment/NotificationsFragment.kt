@@ -17,6 +17,10 @@ class NotificationsFragment : BaseFragment<FragmentNotificationsBinding>() {
 
     }
 
+    override fun createObserver() {
+
+    }
+
     override fun loadData() {
 
     }

@@ -44,7 +44,11 @@ abstract class BaseFragment<VB : ViewBinding> : Fragment() {
 
     abstract fun initData()
 
-    abstract fun loadData()
+    abstract fun createObserver()
+
+    open fun loadData() {
+
+    }
 
     abstract fun getViewBinding(inflater: LayoutInflater, viewGroup: ViewGroup?): VB
 

@@ -5,9 +5,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.zhl.lib_common.base.BaseListActivity
 import com.zhl.lib_common.constant.ARouterConstant
+import com.zhl.lib_common.databinding.LayoutCommonListBinding
 import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_common.vm.getActivityVM
-import com.zhl.lib_core.databinding.ActivityCommonListBinding
 import com.zhl.lib_core.utils.ToastUtil
 import com.zhl.module_sample.R
 import com.zhl.module_sample.adapter.SampleListAdapter
@@ -20,7 +20,7 @@ import com.zhl.module_sample.vm.SampleListViewModel
  */
 
 @Route(path = ARouterConstant.SAMPLE.SAMPLE_LIST)
-class SampleListActivity : BaseListActivity<ActivityCommonListBinding, BookModel>() {
+class SampleListActivity : BaseListActivity<LayoutCommonListBinding, BookModel>() {
 
     private val TAG = SampleListActivity::class.java.simpleName
 
@@ -80,8 +80,8 @@ class SampleListActivity : BaseListActivity<ActivityCommonListBinding, BookModel
     }
 
 
-    override fun getLayoutViewBinding(): ActivityCommonListBinding {
-        return ActivityCommonListBinding.inflate(layoutInflater)
+    override fun getLayoutViewBinding(): LayoutCommonListBinding {
+        return LayoutCommonListBinding.inflate(layoutInflater)
     }
 
 
