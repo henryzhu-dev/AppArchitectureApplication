@@ -151,7 +151,7 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
     protected fun getEmptyLayout(): View {
         val emptyLayout = View.inflate(this, R.layout.layout_common_empty_view, null)
         emptyLayout.setOnClickListener {
-            onRefresh(smartRefreshLayout)
+            smartRefreshLayout.autoRefresh()
         }
         return emptyLayout
     }
@@ -159,7 +159,7 @@ abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), 
     protected fun getErrorLayout(): View {
         val errorLayout = View.inflate(this, R.layout.layout_common_error_view, null)
         errorLayout.setOnClickListener {
-            onRefresh(smartRefreshLayout)
+            smartRefreshLayout.autoRefresh()
         }
         return errorLayout
     }
