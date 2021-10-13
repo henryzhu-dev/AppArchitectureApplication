@@ -39,6 +39,10 @@ class HomeFragment : BaseListFragment<FragmentHomeBinding, BookModel>() {
     }
 
     override fun initOtherData() {
+
+    }
+
+    override fun createObserver() {
         homeViewModel.homeListLiveData.observe(this) {
             handleData(it)
         }

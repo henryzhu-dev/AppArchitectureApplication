@@ -62,7 +62,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initData() {
         binding.viewPager.adapter = pagerAdapter
-        binding.viewPager.offscreenPageLimit = 3
+        binding.viewPager.offscreenPageLimit = 1
         initMagicIndicator()
     }
 

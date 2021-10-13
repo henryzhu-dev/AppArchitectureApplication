@@ -1,5 +1,6 @@
 package com.zhl.module_main.vm
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.zhl.lib_common.model.BookModel
 import com.zhl.lib_common.model.ListResp
@@ -27,9 +28,11 @@ class HomeViewModel : BaseVM() {
                 mainService.getRecentUpdateList("RECENT_UPDATE", 0, pageNum, 10)
             },
             {
+                Log.d("网络请求结果", "成功" + Thread.currentThread().id)
                 homeListLiveData.value = it
             },
             {
+                Log.d("网络请求结果", "失败！！")
                 homeListLiveData.value = null
             }
         )

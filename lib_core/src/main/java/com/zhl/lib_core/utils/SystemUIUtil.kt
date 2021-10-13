@@ -37,13 +37,29 @@ object SystemUIUtil {
     fun enableImmersiveMode(activity: Activity, statusBarTextDarkMode: Boolean = true) {
         //沉浸式，内容到statusBar里
         val decorView = activity.window.decorView
-        val uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-        decorView.systemUiVisibility = uiOptions
+        val uiOptions = decorView.systemUiVisibility
+        var newUiOptions = uiOptions
+        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        newUiOptions = newUiOptions or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+        decorView.systemUiVisibility = newUiOptions
+
         //设置statusBar颜色为透明
         activity.window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setStatusBarTextMode(activity, true)
     }
 
+    fun clearImmersiveMode(activity: Activity) {
+        val decorView = activity.window.decorView
+        val uiOptions = decorView.systemUiVisibility
+        var newUiOptions = uiOptions
+        newUiOptions = newUiOptions and View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN.inv()
+        newUiOptions = newUiOptions and View.SYSTEM_UI_FLAG_LAYOUT_STABLE.inv()
+        decorView.systemUiVisibility = newUiOptions
+
+        //设置statusBar
+        activity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        setStatusBarTextMode(activity, false)
+    }
 
 
     fun setStatusBarColorRes(activity: Activity, @ColorRes colorRes: Int) {

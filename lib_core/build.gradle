@@ -110,4 +110,7 @@ dependencies {
     api  'com.scwang.smart:refresh-footer-ball:2.0.3'        //球脉冲加载
     api  'com.scwang.smart:refresh-footer-classics:2.0.3'    //经典加载
 
+
+    api 'io.github.youth5201314:banner:2.2.2'
+
 }
