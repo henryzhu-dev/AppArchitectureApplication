@@ -7,6 +7,7 @@
     <application
         android:name=".debug.AApplication"
         android:allowBackup="true"
+        android:label="module_a"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/Theme.CommonAppTheme">
         <activity android:name="com.zhl.module_a.debug.DebugActivity">

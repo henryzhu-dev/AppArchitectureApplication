@@ -18,6 +18,8 @@ import com.zhl.module_main.test.TestActivity
 class MeFragment : BaseFragment<FragmentMeBinding>(), View.OnClickListener {
 
     override fun initData() {
+        binding.llFeedback.setOnClickListener(this)
+        binding.llHistory.setOnClickListener(this)
         binding.llQuestion.setOnClickListener(this)
     }
 
@@ -32,8 +34,16 @@ class MeFragment : BaseFragment<FragmentMeBinding>(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.llQuestion ->
+            R.id.llFeedback -> {
+//                MMKVUtil.encode(SPConstant.User.SP_NAME, SPConstant.User.KEY_TOEKN, "1231231313")
+            }
+            R.id.llHistory -> {
+//                val token = MMKVUtil.decode(SPConstant.User.SP_NAME, SPConstant.User.KEY_TOEKN)
+//                LogUtil.d("token验证", token.toString())
+            }
+            R.id.llQuestion -> {
                 startActivity(Intent(requireContext(), TestActivity::class.java))
+            }
             else -> {
             }
         }

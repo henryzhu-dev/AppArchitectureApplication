@@ -1,15 +1,21 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
+if (!Boolean.parseBoolean(isComponentMode)) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
 }
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion configs.android.compileSdkVersion
     buildToolsVersion configs.android.buildToolsVersion
 
     defaultConfig {
-        applicationId configs.android.applicationId
+        if (!Boolean.parseBoolean(isComponentMode)) {
+            applicationId configs.android.applicationId
+        } else {
+            //当模块化编译后，此壳module变成library,无需applicationId
+        }
         minSdkVersion configs.android.minSdkVersion
         targetSdkVersion configs.android.targetSdkVersion
         versionCode configs.android.versionCode

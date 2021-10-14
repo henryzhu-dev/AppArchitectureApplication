@@ -5,6 +5,7 @@
     <application
         android:name=".debug.SampleApplication"
         android:allowBackup="true"
+        android:label="module_sample"
         android:icon="@mipmap/ic_launcher"
         android:theme="@style/Theme.CommonAppTheme">
 
