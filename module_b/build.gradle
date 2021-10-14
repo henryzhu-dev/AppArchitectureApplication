@@ -1,45 +1,11 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-}
+apply from: "../module.build.gradle"
 
 android {
-    compileSdkVersion configs.android.compileSdkVersion
-    buildToolsVersion configs.android.buildToolsVersion
-
     defaultConfig {
-        minSdkVersion configs.android.minSdkVersion
-        targetSdkVersion configs.android.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-                arg('eventBusIndex', 'com.zhl.module_b.BEventBusIndex')
-            }
+        if (Boolean.parseBoolean(isComponentMode)) {
+            //Module作为独立App应用运行
+            applicationId "com.zhl.module_b"
         }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        viewBinding true
     }
 }
 

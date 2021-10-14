@@ -14,7 +14,7 @@ import com.zhl.lib_core.activity.BaseActivity
 /**
  *    author : zhuhl
  *    date   : 2021/6/30
- *    desc   :
+ *    desc   : 通用的列表Activity，使用SwipeRefreshLayout去实现的基类
  *    refer  :
  */
 abstract class BaseListActivity<VB : ViewBinding, T> : BaseActivity<VB>(),

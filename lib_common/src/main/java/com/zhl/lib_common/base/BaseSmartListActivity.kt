@@ -15,7 +15,7 @@ import com.zhl.lib_core.activity.BaseActivity
 /**
  *    author : zhuhl
  *    date   : 2021/10/12
- *    desc   : 通过smartRefreshLayout实现的列表基类
+ *    desc   : 通用的列表Activity，使用smartRefreshLayout去实现的基类
  *    refer  :
  */
 abstract class BaseSmartListActivity<VB : ViewBinding, T> : BaseActivity<VB>(), OnRefreshListener,

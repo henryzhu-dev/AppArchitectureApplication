@@ -11,6 +11,12 @@ import com.zhl.lib_core.BuildConfig
  */
 object LogUtil {
 
+    private const val TAG = "app_architecture"
+
+    fun d(msg: String) {
+        d(TAG, msg)
+    }
+
     fun d(tag: String, msg: String) {
         if (BuildConfig.DEBUG) {
             Log.d(tag, msg)

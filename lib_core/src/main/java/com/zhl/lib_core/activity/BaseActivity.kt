@@ -72,19 +72,31 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     }
 
 
+    /**
+     * 用来添加相关监听事件
+     *
+     */
+    protected open fun initListener() {
+
+    }
+
+    /**
+     * 初始化数据
+     *
+     */
     protected abstract fun initData()
 
     /**
-     * 创建LiveData数据观察者
+     * 注册LiveData数据观察者
      */
     protected abstract fun createObserver()
 
 
+    /**
+     * 加载数据
+     *
+     */
     protected open fun loadData() {
-
-    }
-
-    protected open fun initListener() {
 
     }
 

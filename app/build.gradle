@@ -56,10 +56,12 @@ dependencies {
 
     implementation project(path: ':lib_common')
 
-    implementation project(path: ':module_main')
-    implementation project(path: ':module_sample')
-    implementation project(path: ':module_a')
-    implementation project(path: ':module_b')
-
+    if (!Boolean.parseBoolean(isComponentMode)) {
+        //非组件化模块下，依赖各个模块
+        implementation project(path: ':module_main')
+        implementation project(path: ':module_sample')
+        implementation project(path: ':module_a')
+        implementation project(path: ':module_b')
+    }
 
 }

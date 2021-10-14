@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhl.module_main">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".debug.MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.CommonAppTheme">
+        <activity android:name=".debug.DebugActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".test.SampleViewPager2Activity" />
+        <activity android:name=".test.DialogTestActivity" />
+        <activity android:name=".test.MagicIndicatorSampleActivity" />
+        <activity android:name=".test.BasicCoroutineActivity" />
+        <activity android:name=".test.LiveDataSampleActivity" />
+        <activity android:name=".test.LottieTestActivity" />
+    </application>
+
+</manifest>
