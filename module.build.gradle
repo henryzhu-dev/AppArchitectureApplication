@@ -38,8 +38,8 @@ android {
             } else {
                 manifest.srcFile 'src/main/AndroidManifest.xml'
                 resources {
-                    //正式版本时，排除debug文件夹下所有文件
-                    exclude 'src/debug/*'
+                    //合并打包版本时，排除debug文件夹下所有文件
+                    exclude '*/debug/*'
                 }
             }
         }
