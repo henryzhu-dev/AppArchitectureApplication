@@ -2,8 +2,6 @@ package com.zhl.lib_common.base
 
 import android.view.animation.DecelerateInterpolator
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
-import com.zhl.lib_common.ICommonApplication
-import com.zhl.lib_common.ModuleApplicationConfig
 import com.zhl.lib_common.http.HttpConfig
 import com.zhl.lib_common.widget.CommonRefreshHeader
 import com.zhl.lib_core.BaseApplication
@@ -19,16 +17,7 @@ open class CommonApplication : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
 
-        initComponent()
-    }
-
-    private fun initComponent() {
-        ModuleApplicationConfig.modules.forEach {
-            val clazz = Class.forName(it)
-            val instance = clazz.newInstance() as ICommonApplication
-            instance.onCreate()
-        }
-    }
+   }
 
     override fun initCommon() {
         HttpConfig.init()
