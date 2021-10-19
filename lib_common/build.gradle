@@ -42,5 +42,8 @@ dependencies {
     api project(path: ':lib_fileprovider')
     api project(path: ':lib_webview')
 
+    //AppLifecycle
+    api 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-api:1.0.4'
+
 
 }

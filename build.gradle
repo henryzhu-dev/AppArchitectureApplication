@@ -9,10 +9,14 @@ buildscript {
         mavenCentral()
         maven { url 'https://jitpack.io' }
 //        maven { url "https://s01.oss.sonatype.org/content/groups/public" }
+        //applifecycle插件仓也是jitpack
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.3'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31'
+
+        //加载插件applifecycle
+        classpath 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-plugin:1.0.3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -24,6 +28,8 @@ allprojects {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' }
+        //applifecycle插件仓也是jitpack
         maven { url 'https://jitpack.io' }
     }
 }

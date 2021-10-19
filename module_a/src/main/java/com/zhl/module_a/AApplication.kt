@@ -1,7 +1,9 @@
 package com.zhl.module_a
 
+import android.content.Context
 import android.util.Log
-import com.zhl.lib_common.ICommonApplication
+import com.hm.iou.lifecycle.annotation.AppLifecycle
+import com.hm.lifecycle.api.IApplicationLifecycleCallbacks
 
 /**
  *    author : zhuhl
@@ -9,10 +11,27 @@ import com.zhl.lib_common.ICommonApplication
  *    desc   :
  *    refer  :
  */
-class AApplication : ICommonApplication {
+@AppLifecycle
+class AApplication : IApplicationLifecycleCallbacks {
+    override fun getPriority(): Int {
+        return IApplicationLifecycleCallbacks.MIN_PRIORITY
+    }
 
-    override fun onCreate() {
+    override fun onCreate(context: Context?) {
         Log.d("Application生命周期", "AApplication执行onCreate!!")
     }
+
+    override fun onTerminate() {
+
+    }
+
+    override fun onLowMemory() {
+
+    }
+
+    override fun onTrimMemory(level: Int) {
+
+    }
+
 
 }

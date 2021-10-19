@@ -13,4 +13,7 @@ dependencies {
     implementation project(path: ':lib_common')
     //ARouter注解处理器
     kapt deps.arouter.arouter_compiler
+
+    kapt 'com.github.hufeiyang.Android-AppLifecycleMgr:applifecycle-compiler:1.0.4'
+
 }

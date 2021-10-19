@@ -1,4 +1,4 @@
-package com.zhl.module_sample
+package com.zhl.module_b
 
 import android.content.Context
 import android.util.Log
@@ -12,13 +12,13 @@ import com.hm.lifecycle.api.IApplicationLifecycleCallbacks
  *    refer  :
  */
 @AppLifecycle
-class SampleApplication : IApplicationLifecycleCallbacks {
+class BApplication : IApplicationLifecycleCallbacks {
     override fun getPriority(): Int {
-        return IApplicationLifecycleCallbacks.MAX_PRIORITY
+        return IApplicationLifecycleCallbacks.NORM_PRIORITY
     }
 
     override fun onCreate(context: Context?) {
-        Log.d("Application生命周期", "SampleApplication执行onCreate!!")
+        Log.d("Application生命周期", "BApplication执行onCreate!!")
     }
 
     override fun onTerminate() {

@@ -5,6 +5,8 @@ if (!Boolean.parseBoolean(isComponentMode)) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+//使用插件applifecycle
+apply plugin: 'com.hm.plugin.lifecycle'
 
 android {
     compileSdkVersion configs.android.compileSdkVersion
