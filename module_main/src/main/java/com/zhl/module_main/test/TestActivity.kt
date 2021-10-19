@@ -16,6 +16,7 @@ import com.jeremyliao.liveeventbus.LiveEventBus
 import com.permissionx.guolindev.PermissionX
 import com.yalantis.ucrop.UCrop
 import com.zhl.lib_common.constant.ARouterConstant
+import com.zhl.lib_common.provider.ISampleProvider
 import com.zhl.lib_core.activity.BaseActivity
 import com.zhl.lib_core.doubleClickCheck
 import com.zhl.lib_core.fragment.PermissionXDialogFragment
@@ -138,6 +139,9 @@ class TestActivity : BaseActivity<ActivityTestBinding>() {
         }
         binding.btnLiveDataBus.doubleClickCheck {
 //            startActivity(Intent(this, UserProfileActivity::class.java))
+            val iSampleProvider = ARouter.getInstance()
+                .build(ARouterConstant.SAMPLE.SAMPLE_DATA_PROVIDER).navigation() as ISampleProvider
+            ToastUtil.show(iSampleProvider.getSampleData())
         }
         binding.btnWebP.doubleClickCheck {
             val imageLoader = ImageLoader.Builder(this)
