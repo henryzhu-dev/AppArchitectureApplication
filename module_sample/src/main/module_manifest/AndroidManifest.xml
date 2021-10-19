@@ -3,7 +3,7 @@
     package="com.zhl.module_sample">
 
     <application
-        android:name=".debug.SampleApplication"
+        android:name=".debug.SampleDebugApplication"
         android:allowBackup="true"
         android:label="module_sample"
         android:icon="@mipmap/ic_launcher"

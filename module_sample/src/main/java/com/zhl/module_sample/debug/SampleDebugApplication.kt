@@ -1,4 +1,4 @@
-package com.zhl.module_main.debug
+package com.zhl.module_sample.debug
 
 import com.zhl.lib_common.base.CommonApplication
 import com.zhl.lib_core.utils.LogUtil
@@ -9,11 +9,11 @@ import com.zhl.lib_core.utils.LogUtil
  *    desc   :
  *    refer  :
  */
-class MainApplication : CommonApplication() {
+class SampleDebugApplication : CommonApplication() {
 
 
     override fun onCreate() {
         super.onCreate()
-        LogUtil.d("组件化下Main模块application初始化")
+        LogUtil.d("组件化下sample模块application初始化")
     }
 }

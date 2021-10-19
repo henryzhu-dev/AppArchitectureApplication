@@ -9,7 +9,7 @@ import com.zhl.lib_core.utils.LogUtil
  *    desc   :
  *    refer  :
  */
-class BApplication : CommonApplication() {
+class BDebugApplication : CommonApplication() {
 
 
     override fun onCreate() {
