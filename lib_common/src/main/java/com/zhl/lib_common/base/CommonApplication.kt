@@ -1,6 +1,7 @@
 package com.zhl.lib_common.base
 
 import android.view.animation.DecelerateInterpolator
+import com.didichuxing.doraemonkit.DoKit
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.zhl.lib_common.http.HttpConfig
 import com.zhl.lib_common.widget.CommonRefreshHeader
@@ -34,6 +35,11 @@ open class CommonApplication : BaseApplication() {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
             CommonRefreshHeader(context)
         }
+
+        //初始化滴滴dokit
+        DoKit.Builder(this)
+//            .productId("需要使用平台功能的话，需要到dokit.cn平台申请id")
+            .build()
     }
 
 

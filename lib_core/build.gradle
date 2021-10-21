@@ -111,4 +111,8 @@ dependencies {
 
     api 'io.github.youth5201314:banner:2.2.2'
 
+    //dokit核心模块
+    debugApi "io.github.didi.dokit:dokitx:3.5.0"
+    releaseApi 'io.github.didi.dokit:dokitx-no-op:3.5.0'
+
 }

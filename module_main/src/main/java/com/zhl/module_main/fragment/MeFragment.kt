@@ -36,6 +36,7 @@ class MeFragment : BaseFragment<FragmentMeBinding>(), View.OnClickListener {
         when (v?.id) {
             R.id.llFeedback -> {
 //                MMKVUtil.encode(SPConstant.User.SP_NAME, SPConstant.User.KEY_TOEKN, "1231231313")
+                throw NullPointerException("拉拉")
             }
             R.id.llHistory -> {
 //                val token = MMKVUtil.decode(SPConstant.User.SP_NAME, SPConstant.User.KEY_TOEKN)
